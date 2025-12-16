@@ -7,6 +7,7 @@ AGENTS.md
 bd_issues.json
 beads_output.json
 .agent/
+gianpy-website-secrets.tar
 
 # Local images (product images are stored in R2)
 images/
