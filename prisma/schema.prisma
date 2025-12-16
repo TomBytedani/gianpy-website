@@ -1,0 +1,309 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// =========================================
+// ENUMS
+// =========================================
+
+enum UserRole {
+  CUSTOMER
+  ADMIN
+}
+
+enum ProductStatus {
+  AVAILABLE
+  SOLD
+  RESERVED
+  COMING_SOON
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+// =========================================
+// USER MODEL
+// =========================================
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  password      String?   // For email/password auth, null for OAuth
+  emailVerified DateTime?
+  image         String?
+  role          UserRole  @default(CUSTOMER)
+  phone         String?
+  
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  accounts      Account[]
+  sessions      Session[]
+  orders        Order[]
+  wishlistItems WishlistItem[]
+  
+  @@map("users")
+}
+
+// =========================================
+// NEXTAUTH MODELS
+// =========================================
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// =========================================
+// PRODUCT MODELS
+// =========================================
+
+model Category {
+  id          String @id @default(cuid())
+  name        String @unique // Machine-readable name (e.g., "cassettoni")
+  displayName String         // Display name in Italian (e.g., "Cassettoni e Comò")
+  displayNameEn String?      // Display name in English
+  description String?
+  sortOrder   Int    @default(0)
+  
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  products Product[]
+  
+  @@map("categories")
+}
+
+model Product {
+  id          String        @id @default(cuid())
+  title       String
+  titleEn     String?       // English title for i18n
+  slug        String        @unique // URL-friendly identifier
+  description String        @db.Text
+  descriptionEn String?     @db.Text // English description
+  price       Decimal       @db.Decimal(10, 2)
+  status      ProductStatus @default(AVAILABLE)
+  
+  // Physical attributes
+  dimensions  String?       // e.g., "120x80x45 cm"
+  materials   String?       // e.g., "Noce, intarsi in bois de rose"
+  materialsEn String?       // English materials
+  condition   String?       // Brief description of condition
+  conditionEn String?       // English condition
+  provenance  String?       // Origin/history
+  provenanceEn String?      // English provenance
+  
+  // Metadata
+  isFeatured  Boolean @default(false)
+  viewCount   Int     @default(0)
+  
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  soldAt    DateTime?
+  
+  // Relations
+  categoryId String?
+  category   Category? @relation(fields: [categoryId], references: [id])
+  images     ProductImage[]
+  tags       ProductTag[]
+  orderItems OrderItem[]
+  wishlistItems WishlistItem[]
+  
+  @@index([status])
+  @@index([categoryId])
+  @@index([isFeatured])
+  @@map("products")
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  url       String
+  alt       String?
+  isPrimary Boolean @default(false)
+  sortOrder Int     @default(0)
+  
+  // Timestamps
+  createdAt DateTime @default(now())
+  
+  // Relations
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  @@index([productId])
+  @@map("product_images")
+}
+
+model Tag {
+  id   String @id @default(cuid())
+  name String @unique
+  
+  products ProductTag[]
+  
+  @@map("tags")
+}
+
+model ProductTag {
+  productId String
+  tagId     String
+  
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  tag     Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  
+  @@id([productId, tagId])
+  @@map("product_tags")
+}
+
+// =========================================
+// ORDER MODELS
+// =========================================
+
+model Order {
+  id            String      @id @default(cuid())
+  orderNumber   String      @unique // Human-readable order number
+  status        OrderStatus @default(PENDING)
+  
+  // Pricing
+  subtotal      Decimal @db.Decimal(10, 2)
+  shippingCost  Decimal @db.Decimal(10, 2) @default(0)
+  tax           Decimal @db.Decimal(10, 2) @default(0)
+  total         Decimal @db.Decimal(10, 2)
+  
+  // Stripe
+  stripePaymentIntentId String?
+  stripeSessionId       String?
+  
+  // Shipping info
+  shippingName    String?
+  shippingEmail   String?
+  shippingPhone   String?
+  shippingAddress String? @db.Text
+  shippingCity    String?
+  shippingPostal  String?
+  shippingCountry String?
+  
+  // Notes
+  customerNotes String? @db.Text
+  internalNotes String? @db.Text
+  
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  paidAt    DateTime?
+  shippedAt DateTime?
+  
+  // Relations
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
+  items  OrderItem[]
+  
+  @@index([userId])
+  @@index([status])
+  @@index([orderNumber])
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String @id @default(cuid())
+  quantity  Int    @default(1) // Typically 1 for unique items
+  price     Decimal @db.Decimal(10, 2) // Price at time of purchase
+  
+  // Snapshot of product info at purchase time
+  productTitle String
+  productSlug  String
+  
+  // Relations
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  
+  @@index([orderId])
+  @@map("order_items")
+}
+
+// =========================================
+// WISHLIST MODEL
+// =========================================
+
+model WishlistItem {
+  id String @id @default(cuid())
+  
+  // Notification preferences
+  notifyOnSale Boolean @default(true)          // Notify when item is sold (so user knows it's no longer available)
+  notifyOnAvailable Boolean @default(true)     // Notify when COMING_SOON/RESERVED item becomes AVAILABLE
+  notifyOnPriceChange Boolean @default(false)
+  
+  // Notification tracking (to prevent duplicate emails)
+  notifiedSold Boolean @default(false)         // Has user been notified that item was sold?
+  notifiedAvailable Boolean @default(false)    // Has user been notified that item became available?
+  
+  // Timestamps
+  createdAt DateTime @default(now())
+  
+  // Relations
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, productId])
+  @@index([userId])
+  @@map("wishlist_items")
+}

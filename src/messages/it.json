@@ -1,0 +1,571 @@
+{
+    "common": {
+        "appName": "Antichità Barbaglia",
+        "tagline": "L'Arte dell'Antiquariato",
+        "language": "Lingua",
+        "nav": {
+            "home": "Home",
+            "shop": "Shop",
+            "about": "Chi Siamo",
+            "contact": "Contatti"
+        },
+        "buttons": {
+            "addToCart": "Aggiungi al Carrello",
+            "goToCart": "Vai al Carrello",
+            "removeFromCart": "Rimuovi",
+            "addToWishlist": "Aggiungi alla Lista Desideri",
+            "proceedToCheckout": "Procedi al Checkout",
+            "continueShopping": "Continua lo Shopping",
+            "viewCollection": "Vedi la Collezione",
+            "contactUs": "Contattaci",
+            "learnMore": "Scopri di Più",
+            "submit": "Invia",
+            "back": "Indietro",
+            "viewDetails": "Visualizza Dettagli",
+            "moreInfo": "Maggiori Info"
+        },
+        "status": {
+            "available": "Disponibile",
+            "sold": "Venduto",
+            "reserved": "Riservato",
+            "comingSoon": "In Arrivo",
+            "notAvailable": "Non Disponibile"
+        },
+        "labels": {
+            "uniquePiece": "Pezzo Unico",
+            "rare": "Raro",
+            "craftsman": "Artigiano"
+        },
+        "footer": {
+            "copyright": "© {year} Antichità Barbaglia. Tutti i diritti riservati.",
+            "description": "Antiquariato e vendita di mobili d'epoca dal 1990. Passione, esperienza e autenticità al servizio del bello.",
+            "usefulLinks": "Link Utili",
+            "terms": "Termini e Condizioni",
+            "privacy": "Privacy Policy",
+            "hours": "Orari",
+            "hoursWeekdays": "Lun - Ven: 9:00 - 18:00",
+            "hoursSaturday": "Sabato: 10:00 - 13:00",
+            "hoursSunday": "Domenica: Chiuso",
+            "securePaymentsWith": "Pagamenti sicuri con",
+            "collections": "Collezioni",
+            "information": "Informazioni",
+            "visitUs": "Vieni a Trovarci",
+            "newsletter": "Ricevi le nostre novità via email",
+            "emailPlaceholder": "La tua email",
+            "subscribe": "Iscriviti"
+        }
+    },
+    "home": {
+        "hero": {
+            "label": "Antiquariato",
+            "title": "Antichità Barbaglia",
+            "subtitle": "Ogni pezzo racconta una storia. Scopri mobili antichi unici, selezionati con cura e passione per l'autenticità.",
+            "cta": "Esplora la Collezione",
+            "scroll": "Scopri"
+        },
+        "featured": {
+            "label": "La Nostra Selezione",
+            "title": "Pezzi Selezionati",
+            "subtitle": "Una selezione delle nostre opere più raffinate, restaurate con cura artigianale",
+            "viewAll": "Vedi Tutta la Collezione"
+        },
+        "about": {
+            "label": "La Nostra Storia",
+            "title": "L'Arte dell'Antiquariato",
+            "description": "Da oltre trent'anni, Antichità Barbaglia si dedica con passione alla ricerca e valorizzazione del patrimonio artistico italiano.",
+            "description2": "Selezioniamo con cura pezzi unici e rari, offrendo ai nostri clienti mobili d'epoca di pregio che raccontano storie di maestria artigianale.",
+            "experience": "Anni di Esperienza",
+            "restored": "Pezzi Selezionati",
+            "italian": "Eccellenza Italiana",
+            "quality": "Autenticità e qualità senza tempo"
+        }
+    },
+    "shop": {
+        "title": "La Collezione",
+        "pageTitle": "Shop",
+        "subtitle": "Ogni mobile racconta una storia di eleganza e maestria artigianale.",
+        "searchPlaceholder": "Cerca mobili...",
+        "filters": {
+            "title": "Filtri",
+            "category": "Categoria",
+            "allCategories": "Tutte le Categorie",
+            "price": "Prezzo (€)",
+            "priceMin": "Min",
+            "priceMax": "Max",
+            "status": "Disponibilità",
+            "allStatuses": "Tutti",
+            "clearAll": "Cancella Filtri"
+        },
+        "categories": {
+            "cassettoni": "Cassettoni e Comò",
+            "sedie": "Sedie e Poltrone",
+            "specchiere": "Specchiere",
+            "tavoli": "Tavoli",
+            "sedute": "Sedie e Poltrone",
+            "credenze": "Credenze",
+            "scrivanie": "Scrivanie"
+        },
+        "statusOptions": {
+            "available": "Disponibili",
+            "sold": "Venduti",
+            "coming-soon": "In Arrivo"
+        },
+        "sort": {
+            "label": "Ordina per",
+            "newest": "Più Recenti",
+            "priceLowHigh": "Prezzo: Crescente",
+            "priceHighLow": "Prezzo: Decrescente",
+            "nameAZ": "Nome A-Z"
+        },
+        "results": "{count} {count, plural, =1 {risultato} other {risultati}}",
+        "noResults": "Nessun prodotto trovato",
+        "tryAdjustingFilters": "Prova a modificare i filtri di ricerca"
+    },
+    "product": {
+        "description": "Descrizione",
+        "details": "Dettagli",
+        "dimensions": "Dimensioni",
+        "materials": "Materiali",
+        "condition": "Condizione",
+        "provenance": "Provenienza",
+        "notFound": "Prodotto non trovato",
+        "notFoundMessage": "Il prodotto che stai cercando non esiste o è stato rimosso.",
+        "backToShop": "Torna allo Shop",
+        "addToCart": "Aggiungi al Carrello",
+        "goToCart": "Vai al Carrello",
+        "remove": "Rimuovi",
+        "addToWishlist": "Aggiungi alla Lista Desideri",
+        "inWishlist": "Nella Tua Lista Desideri",
+        "notifyWhenAvailable": "Avvisami Quando Disponibile",
+        "watchItem": "Segui Questo Articolo",
+        "soldMessage": "Questo pezzo è stato venduto, ma restiamo a disposizione per trovare pezzi simili.",
+        "reservedMessage": "Questo pezzo è attualmente riservato. Contattaci per maggiori informazioni.",
+        "comingSoonMessage": "Questo pezzo sarà presto disponibile. Aggiungilo alla lista desideri per essere avvisato quando diventa disponibile.",
+        "contactUs": "Contattaci",
+        "haveQuestions": "Hai domande?",
+        "questionsDescription": "Contattaci per maggiori informazioni, foto aggiuntive o per organizzare una visita.",
+        "sendRequest": "Invia una richiesta →"
+    },
+    "cart": {
+        "title": "Il Tuo Carrello",
+        "empty": "Il tuo carrello è vuoto",
+        "emptyMessage": "Esplora la nostra collezione di mobili antichi restaurati con cura artigianale.",
+        "discoverCollection": "Scopri la Collezione",
+        "items": "{count} {count, plural, =1 {articolo} other {articoli}} nel carrello",
+        "orderSummary": "Riepilogo Ordine",
+        "subtotal": "Subtotale",
+        "shipping": "Spedizione",
+        "shippingNote": "La spedizione verrà calcolata in fase di checkout",
+        "total": "Totale",
+        "clearCart": "Svuota Carrello",
+        "confirmClearCart": "Sei sicuro di voler svuotare il carrello?",
+        "trust": {
+            "securePayment": "Pagamento Sicuro",
+            "paymentMethods": "Stripe & Carte di Credito",
+            "shippingTime": "Spedizione in 7-14 giorni"
+        }
+    },
+    "checkout": {
+        "title": "Checkout",
+        "backToCart": "Torna al Carrello",
+        "reviewOrder": "Rivedi il tuo ordine prima di procedere al pagamento",
+        "emptyCart": "Carrello Vuoto",
+        "noItemsMessage": "Non ci sono articoli nel carrello per procedere al checkout.",
+        "backToShop": "Torna allo Shop",
+        "orderSummary": "Riepilogo Ordine",
+        "quantity": "Quantità",
+        "shippingInfo": "Informazioni sulla Spedizione",
+        "shippingDetails": "I dettagli di spedizione e l'indirizzo di consegna verranno richiesti nella pagina di pagamento sicuro di Stripe.",
+        "specialShipping": "Per mobili antichi di grandi dimensioni, la spedizione verrà gestita tramite corriere specializzato. Sarete contattati per concordare la data di consegna.",
+        "total": "Totale",
+        "subtotal": "Subtotale",
+        "shipping": "Spedizione",
+        "toBeCalculated": "Da calcolare",
+        "vat": "IVA (22%)",
+        "included": "Inclusa",
+        "orderTotal": "Totale Ordine",
+        "payWithStripe": "Paga con Stripe",
+        "processing": "Elaborazione...",
+        "checkoutError": "Si è verificato un errore durante il checkout",
+        "trustBadges": {
+            "securePayment": "Pagamento Sicuro SSL",
+            "cardTypes": "Visa, Mastercard, American Express",
+            "shipping": "Spedizione in Italia e UE"
+        },
+        "poweredByStripe": "Powered by Stripe"
+    },
+    "orderConfirmation": {
+        "title": "Ordine Confermato!",
+        "thankYou": "Grazie per il tuo acquisto. Il tuo ordine è stato ricevuto.",
+        "orderNumber": "Numero Ordine",
+        "confirmationEmail": {
+            "title": "Email di Conferma",
+            "description": "Riceverai un'email con i dettagli del tuo ordine e le istruzioni per la spedizione."
+        },
+        "deliveryTime": {
+            "title": "Tempi di Consegna",
+            "description": "Per mobili antichi, la spedizione richiede 7-14 giorni lavorativi. Sarai contattato per concordare la data di consegna."
+        },
+        "questions": {
+            "title": "Hai Domande?",
+            "description": "Contattaci per qualsiasi informazione sul tuo ordine. Saremo lieti di assisterti."
+        },
+        "continueShopping": "Continua lo Shopping",
+        "contactUs": "Contattaci",
+        "thankYouMessage": "Grazie!",
+        "appreciateYourTrust": "La Bottega del Restauro apprezza la tua fiducia."
+    },
+    "contact": {
+        "title": "Parliamone",
+        "subtitle": "Inviaci un Messaggio",
+        "description": "Siamo a disposizione per qualsiasi domanda, richiesta di informazioni o per organizzare una visita al nostro laboratorio.",
+        "form": {
+            "title": "Inviaci un Messaggio",
+            "name": "Nome",
+            "email": "Email",
+            "phone": "Telefono",
+            "subject": "Oggetto",
+            "message": "Messaggio",
+            "namePlaceholder": "Il tuo nome",
+            "emailPlaceholder": "La tua email",
+            "phonePlaceholder": "Il tuo numero di telefono",
+            "subjectPlaceholder": "Oggetto del messaggio",
+            "messagePlaceholder": "Scrivi il tuo messaggio...",
+            "send": "Invia Messaggio",
+            "sending": "Invio in corso...",
+            "success": "Messaggio Inviato!",
+            "successMessage": "Grazie per averci contattato. Risponderemo il prima possibile.",
+            "error": "Errore",
+            "errorMessage": "Si è verificato un errore nell'invio del messaggio. Riprova.",
+            "subjectOptions": {
+                "info": "Informazioni Generali",
+                "product": "Informazioni sul Prodotto",
+                "visit": "Prenotazione Visita",
+                "other": "Altro"
+            }
+        },
+        "info": {
+            "title": "Informazioni di Contatto",
+            "address": "Indirizzo",
+            "phone": "Telefono",
+            "email": "Email",
+            "hours": "Orari di Apertura",
+            "whatsappAvailable": "WhatsApp disponibile",
+            "responseTime": "Risposta entro 24 ore"
+        },
+        "visit": {
+            "title": "Vieni a Trovarci",
+            "bookVisit": "Prenota Visita"
+        }
+    },
+    "about": {
+        "title": "Chi Siamo",
+        "subtitle": "Chi Siamo",
+        "hero": {
+            "label": "La Nostra Storia",
+            "title": "Chi Siamo"
+        },
+        "story": {
+            "title": "La Nostra Storia",
+            "subtitle": "Maestro Restauratore",
+            "name": "Marco Bianchi",
+            "content": "Da oltre trent'anni, Antichità Barbaglia si dedica con passione alla ricerca e valorizzazione del patrimonio artistico italiano.",
+            "content2": "Fondata nel 1990 da Marco Bianchi, la nostra azienda nasce da una profonda passione per l'arte e l'artigianato italiano. Ogni pezzo che selezioniamo racconta una storia unica di maestria, bellezza e autenticità."
+        },
+        "philosophy": {
+            "title": "La Nostra Filosofia",
+            "content": "Selezioniamo con cura pezzi autentici e di pregio, combinando esperienza e passione per offrire mobili d'epoca unici e di valore."
+        },
+        "values": {
+            "title": "I Nostri Valori",
+            "passion": {
+                "title": "Passione",
+                "description": "Ogni pezzo è selezionato con amore e dedizione per l'arte dell'antiquariato"
+            },
+            "authenticity": {
+                "title": "Autenticità",
+                "description": "Garantiamo l'autenticità e la provenienza di ogni pezzo"
+            },
+            "experience": {
+                "title": "Esperienza",
+                "description": "Oltre 30 anni di esperienza nel settore dell'antiquariato"
+            }
+        },
+        "workshop": {
+            "title": "Il Laboratorio",
+            "description": "Nel nostro laboratorio nel cuore della Brianza, lavoriamo con passione per restaurare e valorizzare mobili antichi. Ogni restauro rispetta la storia e l'originalità del pezzo, utilizzando tecniche tradizionali e materiali di qualità."
+        },
+        "stats": {
+            "experience": "Anni di Esperienza",
+            "pieces": "Pezzi Selezionati",
+            "satisfaction": "Soddisfazione Clienti",
+            "shipping": "Spedizione Sicura"
+        }
+    },
+    "auth": {
+        "signIn": "Accedi",
+        "signOut": "Esci",
+        "signUp": "Registrati",
+        "myAccount": "Il Mio Account",
+        "email": "Email",
+        "password": "Password",
+        "forgotPassword": "Password dimenticata?",
+        "noAccount": "Non hai un account?",
+        "haveAccount": "Hai già un account?",
+        "continueWithGoogle": "Continua con Google",
+        "orContinueWith": "oppure continua con",
+        "or": "oppure",
+        "welcome": "Benvenuto",
+        "signInDescription": "Accedi per gestire la tua lista dei desideri e i tuoi ordini",
+        "checkEmail": "Controlla la tua email",
+        "emailSentMessage": "Ti abbiamo inviato un link per accedere a {email}",
+        "sendMagicLink": "Invia Link Magico",
+        "sending": "Invio in corso...",
+        "emailPlaceholder": "la-tua@email.com",
+        "termsAcceptance": "Continuando, accetti i nostri",
+        "termsOfService": "Termini di Servizio",
+        "and": "e la",
+        "privacyPolicy": "Privacy Policy",
+        "newUser": "Ospite",
+        "accountCreated": "Il tuo account è stato creato con successo!",
+        "redirectingIn": "Reindirizzamento tra {seconds} secondi...",
+        "continueToSite": "Continua sul Sito",
+        "signingOut": "Ti stiamo disconnettendo...",
+        "almostThere": "Quasi fatto!",
+        "checkYourEmail": "Controlla la tua email",
+        "magicLinkSent": "Ti abbiamo inviato un link magico per accedere al tuo account.",
+        "emailNotReceived": "Non vedi l'email?",
+        "checkSpamFolder": "Controlla la cartella spam o prova a richiedere un nuovo link."
+    },
+    "account": {
+        "title": "Il Mio Account",
+        "welcome": "Bentornato",
+        "dashboard": {
+            "title": "Dashboard",
+            "recentOrders": "Ordini Recenti",
+            "viewAllOrders": "Vedi Tutti gli Ordini",
+            "noRecentOrders": "Nessun ordine recente",
+            "wishlistPreview": "La Tua Lista Desideri",
+            "viewWishlist": "Vedi Lista Desideri",
+            "emptyWishlist": "La tua lista desideri è vuota",
+            "quickActions": "Azioni Rapide"
+        },
+        "orders": {
+            "title": "Storico Ordini",
+            "subtitle": "Visualizza e traccia i tuoi ordini",
+            "noOrders": "Non hai ancora effettuato ordini",
+            "startShopping": "Inizia lo Shopping",
+            "orderNumber": "Ordine",
+            "orderDate": "Data",
+            "status": "Stato",
+            "total": "Totale",
+            "viewDetails": "Vedi Dettagli",
+            "items": "{count} {count, plural, =1 {articolo} other {articoli}}",
+            "statuses": {
+                "pending": "In Attesa",
+                "paid": "Pagato",
+                "shipped": "Spedito",
+                "delivered": "Consegnato",
+                "cancelled": "Annullato"
+            }
+        },
+        "wishlist": {
+            "title": "La Mia Lista Desideri",
+            "subtitle": "Articoli che hai salvato",
+            "empty": "La tua lista desideri è vuota",
+            "emptyMessage": "Esplora la nostra collezione e salva gli articoli che ami",
+            "browseCollection": "Esplora la Collezione",
+            "removeItem": "Rimuovi",
+            "addToCart": "Aggiungi al Carrello",
+            "soldAlert": "Questo articolo è stato venduto",
+            "notifyOnSale": "Avvisami quando venduto"
+        },
+        "settings": {
+            "title": "Impostazioni Account",
+            "profile": "Informazioni Profilo",
+            "name": "Nome",
+            "namePlaceholder": "Il tuo nome",
+            "email": "Email",
+            "emailCannotBeChanged": "L'email non può essere modificata",
+            "phone": "Telefono",
+            "phonePlaceholder": "+39 123 456 7890",
+            "updateProfile": "Aggiorna Profilo",
+            "updating": "Aggiornamento...",
+            "updateSuccess": "Profilo aggiornato con successo",
+            "updateError": "Errore nell'aggiornamento del profilo",
+            "preferences": "Preferenze",
+            "language": "Lingua",
+            "notifications": "Notifiche",
+            "emailNotifications": "Notifiche Email",
+            "orderUpdates": "Aggiornamenti ordini",
+            "orderUpdatesDescription": "Ricevi aggiornamenti sullo stato dei tuoi ordini",
+            "wishlistAlerts": "Avvisi lista desideri",
+            "wishlistAlertsDescription": "Notifiche quando un articolo nella tua lista desideri viene venduto o torna disponibile",
+            "newsletter": "Newsletter",
+            "newsletterDescription": "Ricevi novità sui nuovi arrivi e offerte esclusive",
+            "savePreferences": "Salva Preferenze",
+            "dangerZone": "Zona Pericolosa",
+            "dangerZoneDescription": "Azioni irreversibili per il tuo account",
+            "deleteAccount": "Elimina Account",
+            "deleteAccountConfirm": "Sei sicuro di voler eliminare il tuo account? Questa azione è irreversibile.",
+            "deleteAccountComingSoon": "Funzionalità in arrivo. Contattaci per eliminare il tuo account."
+        },
+        "nav": {
+            "dashboard": "Dashboard",
+            "orders": "Ordini",
+            "wishlist": "Lista Desideri",
+            "settings": "Impostazioni",
+            "signOut": "Esci"
+        }
+    },
+    "admin": {
+        "title": "Pannello Admin",
+        "dashboard": {
+            "title": "Dashboard",
+            "welcome": "Benvenuto nel Pannello Admin",
+            "quickActions": "Azioni Rapide",
+            "addProduct": "Aggiungi Prodotto",
+            "viewOrders": "Visualizza Ordini",
+            "manageCategories": "Gestisci Categorie",
+            "statistics": "Statistiche",
+            "totalProducts": "Prodotti Totali",
+            "totalOrders": "Ordini Totali",
+            "revenue": "Ricavi",
+            "customers": "Clienti",
+            "recentActivity": "Attività Recente",
+            "viewAll": "Visualizza Tutto"
+        },
+        "products": {
+            "title": "Prodotti",
+            "addProduct": "Aggiungi Prodotto",
+            "editProduct": "Modifica Prodotto",
+            "deleteProduct": "Elimina Prodotto",
+            "confirmDelete": "Sei sicuro di voler eliminare questo prodotto?",
+            "productDeleted": "Prodotto eliminato con successo",
+            "noProducts": "Nessun prodotto trovato",
+            "table": {
+                "product": "Prodotto",
+                "category": "Categoria",
+                "status": "Stato",
+                "price": "Prezzo",
+                "actions": "Azioni",
+                "edit": "Modifica",
+                "delete": "Elimina"
+            },
+            "form": {
+                "title": "Titolo Prodotto",
+                "titlePlaceholder": "Inserisci il titolo del prodotto",
+                "description": "Descrizione",
+                "descriptionPlaceholder": "Inserisci la descrizione del prodotto",
+                "price": "Prezzo",
+                "pricePlaceholder": "0.00",
+                "category": "Categoria",
+                "selectCategory": "Seleziona una categoria",
+                "status": "Stato",
+                "materials": "Materiali",
+                "materialsPlaceholder": "es. Legno di noce, bronzo",
+                "dimensions": "Dimensioni",
+                "dimensionsPlaceholder": "es. 120 x 80 x 45 cm",
+                "condition": "Condizione",
+                "conditionPlaceholder": "Condizione dopo restauro",
+                "provenance": "Provenienza",
+                "provenancePlaceholder": "Origine e storia",
+                "images": "Immagini",
+                "uploadImages": "Carica Immagini",
+                "primaryImage": "Principale",
+                "removeImage": "Rimuovi",
+                "save": "Salva Prodotto",
+                "saving": "Salvataggio...",
+                "cancel": "Annulla",
+                "titleEn": "Titolo in Inglese (Opzionale)",
+                "descriptionEn": "Descrizione in Inglese (Opzionale)",
+                "materialsEn": "Materiali in Inglese (Opzionale)",
+                "conditionEn": "Condizione in Inglese (Opzionale)",
+                "provenanceEn": "Provenienza in Inglese (Opzionale)"
+            }
+        },
+        "orders": {
+            "title": "Ordini",
+            "viewOrder": "Visualizza Ordine",
+            "noOrders": "Nessun ordine trovato",
+            "table": {
+                "order": "Ordine",
+                "customer": "Cliente",
+                "date": "Data",
+                "status": "Stato",
+                "total": "Totale",
+                "actions": "Azioni",
+                "view": "Visualizza"
+            },
+            "statuses": {
+                "pending": "In Attesa",
+                "paid": "Pagato",
+                "processing": "In Elaborazione",
+                "shipped": "Spedito",
+                "delivered": "Consegnato",
+                "cancelled": "Annullato"
+            },
+            "updateStatus": "Aggiorna Stato",
+            "statusUpdated": "Stato dell'ordine aggiornato"
+        },
+        "categories": {
+            "title": "Categorie",
+            "addCategory": "Aggiungi Categoria",
+            "editCategory": "Modifica Categoria",
+            "deleteCategory": "Elimina Categoria",
+            "confirmDelete": "Sei sicuro di voler eliminare questa categoria?",
+            "categoryDeleted": "Categoria eliminata con successo",
+            "noCategories": "Nessuna categoria trovata",
+            "table": {
+                "name": "Nome",
+                "slug": "Slug",
+                "products": "Prodotti",
+                "actions": "Azioni",
+                "edit": "Modifica",
+                "delete": "Elimina"
+            },
+            "form": {
+                "name": "Nome Categoria",
+                "namePlaceholder": "Inserisci il nome della categoria",
+                "nameEn": "Nome in Inglese (Opzionale)",
+                "nameEnPlaceholder": "Inserisci il nome in inglese",
+                "slug": "Slug",
+                "slugPlaceholder": "slug-categoria",
+                "save": "Salva Categoria",
+                "saving": "Salvataggio...",
+                "cancel": "Annulla"
+            }
+        },
+        "settings": {
+            "title": "Impostazioni",
+            "general": "Impostazioni Generali",
+            "siteName": "Nome Sito",
+            "siteDescription": "Descrizione Sito",
+            "contactEmail": "Email di Contatto",
+            "contactPhone": "Telefono di Contatto",
+            "address": "Indirizzo",
+            "save": "Salva Impostazioni",
+            "saving": "Salvataggio...",
+            "settingsSaved": "Impostazioni salvate con successo"
+        },
+        "common": {
+            "search": "Cerca...",
+            "filter": "Filtra",
+            "export": "Esporta",
+            "import": "Importa",
+            "refresh": "Aggiorna",
+            "loading": "Caricamento...",
+            "error": "Errore",
+            "success": "Successo",
+            "confirm": "Conferma",
+            "cancel": "Annulla",
+            "yes": "Sì",
+            "no": "No",
+            "save": "Salva",
+            "delete": "Elimina",
+            "edit": "Modifica",
+            "view": "Visualizza",
+            "back": "Indietro"
+        }
+    }
+}
