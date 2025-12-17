@@ -1,17 +1,89 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { BaroquePattern, BaroqueDivider } from '@/components/BaroquePattern';
 import { Card, CardContent, Badge, Button } from '@/components/ui';
 import { ProductCard } from '@/components/ProductCard';
 import { Link } from '@/i18n/routing';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
+
+// R2 public URL for static assets
+const R2_PUBLIC_URL = 'https://pub-c08ae0de86f94e598029df0900cc46b3.r2.dev';
+
+// Product type from database
+interface Product {
+  id: string;
+  slug: string;
+  title: string;
+  titleEn: string | null;
+  description: string;
+  descriptionEn: string | null;
+  price: number;
+  status: 'AVAILABLE' | 'SOLD' | 'RESERVED' | 'COMING_SOON';
+  images: {
+    id: string;
+    url: string;
+    alt: string | null;
+    isPrimary: boolean;
+  }[];
+}
+
+// Map database status to UI status
+function mapStatus(status: string): 'available' | 'sold' | 'reserved' | 'coming-soon' {
+  switch (status) {
+    case 'AVAILABLE':
+      return 'available';
+    case 'SOLD':
+      return 'sold';
+    case 'RESERVED':
+      return 'reserved';
+    case 'COMING_SOON':
+      return 'coming-soon';
+    default:
+      return 'available';
+  }
+}
 
 export default function Home() {
   const tHome = useTranslations('home');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
+
+  // Featured products state
+  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch featured products from API
+  useEffect(() => {
+    async function fetchFeaturedProducts() {
+      try {
+        setLoading(true);
+        const response = await fetch('/api/products?featured=true&limit=3');
+        if (response.ok) {
+          const data = await response.json();
+          setFeaturedProducts(data.products || []);
+        }
+      } catch (err) {
+        console.error('Error fetching featured products:', err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchFeaturedProducts();
+  }, []);
+
+  // Get localized content
+  const getLocalizedTitle = (product: Product) => {
+    return locale === 'en' && product.titleEn ? product.titleEn : product.title;
+  };
+
+  const getLocalizedDescription = (product: Product) => {
+    return locale === 'en' && product.descriptionEn ? product.descriptionEn : product.description;
+  };
 
   return (
     <div className="min-h-screen bg-[var(--background)]">
@@ -28,7 +100,7 @@ export default function Home() {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url('/images/hero-image.jpg')`,
+              backgroundImage: `url('${R2_PUBLIC_URL}/hero-image.jpg')`,
             }}
           />
         </div>
@@ -104,47 +176,38 @@ export default function Home() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* Product Card 1 - Cassettone Luigi XVI in Noce */}
-            <Link href="/shop/cassettone-luigi-xvi-noce" className="block h-full">
-              <ProductCard
-                id="1"
-                slug="cassettone-luigi-xvi-noce"
-                title="Cassettone Luigi XVI in Noce"
-                description="Elegante cassettone in stile Luigi XVI realizzato in noce massello con intarsi in bois de rose"
-                price={4200}
-                status="available"
-                image="/images/product1.png"
-                showBottomButton={false}
-              />
-            </Link>
-
-            {/* Product Card 2 - Specchiera Impero Dorata */}
-            <Link href="/shop/specchiera-impero-dorata" className="block h-full">
-              <ProductCard
-                id="2"
-                slug="specchiera-impero-dorata"
-                title="Specchiera Impero Dorata"
-                description="Magnifica specchiera in stile Impero con cornice intagliata e dorata a foglia oro"
-                price={3800}
-                status="available"
-                image="/images/product2-specchiera.png"
-                showBottomButton={false}
-              />
-            </Link>
-
-            {/* Product Card 3 - Tavolo Ottocento in Mogano */}
-            <Link href="/shop/tavolo-ottocento-mogano" className="block h-full">
-              <ProductCard
-                id="3"
-                slug="tavolo-ottocento-mogano"
-                title="Tavolo Ottocento in Mogano"
-                description="Elegante tavolo da pranzo allungabile in mogano cubano con gambe a balaustro tornito"
-                price={5600}
-                status="available"
-                image="/images/product3-tavolo.png"
-                showBottomButton={false}
-              />
-            </Link>
+            {loading ? (
+              // Loading skeleton
+              Array.from({ length: 3 }).map((_, index) => (
+                <div key={index} className="animate-pulse">
+                  <div className="bg-[var(--background)] rounded-lg h-80" />
+                </div>
+              ))
+            ) : featuredProducts.length > 0 ? (
+              // Display fetched featured products
+              featuredProducts.map((product) => {
+                const primaryImage = product.images.find(img => img.isPrimary) || product.images[0];
+                return (
+                  <Link key={product.id} href={`/shop/${product.slug}`} className="block h-full">
+                    <ProductCard
+                      id={product.id}
+                      slug={product.slug}
+                      title={getLocalizedTitle(product)}
+                      description={getLocalizedDescription(product)}
+                      price={product.price}
+                      status={mapStatus(product.status)}
+                      image={primaryImage?.url || `${R2_PUBLIC_URL}/product1.png`}
+                      showBottomButton={false}
+                    />
+                  </Link>
+                );
+              })
+            ) : (
+              // Fallback message if no featured products
+              <div className="col-span-full text-center text-[var(--muted)]">
+                {tHome('featured.noProducts')}
+              </div>
+            )}
           </div>
 
           <div className="mt-12 text-center">

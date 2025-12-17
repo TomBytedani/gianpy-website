@@ -67,7 +67,8 @@
             "label": "La Nostra Selezione",
             "title": "Pezzi Selezionati",
             "subtitle": "Una selezione delle nostre opere più raffinate, restaurate con cura artigianale",
-            "viewAll": "Vedi Tutta la Collezione"
+            "viewAll": "Vedi Tutta la Collezione",
+            "noProducts": "Scopri presto i nostri pezzi selezionati"
         },
         "about": {
             "label": "La Nostra Storia",

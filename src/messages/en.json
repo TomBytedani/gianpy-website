@@ -67,7 +67,8 @@
             "label": "Our Selection",
             "title": "Selected Pieces",
             "subtitle": "A selection of our finest works, carefully restored with artisan care",
-            "viewAll": "View the Entire Collection"
+            "viewAll": "View the Entire Collection",
+            "noProducts": "Discover our selected pieces soon"
         },
         "about": {
             "label": "Our Story",
