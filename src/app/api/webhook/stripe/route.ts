@@ -4,13 +4,6 @@ import { constructWebhookEvent, getCheckoutSession } from '@/lib/stripe';
 import { prisma } from '@/lib/prisma';
 import { sendOrderConfirmationEmail, sendWishlistSoldEmail } from '@/emails';
 
-// Disable body parsing to get raw body for Stripe signature verification
-export const config = {
-    api: {
-        bodyParser: false,
-    },
-};
-
 // Order number generator - creates a unique order number
 function generateOrderNumber(): string {
     const timestamp = Date.now().toString(36).toUpperCase();
