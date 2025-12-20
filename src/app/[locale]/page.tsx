@@ -13,8 +13,8 @@ import Image from 'next/image';
 // R2 public URL for static assets
 const R2_PUBLIC_URL = 'https://pub-c08ae0de86f94e598029df0900cc46b3.r2.dev';
 
-// Product type from database
-interface Product {
+// Type for featured product from API
+type FeaturedProduct = {
   id: string;
   slug: string;
   title: string;
@@ -22,29 +22,23 @@ interface Product {
   description: string;
   descriptionEn: string | null;
   price: number;
-  status: 'AVAILABLE' | 'SOLD' | 'RESERVED' | 'COMING_SOON';
-  images: {
-    id: string;
-    url: string;
-    alt: string | null;
-    isPrimary: boolean;
-  }[];
-}
+  status: string;
+  images: { url: string; isPrimary: boolean }[];
+};
 
-// Map database status to UI status
-function mapStatus(status: string): 'available' | 'sold' | 'reserved' | 'coming-soon' {
-  switch (status) {
-    case 'AVAILABLE':
-      return 'available';
-    case 'SOLD':
-      return 'sold';
-    case 'RESERVED':
-      return 'reserved';
-    case 'COMING_SOON':
-      return 'coming-soon';
-    default:
-      return 'available';
-  }
+// Loading skeleton for product cards
+function ProductCardSkeleton() {
+  return (
+    <div className="bg-[var(--surface)] rounded-xl border border-[var(--border)] overflow-hidden animate-pulse">
+      <div className="aspect-[4/3] bg-[var(--background-alt)]" />
+      <div className="p-6">
+        <div className="h-6 bg-[var(--background-alt)] rounded mb-3 w-3/4" />
+        <div className="h-4 bg-[var(--background-alt)] rounded mb-2 w-full" />
+        <div className="h-4 bg-[var(--background-alt)] rounded mb-4 w-2/3" />
+        <div className="h-8 bg-[var(--background-alt)] rounded w-1/3" />
+      </div>
+    </div>
+  );
 }
 
 export default function Home() {
@@ -52,37 +46,61 @@ export default function Home() {
   const tCommon = useTranslations('common');
   const locale = useLocale();
 
-  // Featured products state
-  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [featuredProducts, setFeaturedProducts] = useState<FeaturedProduct[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // Fetch featured products from API
+  // Fetch featured products on mount
   useEffect(() => {
     async function fetchFeaturedProducts() {
       try {
-        setLoading(true);
+        setIsLoading(true);
+        setError(null);
+
         const response = await fetch('/api/products?featured=true&limit=3');
-        if (response.ok) {
-          const data = await response.json();
-          setFeaturedProducts(data.products || []);
+        if (!response.ok) {
+          throw new Error('Failed to fetch featured products');
         }
+
+        const data = await response.json();
+        setFeaturedProducts(data.products || []);
       } catch (err) {
         console.error('Error fetching featured products:', err);
+        setError(err instanceof Error ? err.message : 'Failed to load featured products');
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     }
 
     fetchFeaturedProducts();
   }, []);
 
-  // Get localized content
-  const getLocalizedTitle = (product: Product) => {
-    return locale === 'en' && product.titleEn ? product.titleEn : product.title;
+  // Helper to get localized content
+  const getLocalizedContent = (it: string, en: string | null) => {
+    if (locale === 'en' && en) return en;
+    return it;
   };
 
-  const getLocalizedDescription = (product: Product) => {
-    return locale === 'en' && product.descriptionEn ? product.descriptionEn : product.description;
+  // Get primary image or first image
+  const getProductImage = (product: FeaturedProduct) => {
+    const primaryImage = product.images.find((img) => img.isPrimary);
+    return primaryImage?.url || product.images[0]?.url || '/images/placeholder.jpg';
+  };
+
+  // Map API status to ProductCard status format
+  const mapStatusForCard = (status: string): 'available' | 'sold' | 'reserved' | 'coming-soon' => {
+    switch (status) {
+      case 'AVAILABLE':
+        return 'available';
+      case 'SOLD':
+        return 'sold';
+      case 'RESERVED':
+        return 'reserved';
+      case 'COMING_SOON':
+        return 'coming-soon';
+      default:
+        return 'available';
+    }
   };
 
   return (
@@ -176,38 +194,50 @@ export default function Home() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {loading ? (
-              // Loading skeleton
-              Array.from({ length: 3 }).map((_, index) => (
-                <div key={index} className="animate-pulse">
-                  <div className="bg-[var(--background)] rounded-lg h-80" />
-                </div>
-              ))
-            ) : featuredProducts.length > 0 ? (
-              // Display fetched featured products
-              featuredProducts.map((product) => {
-                const primaryImage = product.images.find(img => img.isPrimary) || product.images[0];
-                return (
-                  <Link key={product.id} href={`/shop/${product.slug}`} className="block h-full">
-                    <ProductCard
-                      id={product.id}
-                      slug={product.slug}
-                      title={getLocalizedTitle(product)}
-                      description={getLocalizedDescription(product)}
-                      price={product.price}
-                      status={mapStatus(product.status)}
-                      image={primaryImage?.url || `${R2_PUBLIC_URL}/product1.png`}
-                      showBottomButton={false}
-                    />
-                  </Link>
-                );
-              })
-            ) : (
-              // Fallback message if no featured products
-              <div className="col-span-full text-center text-[var(--muted)]">
-                {tHome('featured.noProducts')}
+            {/* Loading state */}
+            {isLoading && (
+              <>
+                <ProductCardSkeleton />
+                <ProductCardSkeleton />
+                <ProductCardSkeleton />
+              </>
+            )}
+
+            {/* Error state */}
+            {!isLoading && error && (
+              <div className="col-span-full text-center py-12">
+                <p className="text-[var(--muted)]">{error}</p>
+                <button
+                  onClick={() => window.location.reload()}
+                  className="mt-4 text-[var(--primary)] hover:underline"
+                >
+                  {tCommon('buttons.retry') || 'Riprova'}
+                </button>
               </div>
             )}
+
+            {/* Empty state */}
+            {!isLoading && !error && featuredProducts.length === 0 && (
+              <div className="col-span-full text-center py-12">
+                <p className="text-[var(--muted)]">{tHome('featured.empty') || 'Nessun prodotto in evidenza al momento.'}</p>
+              </div>
+            )}
+
+            {/* Dynamic featured products */}
+            {!isLoading && !error && featuredProducts.map((product) => (
+              <Link key={product.id} href={`/shop/${product.slug}`} className="block h-full">
+                <ProductCard
+                  id={product.id}
+                  slug={product.slug}
+                  title={getLocalizedContent(product.title, product.titleEn)}
+                  description={getLocalizedContent(product.description, product.descriptionEn)}
+                  price={product.price}
+                  status={mapStatusForCard(product.status)}
+                  image={getProductImage(product)}
+                  showBottomButton={false}
+                />
+              </Link>
+            ))}
           </div>
 
           <div className="mt-12 text-center">

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Card, Button } from '@/components/ui';
 
 interface SiteSettings {
@@ -9,8 +9,8 @@ interface SiteSettings {
     businessNameEn: string;
     tagline: string;
     taglineEn: string;
-    vatNumber: string;
-    fiscalCode: string;
+    openingHours: string;
+    openingHoursEn: string;
 
     // Contact Details
     email: string;
@@ -23,18 +23,14 @@ interface SiteSettings {
     // Social Media
     facebookUrl: string;
     instagramUrl: string;
-    pinterestUrl: string;
-
-    // Opening Hours
-    openingHours: string;
-    openingHoursEn: string;
+    whatsappUrl: string;
 
     // Shipping Settings
     freeShippingThreshold: number;
     domesticShippingCost: number;
     internationalShippingCost: number;
-    shippingNote: string;
-    shippingNoteEn: string;
+    shippingNotes: string;
+    shippingNotesEn: string;
 
     // Email Settings
     orderConfirmationEnabled: boolean;
@@ -47,8 +43,8 @@ const defaultSettings: SiteSettings = {
     businessNameEn: 'Barbaglia Antiques',
     tagline: 'Mobili antichi e restauro di pregio',
     taglineEn: 'Fine antique furniture and restoration',
-    vatNumber: '',
-    fiscalCode: '',
+    openingHours: 'Lun-Ven: 9:00-12:30, 15:00-19:00\nSab: 9:00-12:30\nDom: Chiuso',
+    openingHoursEn: 'Mon-Fri: 9:00 AM - 12:30 PM, 3:00 PM - 7:00 PM\nSat: 9:00 AM - 12:30 PM\nSun: Closed',
 
     email: 'info@antichitabarbaglia.com',
     phone: '+39 0323 123456',
@@ -59,16 +55,13 @@ const defaultSettings: SiteSettings = {
 
     facebookUrl: '',
     instagramUrl: '',
-    pinterestUrl: '',
-
-    openingHours: 'Lun-Ven: 9:00-12:30, 15:00-19:00\nSab: 9:00-12:30\nDom: Chiuso',
-    openingHoursEn: 'Mon-Fri: 9:00 AM - 12:30 PM, 3:00 PM - 7:00 PM\nSat: 9:00 AM - 12:30 PM\nSun: Closed',
+    whatsappUrl: '',
 
     freeShippingThreshold: 500,
     domesticShippingCost: 50,
     internationalShippingCost: 150,
-    shippingNote: 'Spedizione gratuita per ordini superiori a €500. Consegna con trasportatore specializzato.',
-    shippingNoteEn: 'Free shipping for orders over €500. Delivery with specialized carrier.',
+    shippingNotes: 'Spedizione gratuita per ordini superiori a €500. Consegna con trasportatore specializzato.',
+    shippingNotesEn: 'Free shipping for orders over €500. Delivery with specialized carrier.',
 
     orderConfirmationEnabled: true,
     wishlistNotificationsEnabled: true,
@@ -77,47 +70,132 @@ const defaultSettings: SiteSettings = {
 
 export default function AdminSettingsPage() {
     const [settings, setSettings] = useState<SiteSettings>(defaultSettings);
+    const [isLoading, setIsLoading] = useState(true);
     const [isSaving, setIsSaving] = useState(false);
     const [saveMessage, setSaveMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
     const [activeTab, setActiveTab] = useState<'business' | 'contact' | 'shipping' | 'email'>('business');
 
-    // Load settings from localStorage on mount
-    useEffect(() => {
-        const savedSettings = localStorage.getItem('site-settings');
-        if (savedSettings) {
-            try {
-                setSettings({ ...defaultSettings, ...JSON.parse(savedSettings) });
-            } catch {
-                console.error('Failed to parse saved settings');
+    // Fetch settings from API on mount
+    const fetchSettings = useCallback(async () => {
+        try {
+            setIsLoading(true);
+            const response = await fetch('/api/settings');
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch settings');
             }
+
+            const data = await response.json();
+
+            // Map API response to local state format
+            setSettings({
+                businessName: data.businessName || defaultSettings.businessName,
+                businessNameEn: data.businessNameEn || defaultSettings.businessNameEn,
+                tagline: data.tagline || defaultSettings.tagline,
+                taglineEn: data.taglineEn || defaultSettings.taglineEn,
+                openingHours: data.openingHours || defaultSettings.openingHours,
+                openingHoursEn: data.openingHoursEn || defaultSettings.openingHoursEn,
+                email: data.email || defaultSettings.email,
+                phone: data.phone || defaultSettings.phone,
+                address: data.address || defaultSettings.address,
+                city: data.city || defaultSettings.city,
+                postalCode: data.postalCode || defaultSettings.postalCode,
+                country: data.country || defaultSettings.country,
+                facebookUrl: data.facebookUrl || '',
+                instagramUrl: data.instagramUrl || '',
+                whatsappUrl: data.whatsappUrl || '',
+                freeShippingThreshold: data.freeShippingThreshold ?? defaultSettings.freeShippingThreshold,
+                domesticShippingCost: data.domesticShippingCost ?? defaultSettings.domesticShippingCost,
+                internationalShippingCost: data.internationalShippingCost ?? defaultSettings.internationalShippingCost,
+                shippingNotes: data.shippingNotes || '',
+                shippingNotesEn: data.shippingNotesEn || '',
+                orderConfirmationEnabled: data.orderConfirmationEnabled ?? defaultSettings.orderConfirmationEnabled,
+                wishlistNotificationsEnabled: data.wishlistNotificationsEnabled ?? defaultSettings.wishlistNotificationsEnabled,
+                contactFormNotificationEmail: data.contactFormNotificationEmail || defaultSettings.contactFormNotificationEmail,
+            });
+        } catch (error) {
+            console.error('Failed to fetch settings:', error);
+            setSaveMessage({ type: 'error', text: 'Impossibile caricare le impostazioni. Verranno usati i valori predefiniti.' });
+        } finally {
+            setIsLoading(false);
         }
     }, []);
+
+    useEffect(() => {
+        fetchSettings();
+    }, [fetchSettings]);
 
     const handleSave = async () => {
         setIsSaving(true);
         setSaveMessage(null);
 
         try {
-            // For now, save to localStorage
-            // In production, this would be an API call
-            localStorage.setItem('site-settings', JSON.stringify(settings));
+            const response = await fetch('/api/settings', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    businessName: settings.businessName,
+                    businessNameEn: settings.businessNameEn,
+                    tagline: settings.tagline,
+                    taglineEn: settings.taglineEn,
+                    openingHours: settings.openingHours,
+                    openingHoursEn: settings.openingHoursEn,
+                    email: settings.email,
+                    phone: settings.phone,
+                    address: settings.address,
+                    city: settings.city,
+                    postalCode: settings.postalCode,
+                    country: settings.country,
+                    facebookUrl: settings.facebookUrl,
+                    instagramUrl: settings.instagramUrl,
+                    whatsappUrl: settings.whatsappUrl,
+                    freeShippingThreshold: settings.freeShippingThreshold,
+                    domesticShippingCost: settings.domesticShippingCost,
+                    internationalShippingCost: settings.internationalShippingCost,
+                    shippingNotes: settings.shippingNotes,
+                    shippingNotesEn: settings.shippingNotesEn,
+                    orderConfirmationEnabled: settings.orderConfirmationEnabled,
+                    wishlistNotificationsEnabled: settings.wishlistNotificationsEnabled,
+                    contactFormNotificationEmail: settings.contactFormNotificationEmail,
+                }),
+            });
 
-            // Simulate API delay
-            await new Promise(resolve => setTimeout(resolve, 500));
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error || 'Failed to save settings');
+            }
 
             setSaveMessage({ type: 'success', text: 'Impostazioni salvate con successo!' });
-        } catch {
-            setSaveMessage({ type: 'error', text: 'Impossibile salvare le impostazioni. Riprova.' });
+        } catch (error) {
+            console.error('Failed to save settings:', error);
+            setSaveMessage({
+                type: 'error',
+                text: error instanceof Error ? error.message : 'Impossibile salvare le impostazioni. Riprova.'
+            });
         } finally {
             setIsSaving(false);
         }
     };
 
-    const handleReset = () => {
+    const handleReset = async () => {
         if (window.confirm('Sei sicuro di voler ripristinare tutte le impostazioni ai valori predefiniti?')) {
             setSettings(defaultSettings);
-            localStorage.removeItem('site-settings');
-            setSaveMessage({ type: 'success', text: 'Impostazioni ripristinate ai valori predefiniti.' });
+
+            // Also save defaults to API
+            try {
+                await fetch('/api/settings', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(defaultSettings),
+                });
+                setSaveMessage({ type: 'success', text: 'Impostazioni ripristinate ai valori predefiniti.' });
+            } catch {
+                setSaveMessage({ type: 'error', text: 'Impossibile salvare le impostazioni predefinite.' });
+            }
         }
     };
 
@@ -156,6 +234,28 @@ export default function AdminSettingsPage() {
             )
         },
     ] as const;
+
+    // Loading state
+    if (isLoading) {
+        return (
+            <div className="pt-16">
+                <div className="mb-8">
+                    <h1 className="font-display text-3xl text-[var(--foreground)]">Impostazioni</h1>
+                    <p className="mt-1 text-[var(--muted)]">
+                        Caricamento impostazioni...
+                    </p>
+                </div>
+                <Card className="p-6">
+                    <div className="flex items-center justify-center py-12">
+                        <svg className="animate-spin h-8 w-8 text-[var(--primary)]" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </div>
+                </Card>
+            </div>
+        );
+    }
 
     return (
         <div className="pt-16">
@@ -252,30 +352,6 @@ export default function AdminSettingsPage() {
                                 value={settings.taglineEn}
                                 onChange={(e) => updateSetting('taglineEn', e.target.value)}
                                 className="input"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-[var(--foreground)] mb-2">
-                                Partita IVA (P.IVA)
-                            </label>
-                            <input
-                                type="text"
-                                value={settings.vatNumber}
-                                onChange={(e) => updateSetting('vatNumber', e.target.value)}
-                                className="input"
-                                placeholder="IT12345678901"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-[var(--foreground)] mb-2">
-                                Codice Fiscale (C.F.)
-                            </label>
-                            <input
-                                type="text"
-                                value={settings.fiscalCode}
-                                onChange={(e) => updateSetting('fiscalCode', e.target.value)}
-                                className="input"
-                                placeholder="XXXXXXXXXXXXXXXX"
                             />
                         </div>
                     </div>
@@ -383,7 +459,7 @@ export default function AdminSettingsPage() {
                     </div>
 
                     <h3 className="font-display text-lg text-[var(--foreground)] mt-8 mb-4">Social Media</h3>
-                    <div className="grid gap-6 md:grid-cols-3">
+                    <div className="grid gap-6 md:grid-cols-2">
                         <div>
                             <label className="block text-sm font-medium text-[var(--foreground)] mb-2">
                                 Facebook URL
@@ -408,17 +484,20 @@ export default function AdminSettingsPage() {
                                 placeholder="https://instagram.com/..."
                             />
                         </div>
-                        <div>
+                        <div className="md:col-span-2">
                             <label className="block text-sm font-medium text-[var(--foreground)] mb-2">
-                                Pinterest URL
+                                WhatsApp URL
                             </label>
                             <input
                                 type="url"
-                                value={settings.pinterestUrl}
-                                onChange={(e) => updateSetting('pinterestUrl', e.target.value)}
+                                value={settings.whatsappUrl}
+                                onChange={(e) => updateSetting('whatsappUrl', e.target.value)}
                                 className="input"
-                                placeholder="https://pinterest.com/..."
+                                placeholder="https://wa.me/39..."
                             />
+                            <p className="mt-1 text-xs text-[var(--muted)]">
+                                Formato: https://wa.me/39XXXXXXXXXX (includi il prefisso internazionale senza +)
+                            </p>
                         </div>
                     </div>
                 </Card>
@@ -487,8 +566,8 @@ export default function AdminSettingsPage() {
                                 Nota Spedizione (Italiano)
                             </label>
                             <textarea
-                                value={settings.shippingNote}
-                                onChange={(e) => updateSetting('shippingNote', e.target.value)}
+                                value={settings.shippingNotes}
+                                onChange={(e) => updateSetting('shippingNotes', e.target.value)}
                                 className="input min-h-[100px]"
                                 rows={4}
                                 placeholder="Note sulla spedizione visualizzate nel checkout..."
@@ -499,8 +578,8 @@ export default function AdminSettingsPage() {
                                 Nota Spedizione (Inglese)
                             </label>
                             <textarea
-                                value={settings.shippingNoteEn}
-                                onChange={(e) => updateSetting('shippingNoteEn', e.target.value)}
+                                value={settings.shippingNotesEn}
+                                onChange={(e) => updateSetting('shippingNotesEn', e.target.value)}
                                 className="input min-h-[100px]"
                                 rows={4}
                                 placeholder="Shipping note displayed in checkout..."
@@ -577,7 +656,7 @@ export default function AdminSettingsPage() {
                             <div>
                                 <h4 className="font-medium text-blue-800">Configurazione Email</h4>
                                 <p className="text-sm text-blue-700 mt-1">
-                                    Le email vengono inviate tramite Resend. Assicurati di aver configurato la variabile d'ambiente RESEND_API_KEY affinché l'invio email funzioni correttamente.
+                                    Le email vengono inviate tramite Resend. Assicurati di aver configurato la variabile d&apos;ambiente RESEND_API_KEY affinché l&apos;invio email funzioni correttamente.
                                 </p>
                             </div>
                         </div>

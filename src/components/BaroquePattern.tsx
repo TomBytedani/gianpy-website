@@ -93,25 +93,26 @@ export function BaroquePattern({
             style={{
                 isolation: 'isolate',
                 zIndex: 0,
-                contain: 'paint',
+                contain: 'strict',
+                clipPath: 'inset(0)',
             }}
         >
             {/* Top Left Flourish */}
             {showTopLeft && (
-                <FlourishSVG style={{ top: '-20px', left: '-20px' }} />
+                <FlourishSVG style={{ top: '0px', left: '0px' }} />
             )}
 
             {/* Top Right Flourish (mirrored) */}
             {showTopRight && (
-                <FlourishSVG style={{ top: '-20px', right: '-20px' }} flipped />
+                <FlourishSVG style={{ top: '0px', right: '0px' }} flipped />
             )}
 
             {/* Bottom Left Flourish (rotated) */}
             {showBottomLeft && (
                 <FlourishSVG
                     style={{
-                        bottom: '-20px',
-                        left: '-20px',
+                        bottom: '0px',
+                        left: '0px',
                         transform: 'rotate(180deg)',
                     }}
                 />
@@ -121,8 +122,8 @@ export function BaroquePattern({
             {showBottomRight && (
                 <FlourishSVG
                     style={{
-                        bottom: '-20px',
-                        right: '-20px',
+                        bottom: '0px',
+                        right: '0px',
                         transform: 'scale(-1, 1) rotate(180deg)',
                     }}
                     flipped

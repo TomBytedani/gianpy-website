@@ -12,43 +12,9 @@ export interface ProductCardProps {
     price: number;
     status: 'available' | 'sold' | 'reserved' | 'coming-soon';
     image?: string;
-    showTopBadge?: boolean;
     showBottomButton?: boolean;
 }
 
-/**
- * Status badge for the top-right corner of the card (emotional label)
- */
-function getTopBadge(status: string, t: ReturnType<typeof useTranslations<'common'>>) {
-    switch (status) {
-        case 'available':
-            return (
-                <Badge variant="primary" useScript>
-                    {t('labels.uniquePiece')}
-                </Badge>
-            );
-        case 'sold':
-            return (
-                <Badge variant="sold" useScript>
-                    {t('status.sold')}
-                </Badge>
-            );
-        case 'reserved':
-            return (
-                <Badge variant="warning" useScript>
-                    {t('status.reserved')}
-                </Badge>
-            );
-        case 'coming-soon':
-            return (
-                <Badge variant="coming-soon">
-                    {t('status.comingSoon')}
-                </Badge>
-            );
-        default:
-            return null;
-    }
-}
 
 /**
  * Status badge for the bottom of the card (consistent, uppercase styling)
@@ -88,7 +54,6 @@ export function ProductCard({
     price,
     status,
     image,
-    showTopBadge = true,
     showBottomButton = true,
 }: ProductCardProps) {
     const t = useTranslations('common');
@@ -99,11 +64,6 @@ export function ProductCard({
         <Card hoverable className="group h-full flex flex-col">
             {/* Image Section */}
             <div className="relative aspect-[4/3] overflow-hidden flex-shrink-0">
-                {showTopBadge && (
-                    <div className="absolute right-3 top-3 z-10">
-                        {getTopBadge(status, t)}
-                    </div>
-                )}
                 {image ? (
                     <Image
                         src={image}

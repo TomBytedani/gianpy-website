@@ -85,6 +85,12 @@ export async function POST(req: NextRequest) {
             provenance,
             isFeatured,
             images,
+            // Shipping overrides
+            shippingCost,
+            shippingCostIntl,
+            requiresSpecialShipping,
+            shippingNote,
+            shippingNoteEn,
         } = body;
 
         // Validate required fields
@@ -107,6 +113,24 @@ export async function POST(req: NextRequest) {
             );
         }
 
+        // Check featured products limit (max 3)
+        if (isFeatured) {
+            const featuredCount = await prisma.product.count({
+                where: { isFeatured: true },
+            });
+
+            if (featuredCount >= 3) {
+                return NextResponse.json(
+                    {
+                        error: 'Limite prodotti in evidenza raggiunto',
+                        errorCode: 'FEATURED_LIMIT_EXCEEDED',
+                        message: 'È possibile avere al massimo 3 prodotti in evidenza. Rimuovi un prodotto dalla vetrina prima di aggiungerne un altro.'
+                    },
+                    { status: 400 }
+                );
+            }
+        }
+
         // Create product
         const product = await prisma.product.create({
             data: {
@@ -123,6 +147,12 @@ export async function POST(req: NextRequest) {
                 condition: condition || null,
                 provenance: provenance || null,
                 isFeatured: isFeatured || false,
+                // Shipping overrides
+                shippingCost: shippingCost ?? null,
+                shippingCostIntl: shippingCostIntl ?? null,
+                requiresSpecialShipping: requiresSpecialShipping || false,
+                shippingNote: shippingNote || null,
+                shippingNoteEn: shippingNoteEn || null,
             },
             include: {
                 category: true,

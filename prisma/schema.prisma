@@ -153,6 +153,13 @@ model Product {
   isFeatured  Boolean @default(false)
   viewCount   Int     @default(0)
   
+  // Shipping Overrides (optional - null means use global settings)
+  shippingCost            Decimal? @db.Decimal(10, 2) // Overrides domestic shipping cost
+  shippingCostIntl        Decimal? @db.Decimal(10, 2) // Overrides international shipping cost
+  requiresSpecialShipping Boolean  @default(false)    // Flag for fragile/oversized items
+  shippingNote            String?                     // Special shipping instructions (IT)
+  shippingNoteEn          String?                     // Special shipping instructions (EN)
+  
   // Timestamps
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -306,4 +313,51 @@ model WishlistItem {
   @@unique([userId, productId])
   @@index([userId])
   @@map("wishlist_items")
+}
+
+// =========================================
+// SITE SETTINGS MODEL
+// =========================================
+
+model SiteSettings {
+  id String @id @default("default") // Singleton pattern - only one row
+  
+  // Business Info
+  businessName     String  @default("Antichità Barbaglia")
+  businessNameEn   String  @default("Barbaglia Antiques")
+  tagline          String  @default("Mobili antichi e restauro di pregio")
+  taglineEn        String  @default("Fine antique furniture and restoration")
+  openingHours     String  @default("Lun-Ven: 9:00-12:30, 15:00-19:00\nSab: 9:00-12:30\nDom: Chiuso") @db.Text
+  openingHoursEn   String  @default("Mon-Fri: 9:00 AM - 12:30 PM, 3:00 PM - 7:00 PM\nSat: 9:00 AM - 12:30 PM\nSun: Closed") @db.Text
+  
+  // Contact Info
+  email       String  @default("info@antichitabarbaglia.com")
+  phone       String  @default("+39 0323 123456")
+  address     String  @default("Via Roma, 123")
+  city        String  @default("Verbania")
+  postalCode  String  @default("28921")
+  country     String  @default("Italia")
+  
+  // Social Media URLs
+  facebookUrl  String?
+  instagramUrl String?
+  whatsappUrl  String? // WhatsApp business link
+  
+  // Shipping Configuration
+  freeShippingThreshold       Decimal @default(500) @db.Decimal(10, 2)
+  domesticShippingCost        Decimal @default(50) @db.Decimal(10, 2)
+  internationalShippingCost   Decimal @default(150) @db.Decimal(10, 2)
+  shippingNotes               String? @db.Text
+  shippingNotesEn             String? @db.Text
+  
+  // Email Settings
+  orderConfirmationEnabled      Boolean @default(true)
+  wishlistNotificationsEnabled  Boolean @default(true)
+  contactFormNotificationEmail  String  @default("info@antichitabarbaglia.com")
+  
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("site_settings")
 }

@@ -157,6 +157,7 @@
         "subtotal": "Subtotale",
         "shipping": "Spedizione",
         "shippingNote": "La spedizione verrà calcolata in fase di checkout",
+        "freeShipping": "Gratuita",
         "total": "Totale",
         "clearCart": "Svuota Carrello",
         "confirmClearCart": "Sei sicuro di voler svuotare il carrello?",
@@ -264,7 +265,8 @@
         "subtitle": "Chi Siamo",
         "hero": {
             "label": "La Nostra Storia",
-            "title": "Chi Siamo"
+            "title": "Chi Siamo",
+            "subtitle": "Passione, esperienza e autenticità al servizio del bello da oltre trent'anni."
         },
         "story": {
             "title": "La Nostra Storia",

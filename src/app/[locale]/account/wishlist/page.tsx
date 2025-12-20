@@ -81,6 +81,7 @@ export default function WishlistPage() {
         addItem({
             id: item.product.id,
             title: item.product.title,
+            titleEn: item.product.titleEn || undefined,
             slug: item.product.slug,
             price: item.product.price,
             imageUrl: item.product.imageUrl || undefined,

@@ -9,16 +9,39 @@ import { Button } from '@/components/ui';
 import Image from 'next/image';
 import Link from 'next/link';
 import { redirectToCheckout } from '@/lib/stripe-client';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
+import { useSiteSettings } from '@/hooks/useSiteSettings';
 
 export default function CheckoutPage() {
     const t = useTranslations();
+    const locale = useLocale();
     const router = useRouter();
     const { items, getSubtotal, isLoading: cartLoading } = useCart();
+    const {
+        settings,
+        calculateCartShipping,
+        isFreeShipping,
+        getShippingNotes,
+        getCartShippingNotes,
+        hasSpecialShippingItems
+    } = useSiteSettings();
     const [isCheckingOut, setIsCheckingOut] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [isInternational, setIsInternational] = useState(false);
 
     const subtotal = getSubtotal();
+
+    // Calculate shipping with product-level overrides and destination
+    const shippingCost = calculateCartShipping(items, subtotal, isInternational);
+    const hasFreeShipping = isFreeShipping(subtotal);
+    const globalShippingNotes = getShippingNotes(locale);
+    const productShippingNotes = getCartShippingNotes(items, locale);
+    const hasSpecialItems = hasSpecialShippingItems(items);
+
+    // Helper to get localized title
+    const getLocalizedTitle = (item: typeof items[0]) => {
+        return locale === 'en' && item.titleEn ? item.titleEn : item.title;
+    };
 
     // Handle checkout - create Stripe session and redirect
     const handleCheckout = async () => {
@@ -182,7 +205,7 @@ export default function CheckoutPage() {
                                             {/* Product Info */}
                                             <div className="flex-1">
                                                 <h3 className="font-body text-foreground font-medium">
-                                                    {item.title}
+                                                    {getLocalizedTitle(item)}
                                                 </h3>
                                                 <p className="text-sm text-muted mt-1">
                                                     {t('checkout.quantity')}: {item.quantity}
@@ -228,21 +251,73 @@ export default function CheckoutPage() {
                                         <span className="text-muted">{t('checkout.subtotal')}</span>
                                         <span className="text-foreground font-medium">{formatPrice(subtotal)}</span>
                                     </div>
+
+                                    {/* Shipping Destination Selector */}
+                                    <div className="border-t border-b border-border py-3">
+                                        <label className="block text-sm font-body text-muted mb-2">
+                                            {locale === 'en' ? 'Shipping to:' : 'Spedizione verso:'}
+                                        </label>
+                                        <select
+                                            value={isInternational ? 'international' : 'domestic'}
+                                            onChange={(e) => setIsInternational(e.target.value === 'international')}
+                                            className="w-full px-3 py-2 border border-border rounded-lg bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary text-sm"
+                                        >
+                                            <option value="domestic">
+                                                🇮🇹 {locale === 'en' ? 'Italy (Domestic)' : 'Italia (Nazionale)'}
+                                            </option>
+                                            <option value="international">
+                                                🌍 {locale === 'en' ? 'International' : 'Internazionale'}
+                                            </option>
+                                        </select>
+                                    </div>
+
                                     <div className="flex justify-between font-body text-sm">
                                         <span className="text-muted">{t('checkout.shipping')}</span>
-                                        <span className="text-muted italic">{t('checkout.toBeCalculated')}</span>
+                                        {hasFreeShipping ? (
+                                            <span className="text-green-600 font-medium">{t('cart.freeShipping') || 'Free'}</span>
+                                        ) : (
+                                            <span className="text-foreground">{formatPrice(shippingCost)}</span>
+                                        )}
                                     </div>
                                     <div className="flex justify-between font-body text-sm">
                                         <span className="text-muted">{t('checkout.vat')}</span>
                                         <span className="text-muted italic">{t('checkout.included')}</span>
                                     </div>
+                                    {/* Special shipping warning */}
+                                    {hasSpecialItems && (
+                                        <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 text-sm">
+                                            <p className="text-amber-800 flex items-center gap-2">
+                                                <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                                </svg>
+                                                {locale === 'en'
+                                                    ? 'This order contains items requiring special handling'
+                                                    : 'Questo ordine contiene articoli che richiedono una gestione speciale'
+                                                }
+                                            </p>
+                                        </div>
+                                    )}
+                                    {/* Product-specific shipping notes */}
+                                    {productShippingNotes.length > 0 && (
+                                        <div className="space-y-1">
+                                            {productShippingNotes.map((note, index) => (
+                                                <p key={index} className="text-xs text-amber-700 italic">
+                                                    ⚠ {note}
+                                                </p>
+                                            ))}
+                                        </div>
+                                    )}
+                                    {/* Global shipping notes */}
+                                    {globalShippingNotes && (
+                                        <p className="text-xs text-muted italic">{globalShippingNotes}</p>
+                                    )}
                                 </div>
 
                                 <div className="border-t border-border pt-4 mb-6">
                                     <div className="flex justify-between font-body">
                                         <span className="text-foreground font-medium">{t('checkout.orderTotal')}</span>
                                         <span className="font-display text-2xl text-primary font-semibold">
-                                            {formatPrice(subtotal)}
+                                            {formatPrice(subtotal + shippingCost)}
                                         </span>
                                     </div>
                                 </div>

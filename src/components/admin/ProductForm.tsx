@@ -1,12 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLocale } from 'next-intl';
 import MultiImageUpload from './MultiImageUpload';
 import SortableImageGrid, { type ImageItem } from './SortableImageGrid';
+
+// Maximum allowed featured products
+const MAX_FEATURED_PRODUCTS = 3;
 
 type Category = {
     id: string;
@@ -42,6 +45,12 @@ type ProductFormProps = {
         provenanceEn: string;
         isFeatured: boolean;
         images?: ProductImage[];
+        // Shipping overrides
+        shippingCost?: number | null;
+        shippingCostIntl?: number | null;
+        requiresSpecialShipping?: boolean;
+        shippingNote?: string;
+        shippingNoteEn?: string;
     };
 };
 
@@ -67,6 +76,12 @@ export default function ProductForm({ categories, initialData }: ProductFormProp
         provenance: initialData?.provenance || '',
         provenanceEn: initialData?.provenanceEn || '',
         isFeatured: initialData?.isFeatured || false,
+        // Shipping overrides
+        shippingCost: initialData?.shippingCost ?? null as number | null,
+        shippingCostIntl: initialData?.shippingCostIntl ?? null as number | null,
+        requiresSpecialShipping: initialData?.requiresSpecialShipping || false,
+        shippingNote: initialData?.shippingNote || '',
+        shippingNoteEn: initialData?.shippingNoteEn || '',
     });
 
     // Unified image type - single array preserves order for drag-and-drop
@@ -97,6 +112,51 @@ export default function ProductForm({ categories, initialData }: ProductFormProp
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
+    // Featured products count management
+    const [featuredCount, setFeaturedCount] = useState(0);
+    const [featuredWarning, setFeaturedWarning] = useState<string | null>(null);
+
+    // Fetch current featured products count on mount
+    useEffect(() => {
+        async function fetchFeaturedCount() {
+            try {
+                const response = await fetch('/api/products?featured=true&limit=100');
+                if (response.ok) {
+                    const data = await response.json();
+                    setFeaturedCount(data.total || 0);
+                }
+            } catch (err) {
+                console.error('Failed to fetch featured count:', err);
+            }
+        }
+        fetchFeaturedCount();
+    }, []);
+
+    // Handle featured checkbox change with validation
+    const handleFeaturedChange = (checked: boolean) => {
+        setFeaturedWarning(null);
+
+        if (checked) {
+            // Calculate how many featured products there would be if we enable this
+            // If this product was already featured, the count includes it, so no change needed
+            const willExceed = !initialData?.isFeatured && featuredCount >= MAX_FEATURED_PRODUCTS;
+
+            if (willExceed) {
+                setFeaturedWarning(`È possibile avere al massimo ${MAX_FEATURED_PRODUCTS} prodotti in evidenza. Rimuovi un prodotto dalla vetrina prima di aggiungerne un altro.`);
+                return; // Don't allow checking the box
+            }
+        }
+
+        setFormData({ ...formData, isFeatured: checked });
+    };
+
+    // Calculate available slots
+    const usedSlots = initialData?.isFeatured
+        ? featuredCount // This product is already counted
+        : formData.isFeatured
+            ? featuredCount + 1 // We just added it (would be added)
+            : featuredCount; // Not featured
 
     // Handle new image upload (single)
     const handleImageUpload = (image: { url: string; key: string; filename: string }) => {
@@ -418,16 +478,24 @@ export default function ProductForm({ categories, initialData }: ProductFormProp
                         </select>
                     </div>
 
-                    <div className="flex items-center">
+                    <div className="flex flex-col gap-2">
                         <label className="flex items-center gap-3 cursor-pointer">
                             <input
                                 type="checkbox"
                                 checked={formData.isFeatured}
-                                onChange={(e) => setFormData({ ...formData, isFeatured: e.target.checked })}
+                                onChange={(e) => handleFeaturedChange(e.target.checked)}
                                 className="w-5 h-5 accent-[var(--primary)]"
                             />
                             <span className="font-body text-[var(--foreground)]">Featured Product</span>
                         </label>
+                        {/* Featured slots indicator */}
+                        <span className={`text-sm ${usedSlots >= MAX_FEATURED_PRODUCTS ? 'text-amber-600' : 'text-[var(--muted)]'}`}>
+                            {usedSlots}/{MAX_FEATURED_PRODUCTS} slot in evidenza utilizzati
+                        </span>
+                        {/* Warning message */}
+                        {featuredWarning && (
+                            <p className="text-sm text-red-600">{featuredWarning}</p>
+                        )}
                     </div>
                 </div>
             </div>
@@ -525,6 +593,97 @@ export default function ProductForm({ categories, initialData }: ProductFormProp
                             rows={2}
                             className="w-full px-4 py-2 border border-[var(--border)] rounded-lg bg-[var(--background)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] resize-none"
                             placeholder="Provenance: Private villa in Tuscany"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            {/* Shipping Override (Optional) */}
+            <div className="bg-[var(--surface)] rounded-xl p-6 border border-[var(--border)]">
+                <div className="flex items-center justify-between mb-6">
+                    <h2 className="font-display text-xl text-[var(--foreground)]">Shipping Override</h2>
+                    <span className="text-sm text-[var(--muted)]">Optional - leave empty to use global settings</span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label className="block text-sm font-body text-[var(--foreground)] mb-2">
+                            Custom Domestic Shipping (EUR)
+                        </label>
+                        <div className="relative">
+                            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)]">€</span>
+                            <input
+                                type="number"
+                                value={formData.shippingCost ?? ''}
+                                onChange={(e) => setFormData({
+                                    ...formData,
+                                    shippingCost: e.target.value ? parseFloat(e.target.value) : null
+                                })}
+                                min="0"
+                                step="0.01"
+                                className="w-full pl-8 pr-4 py-2 border border-[var(--border)] rounded-lg bg-[var(--background)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                                placeholder="Use global default"
+                            />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-body text-[var(--foreground)] mb-2">
+                            Custom International Shipping (EUR)
+                        </label>
+                        <div className="relative">
+                            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)]">€</span>
+                            <input
+                                type="number"
+                                value={formData.shippingCostIntl ?? ''}
+                                onChange={(e) => setFormData({
+                                    ...formData,
+                                    shippingCostIntl: e.target.value ? parseFloat(e.target.value) : null
+                                })}
+                                min="0"
+                                step="0.01"
+                                className="w-full pl-8 pr-4 py-2 border border-[var(--border)] rounded-lg bg-[var(--background)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                                placeholder="Use global default"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="md:col-span-2">
+                        <label className="flex items-center gap-3 cursor-pointer">
+                            <input
+                                type="checkbox"
+                                checked={formData.requiresSpecialShipping}
+                                onChange={(e) => setFormData({ ...formData, requiresSpecialShipping: e.target.checked })}
+                                className="w-5 h-5 accent-[var(--primary)]"
+                            />
+                            <span className="font-body text-[var(--foreground)]">Requires Special Shipping</span>
+                            <span className="text-sm text-[var(--muted)]">(fragile, oversized, or special handling)</span>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-body text-[var(--foreground)] mb-2">
+                            Shipping Note (Italian)
+                        </label>
+                        <textarea
+                            value={formData.shippingNote}
+                            onChange={(e) => setFormData({ ...formData, shippingNote: e.target.value })}
+                            rows={2}
+                            className="w-full px-4 py-2 border border-[var(--border)] rounded-lg bg-[var(--background)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] resize-none"
+                            placeholder="Es: Richiede trasporto specializzato per mobili d'epoca"
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-body text-[var(--foreground)] mb-2">
+                            Shipping Note (English)
+                        </label>
+                        <textarea
+                            value={formData.shippingNoteEn}
+                            onChange={(e) => setFormData({ ...formData, shippingNoteEn: e.target.value })}
+                            rows={2}
+                            className="w-full px-4 py-2 border border-[var(--border)] rounded-lg bg-[var(--background)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] resize-none"
+                            placeholder="E.g.: Requires specialized antique furniture transport"
                         />
                     </div>
                 </div>

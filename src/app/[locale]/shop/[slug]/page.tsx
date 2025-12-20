@@ -176,7 +176,8 @@ export default function ProductDetailPage() {
 
         addItem({
             id: product.id,
-            title: getLocalizedTitle(),
+            title: product.title,           // Always store Italian (primary)
+            titleEn: product.titleEn || undefined, // Store English if available
             price: product.price,
             slug: product.slug,
             imageUrl: product.images[0]?.url,

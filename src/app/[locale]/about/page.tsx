@@ -13,10 +13,10 @@ export default function AboutPage() {
             <Header />
 
             {/* Hero Section */}
-            <section className="relative pt-28 pb-20 bg-[var(--background-alt)] overflow-hidden">
+            <section className="relative pt-28 pb-16 bg-[var(--background-alt)] overflow-hidden" style={{ isolation: 'isolate' }}>
                 {/* Subtle decorative background */}
-                <div className="absolute inset-0 opacity-[0.03]">
-                    <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <div className="absolute inset-0 opacity-[0.03]" style={{ contain: 'strict', clipPath: 'inset(0)' }}>
+                    <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none" shapeRendering="crispEdges">
                         <defs>
                             <pattern id="flourish-about" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
                                 <path
@@ -33,8 +33,8 @@ export default function AboutPage() {
                     <div className="text-center max-w-3xl mx-auto">
                         <span className="font-display text-3xl text-[var(--primary)] block mb-2">{t('hero.label')}</span>
                         <h1 className="text-[var(--foreground)]">{t('hero.title')}</h1>
-                        <p className="mt-6 text-lg text-[var(--muted)] leading-relaxed">
-                            {t('story.content')}
+                        <p className="mt-4 text-[var(--muted)] max-w-2xl mx-auto">
+                            {t('hero.subtitle')}
                         </p>
                     </div>
                 </div>
@@ -186,7 +186,7 @@ export default function AboutPage() {
             </section>
 
             {/* Stats Bar */}
-            <section className="py-12 bg-[var(--primary)]">
+            <section className="py-12 bg-[var(--primary)] relative z-[5]" style={{ isolation: 'isolate' }}>
                 <div className="container-elegant">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-[var(--background)]">
                         <div>

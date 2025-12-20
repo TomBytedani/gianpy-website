@@ -65,6 +65,12 @@ export default async function EditProductPage({ params }: Props) {
             isPrimary: img.isPrimary,
             sortOrder: img.sortOrder,
         })),
+        // Shipping overrides
+        shippingCost: product.shippingCost ? Number(product.shippingCost) : null,
+        shippingCostIntl: product.shippingCostIntl ? Number(product.shippingCostIntl) : null,
+        requiresSpecialShipping: product.requiresSpecialShipping,
+        shippingNote: product.shippingNote || '',
+        shippingNoteEn: product.shippingNoteEn || '',
     };
 
     return (

@@ -416,7 +416,8 @@ button[class*="bg-\\[var\\(--primary\\)\\]"],
   overflow: hidden;
   isolation: isolate;
   z-index: 1;
-  contain: paint;
+  contain: strict;
+  clip-path: inset(0);
 }
 
 /* Subtle baroque background pattern using CSS gradient */

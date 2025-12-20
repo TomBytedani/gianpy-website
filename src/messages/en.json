@@ -157,6 +157,7 @@
         "subtotal": "Subtotal",
         "shipping": "Shipping",
         "shippingNote": "Shipping will be calculated at checkout",
+        "freeShipping": "Free",
         "total": "Total",
         "clearCart": "Clear Cart",
         "confirmClearCart": "Are you sure you want to clear your cart?",
@@ -264,7 +265,8 @@
         "subtitle": "Who We Are",
         "hero": {
             "label": "Our Story",
-            "title": "Who We Are"
+            "title": "Who We Are",
+            "subtitle": "Passion, experience and authenticity at the service of beauty for over thirty years."
         },
         "story": {
             "title": "Our Story",

@@ -15,6 +15,12 @@ export interface CartItem {
     imageUrl?: string;  // Primary image URL
     quantity: number;   // Typically 1 for unique antique items
     status: 'AVAILABLE' | 'SOLD' | 'RESERVED' | 'COMING_SOON';
+    // Shipping overrides (optional - null means use global settings)
+    shippingCost?: number | null;      // Custom domestic shipping cost
+    shippingCostIntl?: number | null;  // Custom international shipping cost
+    requiresSpecialShipping?: boolean; // Flag for fragile/oversized items
+    shippingNote?: string | null;      // Special shipping note (IT)
+    shippingNoteEn?: string | null;    // Special shipping note (EN)
 }
 
 export interface CartState {

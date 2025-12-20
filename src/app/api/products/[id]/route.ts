@@ -74,6 +74,12 @@ export async function PUT(req: NextRequest, context: RouteContext) {
             provenance,
             isFeatured,
             images,
+            // Shipping overrides
+            shippingCost,
+            shippingCostIntl,
+            requiresSpecialShipping,
+            shippingNote,
+            shippingNoteEn,
         } = body;
 
         // Check if product exists
@@ -102,6 +108,24 @@ export async function PUT(req: NextRequest, context: RouteContext) {
             }
         }
 
+        // Check featured products limit (max 3) only if setting to featured
+        if (isFeatured && !existingProduct.isFeatured) {
+            const featuredCount = await prisma.product.count({
+                where: { isFeatured: true },
+            });
+
+            if (featuredCount >= 3) {
+                return NextResponse.json(
+                    {
+                        error: 'Limite prodotti in evidenza raggiunto',
+                        errorCode: 'FEATURED_LIMIT_EXCEEDED',
+                        message: 'È possibile avere al massimo 3 prodotti in evidenza. Rimuovi un prodotto dalla vetrina prima di aggiungerne un altro.'
+                    },
+                    { status: 400 }
+                );
+            }
+        }
+
         // Update product
         const product = await prisma.product.update({
             where: { id },
@@ -119,6 +143,12 @@ export async function PUT(req: NextRequest, context: RouteContext) {
                 condition: condition !== undefined ? condition || null : existingProduct.condition,
                 provenance: provenance !== undefined ? provenance || null : existingProduct.provenance,
                 isFeatured: isFeatured !== undefined ? isFeatured : existingProduct.isFeatured,
+                // Shipping overrides
+                shippingCost: shippingCost !== undefined ? shippingCost ?? null : existingProduct.shippingCost,
+                shippingCostIntl: shippingCostIntl !== undefined ? shippingCostIntl ?? null : existingProduct.shippingCostIntl,
+                requiresSpecialShipping: requiresSpecialShipping !== undefined ? requiresSpecialShipping : existingProduct.requiresSpecialShipping,
+                shippingNote: shippingNote !== undefined ? shippingNote || null : existingProduct.shippingNote,
+                shippingNoteEn: shippingNoteEn !== undefined ? shippingNoteEn || null : existingProduct.shippingNoteEn,
                 // Update soldAt if status changes to SOLD
                 soldAt: status === 'SOLD' && existingProduct.status !== 'SOLD' ? new Date() : existingProduct.soldAt,
             },

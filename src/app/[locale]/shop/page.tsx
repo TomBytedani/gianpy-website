@@ -31,6 +31,16 @@ interface Product {
     }[];
 }
 
+// Category type from database
+interface Category {
+    id: string;
+    name: string;
+    displayName: string;
+    displayNameEn: string | null;
+    sortOrder: number;
+    _count?: { products: number };
+}
+
 // Map database status to UI status
 function mapStatus(status: string): 'available' | 'sold' | 'reserved' | 'coming-soon' {
     switch (status) {
@@ -59,6 +69,9 @@ interface FilterSidebarProps {
     setPriceRange: (value: { min: string; max: string }) => void;
     clearFilters: () => void;
     tShop: ReturnType<typeof useTranslations<'shop'>>;
+    categories: Category[];
+    categoriesLoading: boolean;
+    locale: string;
 }
 
 // FilterSidebar component - defined OUTSIDE of ShopPage to prevent re-creation on each render
@@ -74,7 +87,15 @@ function FilterSidebar({
     setPriceRange,
     clearFilters,
     tShop,
+    categories,
+    categoriesLoading,
+    locale,
 }: FilterSidebarProps) {
+    // Get localized category name
+    const getCategoryDisplayName = (category: Category) => {
+        return locale === 'en' && category.displayNameEn ? category.displayNameEn : category.displayName;
+    };
+
     return (
         <div className="space-y-6">
             {/* Search */}
@@ -104,24 +125,31 @@ function FilterSidebar({
                             {tShop('filters.allCategories')}
                         </span>
                     </label>
-                    {['cassettoni', 'specchiere', 'tavoli', 'sedie', 'credenze'].map((cat) => (
-                        <label
-                            key={cat}
-                            className="flex items-center gap-2 cursor-pointer group"
-                        >
-                            <input
-                                type="radio"
-                                name="category"
-                                value={cat}
-                                checked={selectedCategory === cat}
-                                onChange={(e) => setSelectedCategory(e.target.value)}
-                                className="w-4 h-4 text-[var(--primary)] border-[var(--border)] focus:ring-[var(--primary)]"
-                            />
-                            <span className="text-sm text-[var(--muted)] group-hover:text-[var(--foreground)] transition-colors">
-                                {tShop(`categories.${cat}`)}
-                            </span>
-                        </label>
-                    ))}
+                    {categoriesLoading ? (
+                        <div className="flex items-center gap-2 py-2">
+                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-[var(--primary)]"></div>
+                            <span className="text-sm text-[var(--muted)]">Caricamento...</span>
+                        </div>
+                    ) : (
+                        categories.map((category) => (
+                            <label
+                                key={category.id}
+                                className="flex items-center gap-2 cursor-pointer group"
+                            >
+                                <input
+                                    type="radio"
+                                    name="category"
+                                    value={category.name}
+                                    checked={selectedCategory === category.name}
+                                    onChange={(e) => setSelectedCategory(e.target.value)}
+                                    className="w-4 h-4 text-[var(--primary)] border-[var(--border)] focus:ring-[var(--primary)]"
+                                />
+                                <span className="text-sm text-[var(--muted)] group-hover:text-[var(--foreground)] transition-colors">
+                                    {getCategoryDisplayName(category)}
+                                </span>
+                            </label>
+                        ))
+                    )}
                 </div>
             </div>
 
@@ -206,6 +234,31 @@ export default function ShopPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
+    // Categories state
+    const [categories, setCategories] = useState<Category[]>([]);
+    const [categoriesLoading, setCategoriesLoading] = useState(true);
+
+    // Fetch categories from API
+    useEffect(() => {
+        async function fetchCategories() {
+            try {
+                setCategoriesLoading(true);
+                const response = await fetch('/api/categories');
+
+                if (response.ok) {
+                    const data = await response.json();
+                    setCategories(data);
+                }
+            } catch (err) {
+                console.error('Error fetching categories:', err);
+            } finally {
+                setCategoriesLoading(false);
+            }
+        }
+
+        fetchCategories();
+    }, []);
+
     // Fetch products from API
     useEffect(() => {
         async function fetchProducts() {
@@ -287,10 +340,10 @@ export default function ShopPage() {
             <Header />
 
             {/* Page Header */}
-            <section className="pt-28 pb-12 bg-[var(--background-alt)]">
+            <section className="pt-28 pb-16 bg-[var(--background-alt)]">
                 <div className="container-elegant">
                     <div className="text-center">
-                        <span className="font-display text-2xl text-[var(--primary)] block mb-2">{tShop('title')}</span>
+                        <span className="font-display text-3xl text-[var(--primary)] block mb-2">{tShop('title')}</span>
                         <h1 className="text-[var(--foreground)]">{tShop('pageTitle')}</h1>
                         <p className="mt-4 text-[var(--muted)] max-w-2xl mx-auto">
                             {tShop('subtitle')}
@@ -340,6 +393,9 @@ export default function ShopPage() {
                                         setPriceRange={setPriceRange}
                                         clearFilters={clearFilters}
                                         tShop={tShop}
+                                        categories={categories}
+                                        categoriesLoading={categoriesLoading}
+                                        locale={locale}
                                     />
                                 </div>
                             )}
@@ -360,6 +416,9 @@ export default function ShopPage() {
                                     setPriceRange={setPriceRange}
                                     clearFilters={clearFilters}
                                     tShop={tShop}
+                                    categories={categories}
+                                    categoriesLoading={categoriesLoading}
+                                    locale={locale}
                                 />
                             </div>
                         </aside>

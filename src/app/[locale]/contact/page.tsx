@@ -4,7 +4,8 @@ import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Card, Button, Input, Textarea, Select } from '@/components/ui';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
+import { useSiteSettings } from '@/hooks/useSiteSettings';
 
 export default function ContactPage() {
     const t = useTranslations('contact');
@@ -12,6 +13,11 @@ export default function ContactPage() {
     const tInfo = useTranslations('contact.info');
     const tVisit = useTranslations('contact.visit');
     const tFooter = useTranslations('common.footer');
+    const locale = useLocale();
+    const { settings, getOpeningHours, getFullAddress } = useSiteSettings();
+
+    // Get opening hours for current locale
+    const openingHours = getOpeningHours(locale);
 
     const [formData, setFormData] = useState({
         name: '',
@@ -64,7 +70,7 @@ export default function ContactPage() {
             <Header />
 
             {/* Page Header */}
-            <section className="pt-28 pb-12 bg-[var(--background-alt)]">
+            <section className="pt-28 pb-16 bg-[var(--background-alt)]">
                 <div className="container-elegant">
                     <div className="text-center max-w-2xl mx-auto">
                         <span className="font-display text-3xl text-[var(--primary)] block mb-2">{t('title')}</span>
@@ -224,9 +230,9 @@ export default function ContactPage() {
                                     <div>
                                         <h3 className="font-medium text-[var(--foreground)]">{tInfo('address')}</h3>
                                         <p className="mt-1 text-sm text-[var(--muted)]">
-                                            Via Roma 123<br />
-                                            50123 Firenze (FI)<br />
-                                            Italia
+                                            {settings?.address || 'Via Roma, 123'}<br />
+                                            {settings?.postalCode || '28921'} {settings?.city || 'Verbania'}<br />
+                                            {settings?.country || 'Italia'}
                                         </p>
                                     </div>
                                 </div>
@@ -253,13 +259,15 @@ export default function ContactPage() {
                                     <div>
                                         <h3 className="font-medium text-[var(--foreground)]">{tInfo('phone')}</h3>
                                         <p className="mt-1 text-sm text-[var(--muted)]">
-                                            <a href="tel:+390551234567" className="hover:text-[var(--primary)] transition-colors">
-                                                +39 055 123 4567
+                                            <a href={`tel:${settings?.phone || '+39 0323 123456'}`} className="hover:text-[var(--primary)] transition-colors">
+                                                {settings?.phone || '+39 0323 123456'}
                                             </a>
                                         </p>
-                                        <p className="text-xs text-[var(--muted)] mt-1">
-                                            {tInfo('whatsappAvailable')}
-                                        </p>
+                                        {settings?.whatsappUrl && (
+                                            <p className="text-xs text-[var(--muted)] mt-1">
+                                                {tInfo('whatsappAvailable')}
+                                            </p>
+                                        )}
                                     </div>
                                 </div>
                             </Card>
@@ -285,8 +293,8 @@ export default function ContactPage() {
                                     <div>
                                         <h3 className="font-medium text-[var(--foreground)]">{tInfo('email')}</h3>
                                         <p className="mt-1 text-sm text-[var(--muted)]">
-                                            <a href="mailto:info@antichita-barbaglia.it" className="hover:text-[var(--primary)] transition-colors">
-                                                info@antichita-barbaglia.it
+                                            <a href={`mailto:${settings?.email || 'info@antichitabarbaglia.com'}`} className="hover:text-[var(--primary)] transition-colors">
+                                                {settings?.email || 'info@antichitabarbaglia.com'}
                                             </a>
                                         </p>
                                         <p className="text-xs text-[var(--muted)] mt-1">
@@ -317,36 +325,57 @@ export default function ContactPage() {
                                     <div>
                                         <h3 className="font-medium text-[var(--foreground)]">{tInfo('hours')}</h3>
                                         <ul className="mt-2 text-sm text-[var(--muted)] space-y-1">
-                                            <li className="flex justify-between">
-                                                <span>{tFooter('hoursWeekdays').split(':')[0]}</span>
-                                                <span>9:00 - 18:00</span>
-                                            </li>
-                                            <li className="flex justify-between">
-                                                <span>{tFooter('hoursSaturday').split(':')[0]}</span>
-                                                <span>10:00 - 13:00</span>
-                                            </li>
-                                            <li className="flex justify-between">
-                                                <span>{tFooter('hoursSunday').split(':')[0]}</span>
-                                                <span className="text-[var(--accent)]">{tFooter('hoursSunday').split(':')[1].trim()}</span>
-                                            </li>
+                                            {openingHours.length > 0 ? (
+                                                openingHours.map((line, index) => (
+                                                    <li key={index}>{line}</li>
+                                                ))
+                                            ) : (
+                                                <>
+                                                    <li className="flex justify-between">
+                                                        <span>{tFooter('hoursWeekdays').split(':')[0]}</span>
+                                                        <span>9:00 - 18:00</span>
+                                                    </li>
+                                                    <li className="flex justify-between">
+                                                        <span>{tFooter('hoursSaturday').split(':')[0]}</span>
+                                                        <span>10:00 - 13:00</span>
+                                                    </li>
+                                                    <li className="flex justify-between">
+                                                        <span>{tFooter('hoursSunday').split(':')[0]}</span>
+                                                        <span className="text-[var(--accent)]">{tFooter('hoursSunday').split(':')[1].trim()}</span>
+                                                    </li>
+                                                </>
+                                            )}
                                         </ul>
                                     </div>
                                 </div>
                             </Card>
 
-                            {/* Visit Banner */}
+                            {/* Visit Banner - Hidden until booking functionality is implemented
                             <div className="bg-[var(--primary)] text-[var(--background)] rounded-lg p-6 text-center">
                                 <span className="font-script text-2xl block">{tVisit('title')}</span>
                                 <p className="mt-2 text-sm opacity-90">
                                     {t('description')}
                                 </p>
-                                <Button
-                                    variant="secondary"
-                                    className="mt-4 bg-[var(--background)] text-[var(--primary)] hover:bg-[var(--background-alt)]"
+                                <button
+                                    className="mt-4 inline-flex items-center justify-center font-body font-medium uppercase tracking-wider rounded-[var(--radius-sm)] py-3 px-6 text-sm transition-all duration-[var(--transition-fast)] active:scale-[0.98]"
+                                    style={{
+                                        backgroundColor: 'var(--background)',
+                                        color: 'var(--primary)',
+                                        border: '1px solid var(--background)'
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.backgroundColor = 'var(--background-alt)';
+                                        e.currentTarget.style.borderColor = 'var(--background-alt)';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.backgroundColor = 'var(--background)';
+                                        e.currentTarget.style.borderColor = 'var(--background)';
+                                    }}
                                 >
                                     {tVisit('bookVisit')}
-                                </Button>
+                                </button>
                             </div>
+                            */}
                         </div>
                     </div>
                 </div>
