@@ -6,7 +6,7 @@
         "nav": {
             "home": 	"Home",
             "services": "Services",
-            "shop": 	"Collection",
+            "shop": 	"Shop",
             "about": 	"About",
             "contact": 	"Contact"
         },
@@ -39,7 +39,7 @@
         },
         "footer": {
             "copyright": 	"© {2026} Antichità Barbaglia. All rights reserved.",
-            "description": 	"Fine antique furniture since 1990. Passion, experience and authenticity at the service of beauty.",
+            "description": 	"Restoration and sale of antiques. Passion and experience in craftsmanship.",
             "usefulLinks": 	"Useful Links",
             "terms": 		"Terms & Conditions",
             "privacy": 		"Privacy Policy",
@@ -58,26 +58,30 @@
     },
     "home": {
         "hero": {
-            "label": 	"Antiques",
+            "label": 	"Restoration & Antiques",
             "title": 	"Antichità Barbaglia",
-            "subtitle": "Every piece tells a story. Discover unique antique furniture, carefully selected with a passion for authenticity.",
-            "cta": 	"Explore the Collection",
-            "scroll": 	"Discover"
+            "subtitle": "Every piece tells its story. Discover our services and the items in our collection.",
+            "cta": 	"Explore our Services",
+            "cta2": 	"Discover our Collection",
+            "scroll": 	" "
+        },
+        "services": {
+            "title": 		"Selected Pieces",
         },
         "featured": {
-            "label": 		"Our Selection",
-            "title": 		"Selected Pieces",
-            "subtitle":		"A selection of our finest works, carefully restored with artisan care",
+            "label": 		" ",
+            "title": 		"Our Collection",
+            "subtitle":		" ",
             "viewAll": 		"View the Entire Collection",
             "noProducts": 	"Discover our selected pieces soon"
         },
         "about": {
             "label": 		"Our Story",
             "title": 		"The Art of Antiques",
-            "description": 	"For over twenty years, Antichità Barbaglia has been passionately dedicated to the search and enhancement of Italian artistic heritage.",
-            "description2": 	"We carefully select unique and rare pieces, offering our clients fine period furniture that tells stories of artisan mastery.",
+            "description": "For over twenty years, Antichità Barbaglia has been passionately dedicated to the restoration and valorization of wooden and painted artifacts.",
+            "description2": "With artisanal mastery, new life is given to pieces from every era, preserving their artistic and cultural value.",
             "experience": 	"Years of Experience",
-            "restored": 	"Selected Pieces",
+            "restored": 	"Restorations",
             "italian": 		"Italian Excellence",
             "quality": 		"Authenticity and timeless quality"
         }
@@ -220,9 +224,9 @@
         "appreciateYourTrust": "Antichità Barbaglia appreciates your trust."
     },
     "contact": {
-        "title": "Let's Talk",
+        "title": "Questions?",
         "subtitle": "Send Us a Message",
-        "description": "We are available for any questions, information requests, or to arrange a visit to our workshop.",
+        "description": "We are available for any questions or information requests on our Services and our Collection.",
         "form": {
             "title": "Send Us a Message",
             "name": "Name",
@@ -242,10 +246,10 @@
             "error": "Error",
             "errorMessage": "There was an error sending your message. Please try again.",
             "subjectOptions": {
-                "info": "General Information",
-                "product": "Product Information",
-                "visit": "Visit Booking",
-                "other": "Other"
+                "info": 	"General Information",
+                "product": 	"Product Information",
+                "visit": 	"Service request",
+                "other": 	"Other"
             }
         },
         "info": {
@@ -255,7 +259,7 @@
             "email": "Email",
             "hours": "Opening Hours",
             "whatsappAvailable": "WhatsApp available",
-            "responseTime": "Response within 24 hours"
+            "responseTime": "Response within 48 hours"
         },
         "visit": {
             "title": "Come Visit Us",
@@ -273,7 +277,7 @@
         "story": {
             "title": "Our Story",
             "subtitle": "Master Restorer",
-            "name": "Marco Bianchi",
+            "name": "Carlo Barbaglia",
             "content": "For over thirty years, Antichità Barbaglia has been passionately dedicated to the search and enhancement of Italian artistic heritage.",
             "content2": "Founded in 1990 by Marco Bianchi, our company was born from a deep passion for art and Italian craftsmanship. Each piece we select tells a unique story of skill, beauty and authenticity."
         },

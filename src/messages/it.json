@@ -39,7 +39,7 @@
         },
         "footer": {
             "copyright": 	"© {2026} Antichità Barbaglia. Tutti i diritti riservati.",
-            "description": 	"Antiquariato e vendita di mobili d'epoca dal 1990. Passione, esperienza e autenticità al servizio del bello.",
+            "description": 	"Restauro e vendita di pezzi di antiquariato. Passione ed esperienza nell'artigianato.",
             "usefulLinks": 	"Link Utili",
             "terms": 		"Termini e Condizioni",
             "privacy": 		"Privacy Policy",
@@ -58,34 +58,38 @@
     },
     "home": {
         "hero": {
-            "label": 	"Antiquariato",
+            "label": 	"Restauro & Antiquariato",
             "title": 	"Antichità Barbaglia",
-            "subtitle": "Ogni pezzo racconta una storia. Scopri mobili antichi unici, selezionati con cura e passione per l'autenticità.",
-            "cta": 	"Esplora la Collezione",
-            "scroll": 	"Scopri"
+            "subtitle": "Ogni oggetto racconta la sua storia. Scopri i nostri servizi ed i pezzi della nostra collezione.",
+            "cta": 	"I nostri Servizi",
+            "cta2": 	"La nosta Collezione",
+            "scroll": 	" "
+        },
+        "services": {
+            "title": 	"I Nostri Servizi",
         },
         "featured": {
-            "label": 	"La Nostra Selezione",
-            "title": 	"Pezzi Selezionati",
-            "subtitle": "Una selezione delle nostre opere più raffinate, restaurate con cura artigianale",
+            "label": 	" ",
+            "title": 	"La Nostra Collezione",
+            "subtitle": " ",
             "viewAll": 	"Vedi Tutta la Collezione",
             "noProducts": "Scopri presto i nostri pezzi selezionati"
         },
         "about": {
             "label": 		"La Nostra Storia",
-            "title": 		"L'Arte dell'Antiquariato",
-            "description": 	"Da oltre vent'anni, Antichità Barbaglia si dedica con passione alla ricerca e valorizzazione del patrimonio artistico italiano.",
-            "description2": 	"Selezioniamo con cura pezzi unici e rari, offrendo ai nostri clienti mobili d'epoca di pregio che raccontano storie di maestria artigianale.",
+            "title": 		"L'Arte del Restauro",
+            "description": 	"Da oltre vent'anni, Antichità Barbaglia si dedica con passione al recupero e alla valorizzazione di manufatti lignei e pittorici.",
+            "description2": 	"Con maestria artigiana viene data nuova vita a pezzi di ogni epoca, preservandone il valore artistico e culturale.",
             "experience": 	"Anni di Esperienza",
-            "restored": 	"Pezzi Selezionati",
-            "italian": 		"Eccellenza Italiana",
+            "restored": 	"Restauri Effettuati",
+            "italian": 		"Manifattura Italiana",
             "quality": 		"Autenticità e qualità senza tempo"
         }
     },
     "shop": {
         "title": 		"La Collezione",
         "pageTitle": 		"Shop",
-        "subtitle": 		"Ogni mobile racconta una storia di eleganza e maestria artigianale.",
+        "subtitle": 		"Ogni oggetto racconta la sua storia di eleganza e maestria artigianale.",
         "searchPlaceholder": 	"Cerca",
         "filters": {
             "title": 		"Filtri",
@@ -220,9 +224,9 @@
         "appreciateYourTrust": "La Bottega del Restauro apprezza la tua fiducia."
     },
     "contact": {
-        "title": "Parliamone",
+        "title": "Domande?",
         "subtitle": "Inviaci un Messaggio",
-        "description": "Siamo a disposizione per qualsiasi domanda, richiesta di informazioni o per organizzare una visita al nostro laboratorio.",
+        "description": "Siamo a disposizione per qualsiasi domanda o richiesta di informazioni sui nostri Servizi o la nostra Collezione.",
         "form": {
             "title": "Inviaci un Messaggio",
             "name": "Nome",
@@ -242,10 +246,10 @@
             "error": "Errore",
             "errorMessage": "Si è verificato un errore nell'invio del messaggio. Riprova.",
             "subjectOptions": {
-                "info": "Informazioni Generali",
-                "product": "Informazioni sul Prodotto",
-                "visit": "Prenotazione Visita",
-                "other": "Altro"
+                "info": 	"Informazioni Generali",
+                "product": 	"Informazioni su un Prodotto",
+                "visit": 	"Richiesta Servizio",
+                "other": 	"Altro"
             }
         },
         "info": {
@@ -255,7 +259,7 @@
             "email": "Email",
             "hours": "Orari di Apertura",
             "whatsappAvailable": "WhatsApp disponibile",
-            "responseTime": "Risposta entro 24 ore"
+            "responseTime": "Risposta entro 48 ore"
         },
         "visit": {
             "title": "Vieni a Trovarci",
@@ -273,7 +277,7 @@
         "story": {
             "title": "La Nostra Storia",
             "subtitle": "Maestro Restauratore",
-            "name": "Marco Bianchi",
+            "name": "Carlo Barbaglia",
             "content": "Da oltre trent'anni, Antichità Barbaglia si dedica con passione alla ricerca e valorizzazione del patrimonio artistico italiano.",
             "content2": "Fondata nel 1990 da Marco Bianchi, la nostra azienda nasce da una profonda passione per l'arte e l'artigianato italiano. Ogni pezzo che selezioniamo racconta una storia unica di maestria, bellezza e autenticità."
         },
