@@ -8,6 +8,7 @@ import { useTranslations } from 'next-intl';
 export function AuthButton() {
     const { data: session, status } = useSession();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [imageError, setImageError] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const tAuth = useTranslations('auth');
     const tAccount = useTranslations('account');
@@ -22,6 +23,11 @@ export function AuthButton() {
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
+
+    // Reset image error state when session changes
+    useEffect(() => {
+        setImageError(false);
+    }, [session?.user?.image]);
 
     if (status === 'loading') {
         return (
@@ -41,6 +47,7 @@ export function AuthButton() {
     }
 
     const userInitial = session.user?.name?.[0] || session.user?.email?.[0] || '?';
+    const showImage = session.user?.image && !imageError;
 
     return (
         <div className="relative" ref={dropdownRef}>
@@ -50,11 +57,12 @@ export function AuthButton() {
                 className="flex items-center gap-2 p-1 rounded-full hover:bg-[var(--background-alt)] transition-colors"
                 aria-label="Account menu"
             >
-                {session.user?.image ? (
+                {showImage ? (
                     <img
-                        src={session.user.image}
+                        src={session.user.image!}
                         alt={session.user.name || 'User'}
                         className="w-8 h-8 rounded-full object-cover border border-[var(--border)]"
+                        onError={() => setImageError(true)}
                     />
                 ) : (
                     <div className="w-8 h-8 rounded-full bg-[var(--primary)] text-white flex items-center justify-center text-sm font-medium uppercase">

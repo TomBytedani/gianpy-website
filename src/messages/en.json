@@ -4,154 +4,154 @@
         "tagline": "The Art of Antiques",
         "language": "Language",
         "nav": {
-            "home": 	"Home",
+            "home": "Home",
             "services": "Services",
-            "shop": 	"Shop",
-            "about": 	"About",
-            "contact": 	"Contact"
+            "shop": "Shop",
+            "about": "About",
+            "contact": "Contact"
         },
         "buttons": {
-            "addToCart": 	"Add to Cart",
-            "goToCart": 	"Go to Cart",
-            "removeFromCart": 	"Remove",
-            "addToWishlist": 	"Add to Wishlist",
+            "addToCart": "Add to Cart",
+            "goToCart": "Go to Cart",
+            "removeFromCart": "Remove",
+            "addToWishlist": "Add to Wishlist",
             "proceedToCheckout": "Proceed to Checkout",
             "continueShopping": "Continue Shopping",
-            "viewCollection": 	"View Collection",
-            "contactUs": 	"Contact Us",
-            "learnMore": 	"Learn More",
-            "submit": 		"Submit",
-            "back": 		"Back",
-            "viewDetails": 	"View Details",
-            "moreInfo": 	"More Info"
+            "viewCollection": "View Collection",
+            "contactUs": "Contact Us",
+            "learnMore": "Learn More",
+            "submit": "Submit",
+            "back": "Back",
+            "viewDetails": "View Details",
+            "moreInfo": "More Info"
         },
         "status": {
-            "available": 	"Available",
-            "sold": 		"Sold",
-            "reserved": 	"Reserved",
-            "comingSoon": 	"Coming Soon",
-            "notAvailable": 	"Not Available"
+            "available": "Available",
+            "sold": "Sold",
+            "reserved": "Reserved",
+            "comingSoon": "Coming Soon",
+            "notAvailable": "Not Available"
         },
         "labels": {
-            "uniquePiece": 	"Unique Piece",
-            "rare": 		"Rare",
-            "craftsman": 	"Craftsman"
+            "uniquePiece": "Unique Piece",
+            "rare": "Rare",
+            "craftsman": "Craftsman"
         },
         "footer": {
-            "copyright": 	"© {2026} Antichità Barbaglia. All rights reserved.",
-            "description": 	"Restoration and sale of antiques. Passion and experience in craftsmanship.",
-            "usefulLinks": 	"Useful Links",
-            "terms": 		"Terms & Conditions",
-            "privacy": 		"Privacy Policy",
-            "hours": 		"Hours",
-            "hoursWeekdays": 	"Mon - Fri: 9:00 - 18:00",
-            "hoursSaturday": 	"Saturday: Closed",
-            "hoursSunday": 	"Sunday: Closed",
+            "copyright": "© {2026} Antichità Barbaglia. All rights reserved.",
+            "description": "Restoration and sale of antiques. Passion and experience in craftsmanship.",
+            "usefulLinks": "Useful Links",
+            "terms": "Terms & Conditions",
+            "privacy": "Privacy Policy",
+            "hours": "Hours",
+            "hoursWeekdays": "Mon - Fri: 9:00 - 18:00",
+            "hoursSaturday": "Saturday: Closed",
+            "hoursSunday": "Sunday: Closed",
             "securePaymentsWith": "Secure payments with",
-            "collections": 	"Collections",
-            "information": 	"Information",
-            "visitUs": 		"Visit Us",
-            "newsletter": 	"Receive our news by email",
+            "collections": "Collections",
+            "information": "Information",
+            "visitUs": "Visit Us",
+            "newsletter": "Receive our news by email",
             "emailPlaceholder": "Your email",
-            "subscribe": 	"Subscribe"
+            "subscribe": "Subscribe"
         }
     },
     "home": {
         "hero": {
-            "label": 	"Restoration & Antiques",
-            "title": 	"Antichità Barbaglia",
+            "label": "Restoration & Antiques",
+            "title": "Antichità Barbaglia",
             "subtitle": "Every piece tells its story. Discover our services and the items in our collection.",
-            "cta": 	"Explore our Services",
-            "cta2": 	"Discover our Collection",
-            "scroll": 	" "
+            "cta": "Explore our Services",
+            "cta2": "Discover our Collection",
+            "scroll": " "
         },
         "services": {
-            "title": 		"Selected Pieces",
+            "title": "Selected Pieces"
         },
         "featured": {
-            "label": 		" ",
-            "title": 		"Our Collection",
-            "subtitle":		" ",
-            "viewAll": 		"View the Entire Collection",
-            "noProducts": 	"Discover our selected pieces soon"
+            "label": " ",
+            "title": "Our Collection",
+            "subtitle": " ",
+            "viewAll": "View the Entire Collection",
+            "noProducts": "Discover our selected pieces soon"
         },
         "about": {
-            "label": 		"Our Story",
-            "title": 		"The Art of Antiques",
+            "label": "Our Story",
+            "title": "The Art of Antiques",
             "description": "For over twenty years, Antichità Barbaglia has been passionately dedicated to the restoration and valorization of wooden and painted artifacts.",
             "description2": "With artisanal mastery, new life is given to pieces from every era, preserving their artistic and cultural value.",
-            "experience": 	"Years of Experience",
-            "restored": 	"Restorations",
-            "italian": 		"Italian Excellence",
-            "quality": 		"Authenticity and timeless quality"
+            "experience": "Years of Experience",
+            "restored": "Restorations",
+            "italian": "Italian Excellence",
+            "quality": "Authenticity and timeless quality"
         }
     },
     "shop": {
-        "title": 		"The Collection",
-        "pageTitle": 		"Shop",
-        "subtitle": 		"Each piece of furniture tells a story of elegance and artisan mastery.",
-        "searchPlaceholder": 	"Search",
+        "title": "The Collection",
+        "pageTitle": "Shop",
+        "subtitle": "Each piece of furniture tells a story of elegance and artisan mastery.",
+        "searchPlaceholder": "Search",
         "filters": {
-            "title": 		"Filters",
-            "category": 	"Category",
-            "allCategories": 	"All Categories",
-            "price": 		"Price (€)",
-            "priceMin": 	"Min",
-            "priceMax": 	"Max",
-            "status": 		"Availability",
-            "allStatuses": 	"All",
-            "clearAll": 	"Clear Filters"
+            "title": "Filters",
+            "category": "Category",
+            "allCategories": "All Categories",
+            "price": "Price (€)",
+            "priceMin": "Min",
+            "priceMax": "Max",
+            "status": "Availability",
+            "allStatuses": "All",
+            "clearAll": "Clear Filters"
         },
         "categories": {
-            "cassettoni": 	"Chests & Dressers",
-            "sedie": 		"Chairs & Armchairs",
-            "specchiere": 	"Mirrors",
-            "tavoli": 		"Tables",
-            "sedute": 		"Chairs & Armchairs",
-            "credenze": 	"Sideboards",
-            "scrivanie": 	"Desks"
+            "cassettoni": "Chests & Dressers",
+            "sedie": "Chairs & Armchairs",
+            "specchiere": "Mirrors",
+            "tavoli": "Tables",
+            "sedute": "Chairs & Armchairs",
+            "credenze": "Sideboards",
+            "scrivanie": "Desks"
         },
         "statusOptions": {
-            "available": 	"Available",
-            "sold": 		"Sold",
-            "coming-soon": 	"Coming Soon"
-            "new": 		"New"
+            "available": "Available",
+            "sold": "Sold",
+            "coming-soon": "Coming Soon",
+            "new": "New"
         },
         "sort": {
-            "label": 		"Sort by",
-            "newest": 		"Newest",
-            "priceLowHigh": 	"Price: Low-High",
-            "priceHighLow": 	"Price: High-Low",
-            "nameAZ": 		"Name A-Z"
+            "label": "Sort by",
+            "newest": "Newest",
+            "priceLowHigh": "Price: Low-High",
+            "priceHighLow": "Price: High-Low",
+            "nameAZ": "Name A-Z"
         },
-        "results": 	"{count} {count, plural, =1 {result} other {results}}",
-        "noResults": 		"No products found",
-        "tryAdjustingFilters": 	"Try adjusting your search filters"
+        "results": "{count} {count, plural, =1 {result} other {results}}",
+        "noResults": "No products found",
+        "tryAdjustingFilters": "Try adjusting your search filters"
     },
     "product": {
-        "description": 		"Description",
-        "details": 		"Details",
-        "dimensions": 		"Dimensions",
-        "materials": 		"Materials",
-        "condition": 		"Condition",
-        "provenance": 		"Provenance",
-        "notFound": 		"Product not found",
-        "notFoundMessage": 	"The product you are looking for does not exist or has been removed.",
-        "backToShop": 		"Return to Shop",
-        "addToCart": 		"Add to Cart",
-        "goToCart": 		"Go to Cart",
-        "remove": 		"Remove",
-        "addToWishlist": 	"Add to Wishlist",
-        "inWishlist": 		"In Your Wishlist",
-        "notifyWhenAvailable": 	"Notify When Available",
-        "watchItem": 		"Watch This Item",
-        "soldMessage": 		"This piece has been sold, but we are happy to help you find similar items.",
-        "reservedMessage": 	"This piece is currently reserved. Contact us for more information.",
-        "comingSoonMessage": 	"This piece is coming soon. Add it to your wishlist to be notified when it becomes available.",
-        "contactUs": 		"Contact Us",
-        "haveQuestions": 	"Have questions?",
+        "description": "Description",
+        "details": "Details",
+        "dimensions": "Dimensions",
+        "materials": "Materials",
+        "condition": "Condition",
+        "provenance": "Provenance",
+        "notFound": "Product not found",
+        "notFoundMessage": "The product you are looking for does not exist or has been removed.",
+        "backToShop": "Return to Shop",
+        "addToCart": "Add to Cart",
+        "goToCart": "Go to Cart",
+        "remove": "Remove",
+        "addToWishlist": "Add to Wishlist",
+        "inWishlist": "In Your Wishlist",
+        "notifyWhenAvailable": "Notify When Available",
+        "watchItem": "Watch This Item",
+        "soldMessage": "This piece has been sold, but we are happy to help you find similar items.",
+        "reservedMessage": "This piece is currently reserved. Contact us for more information.",
+        "comingSoonMessage": "This piece is coming soon. Add it to your wishlist to be notified when it becomes available.",
+        "contactUs": "Contact Us",
+        "haveQuestions": "Have questions?",
         "questionsDescription": "Contact us for more information, additional photos, or to arrange a visit.",
-        "sendRequest": 		"Send a request →"
+        "sendRequest": "Send a request →"
     },
     "cart": {
         "title": "Your Cart",
@@ -246,10 +246,10 @@
             "error": "Error",
             "errorMessage": "There was an error sending your message. Please try again.",
             "subjectOptions": {
-                "info": 	"General Information",
-                "product": 	"Product Information",
-                "visit": 	"Service request",
-                "other": 	"Other"
+                "info": "General Information",
+                "product": "Product Information",
+                "visit": "Service request",
+                "other": "Other"
             }
         },
         "info": {
