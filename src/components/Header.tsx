@@ -29,6 +29,18 @@ export function Header() {
                     {/* Desktop Navigation - Centered */}
                     <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
                         <Link
+                            href="/"
+                            className="font-body text-sm uppercase tracking-widest text-[var(--foreground)] hover:text-[var(--primary)] transition-colors link-elegant"
+                        >
+                            {t('nav.home')}
+                        </Link>
+                        <Link
+                            href="/services"
+                            className="font-body text-sm uppercase tracking-widest text-[var(--foreground)] hover:text-[var(--primary)] transition-colors link-elegant"
+                        >
+                            {t('nav.services')}
+                        </Link>
+                        <Link
                             href="/shop"
                             className="font-body text-sm uppercase tracking-widest text-[var(--foreground)] hover:text-[var(--primary)] transition-colors link-elegant"
                         >
@@ -158,6 +170,20 @@ export function Header() {
                                     </Link>
                                 </div>
                             </div>
+                            <Link
+                                href="/"
+                                className="font-body text-sm uppercase tracking-widest text-[var(--foreground)] hover:text-[var(--primary)] transition-colors py-2"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                {t('nav.home')}
+                            </Link>
+                            <Link
+                                href="/services"
+                                className="font-body text-sm uppercase tracking-widest text-[var(--foreground)] hover:text-[var(--primary)] transition-colors py-2"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                {t('nav.services')}
+                            </Link>
                             <Link
                                 href="/shop"
                                 className="font-body text-sm uppercase tracking-widest text-[var(--foreground)] hover:text-[var(--primary)] transition-colors py-2"
