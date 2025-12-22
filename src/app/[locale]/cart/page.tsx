@@ -43,7 +43,7 @@ export default function CartPage() {
         return (
             <>
                 <Header />
-                <main className="min-h-screen bg-background pt-8 pb-16">
+                <main className="min-h-screen bg-background pt-28 pb-16">
                     <div className="container mx-auto px-4">
                         <div className="flex items-center justify-center py-24">
                             <div className="animate-pulse flex flex-col items-center gap-4">
@@ -61,7 +61,7 @@ export default function CartPage() {
     return (
         <>
             <Header />
-            <main className="min-h-screen bg-background pt-8 pb-16">
+            <main className="min-h-screen bg-background pt-28 pb-16">
                 <div className="container mx-auto px-4 max-w-5xl">
                     {/* Page Title */}
                     <div className="mb-8">

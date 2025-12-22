@@ -1,4 +1,4 @@
-# 🏛️ Barbaglia Restauri
+# 🏛️ Antichità Barbaglia
 
 > A premium e-commerce platform for authentic Italian antique furniture restoration
 
@@ -185,7 +185,7 @@ This project is proprietary software. All rights reserved.
 
 ## 👥 Authors
 
-- **Barbaglia Restauri** — *Antique furniture restoration since 1980*
+- **Tommaso Brindani** — *Full stack web developer and QA engineer*
 
 ---
 

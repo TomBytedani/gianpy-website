@@ -198,30 +198,30 @@ export function Footer() {
                         <span>{t('footer.securePaymentsWith')}</span>
                         <div className="flex gap-2">
                             {/* Visa Icon */}
-                            <div className="w-12 h-8 bg-[var(--background)]/10 rounded flex items-center justify-center" title="Visa">
-                                <svg viewBox="0 0 48 48" className="w-8 h-5" fill="currentColor">
+                            <div className="w-14 h-10 bg-[var(--background)]/10 rounded flex items-center justify-center" title="Visa">
+                                <svg viewBox="0 0 48 48" className="w-10 h-6" fill="currentColor">
                                     <path d="M18.4 31.1l2.5-15.4H24l-2.5 15.4h-3.1zm15.2-15c-.6-.2-1.6-.5-2.8-.5-3.1 0-5.3 1.6-5.3 4 0 1.7 1.6 2.7 2.8 3.3 1.2.6 1.6 1 1.6 1.5 0 .8-1 1.2-1.9 1.2-1.2 0-1.9-.2-3-.7l-.4-.2-.4 2.7c.7.3 2.1.6 3.5.6 3.3 0 5.5-1.6 5.5-4.1 0-1.4-.8-2.4-2.7-3.3-1.1-.6-1.8-.9-1.8-1.5 0-.5.6-1 1.8-1 1 0 1.8.2 2.4.5l.3.1.4-2.6zm8.1-.4h-2.4c-.7 0-1.3.2-1.6 1l-4.5 10.8h3.2l.6-1.8h3.9l.4 1.8h2.8l-2.4-11.8zm-3.7 7.6c.3-.7 1.2-3.3 1.2-3.3l.4-1 .2 1s.6 2.8.7 3.4h-2.5zM16 15.7l-3.1 10.5-.3-1.6c-.6-1.9-2.3-4-4.2-5l2.7 10.4h3.3l4.9-14.3H16z" />
                                     <path fill="#F7A600" d="M10.3 15.7H5.1l-.1.3c3.9 1 6.5 3.4 7.5 6.3l-1.1-5.5c-.2-.9-.8-1.1-1.1-1.1z" />
                                 </svg>
                             </div>
                             {/* Mastercard Icon */}
-                            <div className="w-12 h-8 bg-[var(--background)]/10 rounded flex items-center justify-center" title="Mastercard">
-                                <svg viewBox="0 0 48 48" className="w-8 h-5">
+                            <div className="w-14 h-10 bg-[var(--background)]/10 rounded flex items-center justify-center" title="Mastercard">
+                                <svg viewBox="0 0 48 48" className="w-10 h-6">
                                     <circle cx="18" cy="24" r="10" fill="#EB001B" />
                                     <circle cx="30" cy="24" r="10" fill="#F79E1B" />
                                     <path d="M24 17.3c1.9 1.5 3 3.9 3 6.7s-1.1 5.2-3 6.7c-1.9-1.5-3-3.9-3-6.7s1.1-5.2 3-6.7z" fill="#FF5F00" />
                                 </svg>
                             </div>
                             {/* Amex Icon */}
-                            <div className="w-12 h-8 bg-[var(--background)]/10 rounded flex items-center justify-center" title="American Express">
-                                <svg viewBox="0 0 48 48" className="w-8 h-5" fill="currentColor">
+                            <div className="w-14 h-10 bg-[var(--background)]/10 rounded flex items-center justify-center" title="American Express">
+                                <svg viewBox="0 0 48 48" className="w-10 h-6" fill="currentColor">
                                     <rect x="4" y="12" width="40" height="24" rx="2" fill="#006FCF" />
                                     <text x="24" y="27" textAnchor="middle" fill="white" fontSize="8" fontWeight="bold" fontFamily="Arial">AMEX</text>
                                 </svg>
                             </div>
                             {/* PayPal Icon */}
-                            <div className="w-12 h-8 bg-[var(--background)]/10 rounded flex items-center justify-center" title="PayPal">
-                                <svg viewBox="0 0 48 48" className="w-8 h-5">
+                            <div className="w-14 h-10 bg-[var(--background)]/10 rounded flex items-center justify-center" title="PayPal">
+                                <svg viewBox="0 0 48 48" className="w-10 h-6">
                                     <path fill="#003087" d="M18.5 35.5h-4l2.7-17h5.3c2.3 0 4 .7 5 2 .9 1.2 1.1 2.8.6 4.6-.6 2.3-1.8 4-3.6 5.2-1.7 1.1-3.7 1.7-5.9 1.7h-2.5l-1.6 3.5z" />
                                     <path fill="#009CDE" d="M35.2 18c.1-.5.1-1 0-1.5-.9-2.6-3.5-3.5-6.6-3.5h-7l-3.5 22h4.5l.9-5.5h2.8c2.7 0 5-.8 6.8-2.5 1.7-1.7 2.7-3.9 2.1-9z" />
                                 </svg>

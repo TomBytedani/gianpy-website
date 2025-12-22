@@ -184,7 +184,7 @@ export default function Home() {
         <BaroquePattern position="all" opacity={0.05} />
         <div className="container-elegant">
           <div className="mb-12 text-center">
-            <span className="font-script text-2xl text-[var(--primary)] block mb-2">
+            <span className="font-display text-2xl text-[var(--primary)] block mb-2">
               {tHome('featured.label')}
             </span>
             <h2 className="text-[var(--foreground)]">{tHome('featured.title')}</h2>
@@ -253,7 +253,7 @@ export default function Home() {
         <div className="container-elegant">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
-              <span className="font-script text-2xl text-[var(--primary)]">{tHome('about.label')}</span>
+              <span className="font-display text-2xl text-[var(--primary)]">{tHome('about.label')}</span>
               <h2 className="mt-2 text-[var(--foreground)]">{tHome('about.title')}</h2>
               <p className="mt-6 leading-relaxed text-[var(--muted)]">
                 {tHome('about.description')}
@@ -262,7 +262,7 @@ export default function Home() {
                 {tHome('about.description2')}
               </p>
               <Link href="/about">
-                <Button variant="ghost" className="mt-6">
+                <Button variant="primary" className="mt-6">
                   {tCommon('buttons.learnMore')} →
                 </Button>
               </Link>
@@ -282,7 +282,7 @@ export default function Home() {
               </Card>
               <Card className="col-span-2 bg-[var(--background-alt)]" padding="lg">
                 <div className="text-center">
-                  <span className="font-script text-3xl text-[var(--primary)]">
+                  <span className="font-display text-3xl text-[var(--primary)]">
                     {tHome('about.italian')}
                   </span>
                   <p className="mt-2 text-sm text-[var(--muted)]">

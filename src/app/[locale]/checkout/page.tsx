@@ -91,7 +91,7 @@ export default function CheckoutPage() {
         return (
             <>
                 <Header />
-                <main className="min-h-screen bg-background pt-8 pb-16">
+                <main className="min-h-screen bg-background pt-28 pb-16">
                     <div className="container mx-auto px-4">
                         <div className="flex items-center justify-center py-24">
                             <div className="animate-pulse flex flex-col items-center gap-4">
@@ -111,7 +111,7 @@ export default function CheckoutPage() {
         return (
             <>
                 <Header />
-                <main className="min-h-screen bg-background pt-8 pb-16">
+                <main className="min-h-screen bg-background pt-28 pb-16">
                     <div className="container mx-auto px-4 max-w-3xl text-center py-16">
                         <h1 className="font-display italic font-semibold text-3xl text-foreground mb-4">
                             {t('checkout.emptyCart')}
@@ -134,7 +134,7 @@ export default function CheckoutPage() {
     return (
         <>
             <Header />
-            <main className="min-h-screen bg-background pt-8 pb-16">
+            <main className="min-h-screen bg-background pt-28 pb-16">
                 <div className="container mx-auto px-4 max-w-5xl">
                     {/* Page Title */}
                     <div className="mb-8">

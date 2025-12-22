@@ -38,7 +38,7 @@
             "craftsman": "Craftsman"
         },
         "footer": {
-            "copyright": "© {2026} Antichità Barbaglia. All rights reserved.",
+            "copyright": "© {year} Antichità Barbaglia. All rights reserved.",
             "description": "Restoration and sale of antiques. Passion and experience in craftsmanship.",
             "usefulLinks": "Useful Links",
             "terms": "Terms & Conditions",
@@ -47,13 +47,7 @@
             "hoursWeekdays": "Mon - Fri: 9:00 - 18:00",
             "hoursSaturday": "Saturday: Closed",
             "hoursSunday": "Sunday: Closed",
-            "securePaymentsWith": "Secure payments with",
-            "collections": "Collections",
-            "information": "Information",
-            "visitUs": "Visit Us",
-            "newsletter": "Receive our news by email",
-            "emailPlaceholder": "Your email",
-            "subscribe": "Subscribe"
+            "securePaymentsWith": "Secure payments with"
         }
     },
     "home": {
@@ -62,18 +56,13 @@
             "title": "Antichità Barbaglia",
             "subtitle": "Every piece tells its story. Discover our services and the items in our collection.",
             "cta": "Explore our Services",
-            "cta2": "Discover our Collection",
             "scroll": " "
-        },
-        "services": {
-            "title": "Selected Pieces"
         },
         "featured": {
             "label": " ",
-            "title": "Our Collection",
+            "title": "Our Selection",
             "subtitle": " ",
-            "viewAll": "View the Entire Collection",
-            "noProducts": "Discover our selected pieces soon"
+            "viewAll": "View the Entire Collection"
         },
         "about": {
             "label": "Our Story",
@@ -102,23 +91,12 @@
             "allStatuses": "All",
             "clearAll": "Clear Filters"
         },
-        "categories": {
-            "cassettoni": "Chests & Dressers",
-            "sedie": "Chairs & Armchairs",
-            "specchiere": "Mirrors",
-            "tavoli": "Tables",
-            "sedute": "Chairs & Armchairs",
-            "credenze": "Sideboards",
-            "scrivanie": "Desks"
-        },
         "statusOptions": {
             "available": "Available",
             "sold": "Sold",
-            "coming-soon": "Coming Soon",
-            "new": "New"
+            "coming-soon": "Coming Soon"
         },
         "sort": {
-            "label": "Sort by",
             "newest": "Newest",
             "priceLowHigh": "Price: Low-High",
             "priceHighLow": "Price: High-Low",
@@ -267,22 +245,17 @@
         }
     },
     "about": {
-        "title": "About Us",
-        "subtitle": "Who We Are",
         "hero": {
             "label": "Our Story",
             "title": "Who We Are",
             "subtitle": "Passion, experience and authenticity at the service of beauty for over thirty years."
         },
         "story": {
-            "title": "Our Story",
             "subtitle": "Master Restorer",
             "name": "Carlo Barbaglia",
-            "content": "For over thirty years, Antichità Barbaglia has been passionately dedicated to the search and enhancement of Italian artistic heritage.",
             "content2": "Founded in 1990 by Marco Bianchi, our company was born from a deep passion for art and Italian craftsmanship. Each piece we select tells a unique story of skill, beauty and authenticity."
         },
         "philosophy": {
-            "title": "Our Philosophy",
             "content": "We carefully select authentic pieces of distinction, combining experience and passion to offer unique and valuable period furniture."
         },
         "values": {

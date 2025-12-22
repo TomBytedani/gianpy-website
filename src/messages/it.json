@@ -38,7 +38,7 @@
             "craftsman": "Artigiano"
         },
         "footer": {
-            "copyright": "© {2026} Antichità Barbaglia. Tutti i diritti riservati.",
+            "copyright": "© {year} Antichità Barbaglia. Tutti i diritti riservati.",
             "description": "Restauro e vendita di pezzi di antiquariato. Passione ed esperienza nell'artigianato.",
             "usefulLinks": "Link Utili",
             "terms": "Termini e Condizioni",
@@ -47,13 +47,7 @@
             "hoursWeekdays": "Lun - Ven: 9:00 - 18:00",
             "hoursSaturday": "Sabato: Chiuso",
             "hoursSunday": "Domenica: Chiuso",
-            "securePaymentsWith": "Pagamenti sicuri con",
-            "collections": "Collezioni",
-            "information": "Informazioni",
-            "visitUs": "Vieni a Trovarci",
-            "newsletter": "Ricevi le nostre novità via email",
-            "emailPlaceholder": "La tua email",
-            "subscribe": "Iscriviti"
+            "securePaymentsWith": "Pagamenti sicuri con"
         }
     },
     "home": {
@@ -62,18 +56,13 @@
             "title": "Antichità Barbaglia",
             "subtitle": "Ogni oggetto racconta la sua storia. Scopri i nostri servizi ed i pezzi della nostra collezione.",
             "cta": "I nostri Servizi",
-            "cta2": "La nosta Collezione",
             "scroll": " "
-        },
-        "services": {
-            "title": "I Nostri Servizi"
         },
         "featured": {
             "label": " ",
-            "title": "La Nostra Collezione",
+            "title": "La Nostra Selezione",
             "subtitle": " ",
-            "viewAll": "Vedi Tutta la Collezione",
-            "noProducts": "Scopri presto i nostri pezzi selezionati"
+            "viewAll": "Vedi Tutta la Collezione"
         },
         "about": {
             "label": "La Nostra Storia",
@@ -102,23 +91,12 @@
             "allStatuses": "Tutti",
             "clearAll": "Cancella Filtri"
         },
-        "categories": {
-            "cassettoni": "Cassettoni e Comò",
-            "sedie": "Sedie e Poltrone",
-            "specchiere": "Specchiere",
-            "tavoli": "Tavoli",
-            "sedute": "Sedie e Poltrone",
-            "credenze": "Credenze",
-            "scrivanie": "Scrivanie"
-        },
         "statusOptions": {
             "available": "Disponibili",
             "sold": "Venduti",
-            "coming-soon": "In Arrivo",
-            "new": "Novità"
+            "coming-soon": "In Arrivo"
         },
         "sort": {
-            "label": "Ordina per",
             "newest": "Più Recenti",
             "priceLowHigh": "Prezzo: Crescente",
             "priceHighLow": "Prezzo: Decrescente",
@@ -267,22 +245,17 @@
         }
     },
     "about": {
-        "title": "Chi Siamo",
-        "subtitle": "Chi Siamo",
         "hero": {
             "label": "La Nostra Storia",
             "title": "Chi Siamo",
             "subtitle": "Passione, esperienza e autenticità al servizio del bello da oltre trent'anni."
         },
         "story": {
-            "title": "La Nostra Storia",
             "subtitle": "Maestro Restauratore",
             "name": "Carlo Barbaglia",
-            "content": "Da oltre trent'anni, Antichità Barbaglia si dedica con passione alla ricerca e valorizzazione del patrimonio artistico italiano.",
             "content2": "Fondata nel 1990 da Marco Bianchi, la nostra azienda nasce da una profonda passione per l'arte e l'artigianato italiano. Ogni pezzo che selezioniamo racconta una storia unica di maestria, bellezza e autenticità."
         },
         "philosophy": {
-            "title": "La Nostra Filosofia",
             "content": "Selezioniamo con cura pezzi autentici e di pregio, combinando esperienza e passione per offrire mobili d'epoca unici e di valore."
         },
         "values": {
