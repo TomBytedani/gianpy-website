@@ -178,6 +178,74 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Services Preview Section */}
+      <section className="py-20 bg-[var(--background)]">
+        <div className="container-elegant">
+          <div className="mb-12 text-center">
+            <span className="font-display text-2xl text-[var(--primary)] block mb-2">
+              {tHome('services.label')}
+            </span>
+            <h2 className="text-[var(--foreground)]">{tHome('services.title')}</h2>
+            <p className="mt-4 text-[var(--muted)] max-w-2xl mx-auto">
+              {tHome('services.subtitle')}
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {/* Restauro Card */}
+            <Link href="/services#restauro" className="group block">
+              <Card className="h-full text-center hover:border-[var(--primary)] transition-all duration-300 hover:shadow-lg" padding="lg">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--primary)]/10 flex items-center justify-center group-hover:bg-[var(--primary)]/20 transition-colors">
+                  <svg className="w-8 h-8 text-[var(--primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-display italic text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">{tHome('services.restauro.title')}</h3>
+                <p className="mt-3 text-sm text-[var(--muted)]">
+                  {tHome('services.restauro.description')}
+                </p>
+              </Card>
+            </Link>
+
+            {/* Manifattura Card */}
+            <Link href="/services#manifattura" className="group block">
+              <Card className="h-full text-center hover:border-[var(--primary)] transition-all duration-300 hover:shadow-lg" padding="lg">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--primary)]/10 flex items-center justify-center group-hover:bg-[var(--primary)]/20 transition-colors">
+                  <svg className="w-8 h-8 text-[var(--primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-display italic text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">{tHome('services.manifattura.title')}</h3>
+                <p className="mt-3 text-sm text-[var(--muted)]">
+                  {tHome('services.manifattura.description')}
+                </p>
+              </Card>
+            </Link>
+
+            {/* Compra-Vendita Card */}
+            <Link href="/services#compravendita" className="group block">
+              <Card className="h-full text-center hover:border-[var(--primary)] transition-all duration-300 hover:shadow-lg" padding="lg">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--primary)]/10 flex items-center justify-center group-hover:bg-[var(--primary)]/20 transition-colors">
+                  <svg className="w-8 h-8 text-[var(--primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-display italic text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">{tHome('services.compravendita.title')}</h3>
+                <p className="mt-3 text-sm text-[var(--muted)]">
+                  {tHome('services.compravendita.description')}
+                </p>
+              </Card>
+            </Link>
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link href="/services">
+              <Button variant="secondary">{tHome('services.viewAll')}</Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Products Section */}
       <section className="baroque-section bg-[var(--background-alt)] py-20">
         {/* Subtle baroque corners */}

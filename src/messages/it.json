@@ -73,6 +73,24 @@
             "restored": "Restauri Effettuati",
             "italian": "Manifattura Italiana",
             "quality": "Autenticità e qualità senza tempo"
+        },
+        "services": {
+            "label": "I Nostri Servizi",
+            "title": "Cosa Offriamo",
+            "subtitle": "Scopri i nostri servizi di restauro, manifattura artigianale e compravendita di mobili antichi.",
+            "restauro": {
+                "title": "Restauro",
+                "description": "Restauro professionale di mobili antichi con tecniche tradizionali."
+            },
+            "manifattura": {
+                "title": "Manifattura",
+                "description": "Realizziamo mobili su misura secondo le tue specifiche."
+            },
+            "compravendita": {
+                "title": "Compra-Vendita",
+                "description": "Acquistiamo e vendiamo mobili antichi e pezzi di pregio."
+            },
+            "viewAll": "Scopri tutti i Servizi"
         }
     },
     "shop": {

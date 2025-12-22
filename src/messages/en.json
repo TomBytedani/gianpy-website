@@ -73,6 +73,24 @@
             "restored": "Restorations",
             "italian": "Italian Excellence",
             "quality": "Authenticity and timeless quality"
+        },
+        "services": {
+            "label": "Our Services",
+            "title": "What We Offer",
+            "subtitle": "Discover our restoration, artisanal manufacturing, and antique furniture trading services.",
+            "restauro": {
+                "title": "Restoration",
+                "description": "Professional restoration of antique furniture using traditional techniques."
+            },
+            "manifattura": {
+                "title": "Manufacturing",
+                "description": "We create custom furniture according to your specifications."
+            },
+            "compravendita": {
+                "title": "Buy & Sell",
+                "description": "We buy and sell antique furniture and fine pieces."
+            },
+            "viewAll": "Discover all Services"
         }
     },
     "shop": {
