@@ -143,7 +143,7 @@ export default function Home() {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
-              <Link href="/shop">
+              <Link href="/services">
                 <Button variant="primary" size="lg">
                   {tHome('hero.cta')}
                 </Button>

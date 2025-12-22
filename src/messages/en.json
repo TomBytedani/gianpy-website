@@ -284,6 +284,37 @@
             "shipping": "Secure Shipping"
         }
     },
+    "services": {
+        "hero": {
+            "label": "Our Services",
+            "title": "Services",
+            "subtitle": "Discover our restoration, artisanal manufacturing, and antique furniture trading services."
+        },
+        "quickNav": {
+            "title": "Our Services",
+            "restauro": "Restoration",
+            "manifattura": "Manufacturing",
+            "compravendita": "Buy & Sell"
+        },
+        "restauro": {
+            "title": "Restoration",
+            "description": "Professional restoration of antique furniture, wooden and painted works using traditional techniques. Each intervention respects the history and originality of the piece, using quality materials and artisanal methods passed down through generations.",
+            "prima": "Before",
+            "dopo": "After"
+        },
+        "manifattura": {
+            "title": "Manufacturing",
+            "description": "We create custom furniture according to your specifications. It is possible to request personalized furniture pieces with the same artisanal care as our restorations. Each creation combines tradition and design to meet your needs."
+        },
+        "compravendita": {
+            "title": "Buy & Sell",
+            "description": "We buy and sell antique furniture and fine pieces. A curated selection of restored antiques, ready to enrich your home. Each piece is carefully selected to guarantee authenticity and quality."
+        },
+        "cta": {
+            "contact": "Contact Us",
+            "viewCollection": "View Collection"
+        }
+    },
     "auth": {
         "signIn": "Sign In",
         "signOut": "Sign Out",

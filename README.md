@@ -12,6 +12,7 @@
 ## ✨ Features
 
 - 🛒 **E-commerce Platform** — Browse, filter, and purchase unique antique furniture pieces
+- 🔧 **Services Page** — Dedicated page showcasing restoration, manufacturing, and buy/sell services
 - 🌍 **Internationalization** — Full Italian and English language support with `next-intl`
 - 🔐 **Authentication** — Secure user accounts with NextAuth.js (Email + Google OAuth)
 - 💳 **Stripe Payments** — Secure checkout with Stripe integration
@@ -132,6 +133,7 @@ src/
 ├── app/                    # Next.js App Router
 │   ├── [locale]/          # Internationalized routes
 │   │   ├── admin/         # Admin dashboard
+│   │   ├── services/      # Services page (Restauro, Manifattura, Compra-Vendita)
 │   │   ├── shop/          # Product listing & details
 │   │   ├── account/       # User account pages
 │   │   └── ...

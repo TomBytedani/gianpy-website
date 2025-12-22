@@ -284,6 +284,37 @@
             "shipping": "Spedizione Sicura"
         }
     },
+    "services": {
+        "hero": {
+            "label": "I Nostri Servizi",
+            "title": "Servizi",
+            "subtitle": "Scopri i nostri servizi di restauro, manifattura artigianale e compravendita di mobili antichi."
+        },
+        "quickNav": {
+            "title": "I Nostri Servizi",
+            "restauro": "Restauro",
+            "manifattura": "Manifattura",
+            "compravendita": "Compra-Vendita"
+        },
+        "restauro": {
+            "title": "Restauro",
+            "description": "Restauro professionale di mobili antichi, opere lignee e pittoriche con tecniche tradizionali. Ogni intervento rispetta la storia e l'originalità del pezzo, utilizzando materiali di qualità e metodi artigianali tramandati nel tempo.",
+            "prima": "Prima",
+            "dopo": "Dopo"
+        },
+        "manifattura": {
+            "title": "Manifattura",
+            "description": "Realizziamo mobili su misura secondo le tue specifiche. È possibile richiedere pezzi d'arredo personalizzati con la stessa cura artigianale dei nostri restauri. Ogni creazione unisce tradizione e design per soddisfare le tue esigenze."
+        },
+        "compravendita": {
+            "title": "Compra-Vendita",
+            "description": "Acquistiamo e vendiamo mobili antichi e pezzi di pregio. Selezione curata di antiquariato restaurato, pronto per arricchire la tua casa. Ogni pezzo è selezionato con cura per garantire autenticità e qualità."
+        },
+        "cta": {
+            "contact": "Contattaci",
+            "viewCollection": "Scopri la Collezione"
+        }
+    },
     "auth": {
         "signIn": "Accedi",
         "signOut": "Esci",
