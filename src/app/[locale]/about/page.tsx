@@ -4,6 +4,9 @@ import { Card, Button } from '@/components/ui';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 
+// R2 public URL for static assets
+const R2_PUBLIC_URL = 'https://pub-c08ae0de86f94e598029df0900cc46b3.r2.dev';
+
 export default function AboutPage() {
     const t = useTranslations('about');
     const tCommon = useTranslations('common.buttons');
@@ -44,16 +47,14 @@ export default function AboutPage() {
             <section className="py-20">
                 <div className="container-elegant">
                     <div className="grid gap-16 lg:grid-cols-2 lg:items-start">
-                        {/* Image Placeholder */}
+                        {/* Image */}
                         <div className="relative">
                             <div className="aspect-[4/5] bg-gradient-to-br from-[#d4c5a9] to-[#a89670] rounded-lg overflow-hidden">
-                                <div className="w-full h-full flex items-center justify-center">
-                                    <svg className="w-24 h-24 text-[var(--background)]/30" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth="1" />
-                                        <circle cx="8.5" cy="8.5" r="1.5" strokeWidth="1" />
-                                        <path d="M21 15l-5-5L5 21" strokeWidth="1" />
-                                    </svg>
-                                </div>
+                                <img
+                                    src={`${R2_PUBLIC_URL}/carlo-e-candela.jpeg`}
+                                    alt="Carlo Barbaglia"
+                                    className="w-full h-full object-cover"
+                                />
                             </div>
                             {/* Decorative frame */}
                             <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-[var(--primary)] rounded-lg -z-10" />
