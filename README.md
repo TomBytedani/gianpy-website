@@ -6,6 +6,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?style=flat-square&logo=prisma)](https://www.prisma.io/)
 [![Stripe](https://img.shields.io/badge/Stripe-Payments-635bff?style=flat-square&logo=stripe)](https://stripe.com/)
+[![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red?style=flat-square)](LICENSE)
 
 ---
 
@@ -179,9 +180,20 @@ This project is optimized for deployment on **Vercel**:
 
 ---
 
-## 📄 License
+## 📜 License
 
-This project is proprietary software. All rights reserved.
+This project is **proprietary software** developed for Antichità Barbaglia. The source code is publicly visible for **portfolio and educational purposes only**.
+
+- ✅ **Viewing & Learning**: You may view the code for educational purposes
+- ✅ **Attribution**: Screenshots and references allowed with credit
+- ❌ **No Commercial Use**: Cannot be used for production without permission
+- ❌ **No Redistribution**: Cannot copy, modify, or redistribute
+
+For licensing inquiries, collaboration opportunities, or custom development:
+
+📧 **brindatommy@gmail.com**
+
+See [LICENSE](LICENSE) for full terms and conditions.
 
 ---
 
