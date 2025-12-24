@@ -75,20 +75,20 @@
             "quality": "Autenticità e qualità senza tempo"
         },
         "services": {
-            "label": "I Nostri Servizi",
-            "title": "Cosa Offriamo",
-            "subtitle": "Scopri i nostri servizi di restauro, manifattura artigianale e compravendita di mobili antichi.",
+            "label": " ",
+            "title": "I Nostri Servizi",
+            "subtitle": " ",
             "restauro": {
                 "title": "Restauro",
-                "description": "Restauro professionale di mobili antichi con tecniche tradizionali."
+                "description": "Restauro professionale di manufatti lignei e pittorici con tecniche tradizionali."
             },
             "manifattura": {
                 "title": "Manifattura",
-                "description": "Realizziamo mobili su misura secondo le tue specifiche."
+                "description": "Realizziamo espositori e pareti insonorizzate per uffici ed attività commerciali."
             },
             "compravendita": {
                 "title": "Compra-Vendita",
-                "description": "Acquistiamo e vendiamo mobili antichi e pezzi di pregio."
+                "description": "Assistenza e gestione della compravendita di pezzi d'antiquariato."
             },
             "viewAll": "Scopri tutti i Servizi"
         }
@@ -271,10 +271,10 @@
         "story": {
             "subtitle": "Maestro Restauratore",
             "name": "Carlo Barbaglia",
-            "content2": "Fondata nel 1990 da Marco Bianchi, la nostra azienda nasce da una profonda passione per l'arte e l'artigianato italiano. Ogni pezzo che selezioniamo racconta una storia unica di maestria, bellezza e autenticità."
+            "content2": "Dal 2005 è dedito al restauro e al recupero di opere d'arte e manufatti di pregio. Alla formazione maturata nelle botteghe artigiane di Milano, si è affiancata l'esperienza guadagnata con la soddisfazione dei propri clienti."
         },
         "philosophy": {
-            "content": "Selezioniamo con cura pezzi autentici e di pregio, combinando esperienza e passione per offrire mobili d'epoca unici e di valore."
+            "content": "Preservare l'autenticità restituendo l'originale splendore ad ogni pezzo."
         },
         "values": {
             "title": "I Nostri Valori",
@@ -288,12 +288,12 @@
             },
             "experience": {
                 "title": "Esperienza",
-                "description": "Oltre 30 anni di esperienza nel settore dell'antiquariato"
+                "description": "Oltre 20 anni di esperienza nel settore dell'antiquariato"
             }
         },
         "workshop": {
-            "title": "Il Laboratorio",
-            "description": "Nel nostro laboratorio nel cuore della Brianza, lavoriamo con passione per restaurare e valorizzare mobili antichi. Ogni restauro rispetta la storia e l'originalità del pezzo, utilizzando tecniche tradizionali e materiali di qualità."
+            "title": "I miei Collaboratori",
+            "description": "Antichità Barbaglia collabora con una fitta rete di mastri artigiani in grado di gestire ogni sfida che il tempo ha impresso sulle opere che ci affidate."
         },
         "stats": {
             "experience": "Anni di Esperienza",
@@ -304,8 +304,8 @@
     },
     "services": {
         "hero": {
-            "label": "I Nostri Servizi",
-            "title": "Servizi",
+            "label": " ",
+            "title": "I Nostri Servizi",
             "subtitle": "Scopri i nostri servizi di restauro, manifattura artigianale e compravendita di mobili antichi."
         },
         "quickNav": {
@@ -316,17 +316,17 @@
         },
         "restauro": {
             "title": "Restauro",
-            "description": "Restauro professionale di mobili antichi, opere lignee e pittoriche con tecniche tradizionali. Ogni intervento rispetta la storia e l'originalità del pezzo, utilizzando materiali di qualità e metodi artigianali tramandati nel tempo.",
+            "description": "Ogni intervento rispetta la storia e l'originalità del pezzo, utilizzando materiali di qualità e metodi tradizionali del restauro italiano. I nostri lavori includono: porte e portoni in legno, mobili, divani e poltrone, opere pittoriche, affreschi, cassettoni e travi in legno.",
             "prima": "Prima",
             "dopo": "Dopo"
         },
         "manifattura": {
             "title": "Manifattura",
-            "description": "Realizziamo mobili su misura secondo le tue specifiche. È possibile richiedere pezzi d'arredo personalizzati con la stessa cura artigianale dei nostri restauri. Ogni creazione unisce tradizione e design per soddisfare le tue esigenze."
+            "description": "Realizziamo espositori personalizzati e pareti divisorie insonorizzate per studi, uffici e negozi con materiali performanti e rispettosi dell'ambiente."
         },
         "compravendita": {
             "title": "Compra-Vendita",
-            "description": "Acquistiamo e vendiamo mobili antichi e pezzi di pregio. Selezione curata di antiquariato restaurato, pronto per arricchire la tua casa. Ogni pezzo è selezionato con cura per garantire autenticità e qualità."
+            "description": "Forniamo assistenza nella compra-vendita di manufatti artistici e arredo di pregio. La combinazione con interventi di restauro permette di raggiungere il vostro standard qualitativo e valorizzare al meglio il prodotto."
         },
         "cta": {
             "contact": "Contattaci",

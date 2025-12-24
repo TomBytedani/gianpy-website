@@ -75,22 +75,22 @@
             "quality": "Authenticity and timeless quality"
         },
         "services": {
-            "label": "Our Services",
-            "title": "What We Offer",
-            "subtitle": "Discover our restoration, artisanal manufacturing, and antique furniture trading services.",
+            "label": " ",
+            "title": "Our Services",
+            "subtitle": " ",
             "restauro": {
                 "title": "Restoration",
-                "description": "Professional restoration of antique furniture using traditional techniques."
+                "description": "Professional restoration of wooden and painted artifacts using traditional techniques."
             },
-            "manifattura": {
+            "manufacturing": {
                 "title": "Manufacturing",
-                "description": "We create custom furniture according to your specifications."
+                "description": "We create display units and soundproof walls for offices and commercial businesses."
             },
-            "compravendita": {
+            "buying and selling": {
                 "title": "Buy & Sell",
-                "description": "We buy and sell antique furniture and fine pieces."
+                "description": "Assistance and management of the purchase and sale of antiques."
             },
-            "viewAll": "Discover all Services"
+            "viewAll": "Discover all our Services"
         }
     },
     "shop": {
@@ -271,10 +271,10 @@
         "story": {
             "subtitle": "Master Restorer",
             "name": "Carlo Barbaglia",
-            "content2": "Founded in 1990 by Marco Bianchi, our company was born from a deep passion for art and Italian craftsmanship. Each piece we select tells a unique story of skill, beauty and authenticity."
+            "content2": "Since 2005, he has been dedicated to the restoration and recovery of works of art and valuable artifacts. He has combined his training in Milan's artisan workshops with the experience gained through customer satisfaction."
         },
         "philosophy": {
-            "content": "We carefully select authentic pieces of distinction, combining experience and passion to offer unique and valuable period furniture."
+            "content": "Preserving authenticity by restoring the original splendor of each piece."
         },
         "values": {
             "title": "Our Values",
@@ -288,12 +288,12 @@
             },
             "experience": {
                 "title": "Experience",
-                "description": "Over 30 years of experience in the antiques sector"
+                "description": "Over 20 years of experience in the antiques sector"
             }
         },
         "workshop": {
-            "title": "The Workshop",
-            "description": "In our workshop in the heart of Brianza, we work with passion to restore and enhance antique furniture. Each restoration respects the history and originality of the piece, using traditional techniques and quality materials."
+            "title": "Partners",
+            "description": "Antichità Barbaglia collaborates with a dense network of master craftsmen capable of handling every challenge that time has left on the works you entrust to us."
         },
         "stats": {
             "experience": "Years of Experience",
@@ -304,7 +304,7 @@
     },
     "services": {
         "hero": {
-            "label": "Our Services",
+            "label": " ",
             "title": "Services",
             "subtitle": "Discover our restoration, artisanal manufacturing, and antique furniture trading services."
         },
@@ -316,17 +316,17 @@
         },
         "restauro": {
             "title": "Restoration",
-            "description": "Professional restoration of antique furniture, wooden and painted works using traditional techniques. Each intervention respects the history and originality of the piece, using quality materials and artisanal methods passed down through generations.",
+            "description": "Each intervention respects the history and originality of the piece, using quality materials and traditional Italian restoration methods. Our work includes: wooden doors and gates, furniture, sofas and armchairs, paintings, frescoes, coffered ceilings, and wooden beams.",
             "prima": "Before",
             "dopo": "After"
         },
         "manifattura": {
             "title": "Manufacturing",
-            "description": "We create custom furniture according to your specifications. It is possible to request personalized furniture pieces with the same artisanal care as our restorations. Each creation combines tradition and design to meet your needs."
+            "description": "We create personalised display units and soundproof walls for studios, offices, and shops using efficient, environmentally friendly materials."
         },
         "compravendita": {
             "title": "Buy & Sell",
-            "description": "We buy and sell antique furniture and fine pieces. A curated selection of restored antiques, ready to enrich your home. Each piece is carefully selected to guarantee authenticity and quality."
+            "description": "We provide assistance in the purchase and sale of artistic artifacts and fine furnishings. Combining these services with restoration services allows us to achieve your quality standards and maximize the value of your piece."
         },
         "cta": {
             "contact": "Contact Us",
