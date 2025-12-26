@@ -94,8 +94,8 @@
         }
     },
     "shop": {
-        "title": "La Collezione",
-        "pageTitle": "Shop",
+        "title": " ",
+        "pageTitle": "La Nostra Collezione",
         "subtitle": "Ogni oggetto racconta la sua storia di eleganza e maestria artigianale.",
         "searchPlaceholder": "Cerca",
         "filters": {
@@ -222,7 +222,7 @@
     "contact": {
         "title": "Domande?",
         "subtitle": "Inviaci un Messaggio",
-        "description": "Siamo a disposizione per qualsiasi domanda o richiesta di informazioni sui nostri Servizi o la nostra Collezione.",
+        "description": "Siamo a disposizione per qualsiasi domanda o richiesta di informazioni sui nostri Servizi o sulla nostra Collezione.",
         "form": {
             "title": "Inviaci un Messaggio",
             "name": "Nome",
@@ -264,8 +264,8 @@
     },
     "about": {
         "hero": {
-            "label": "La Nostra Storia",
-            "title": "Chi Siamo",
+            "label": " ",
+            "title": "La Nostra Storia",
             "subtitle": "Passione, esperienza e autenticità al servizio del bello da oltre vent'anni."
         },
         "story": {
@@ -279,16 +279,16 @@
         "values": {
             "title": "I Nostri Valori",
             "passion": {
-                "title": "Passione",
-                "description": "Ogni pezzo è selezionato con amore e dedizione per l'arte dell'antiquariato"
+                "title": "Competenza & Passione",
+                "description": "Ogni restauro è guidato dalla competenza e dalla passione per la valorizzazione del patrimonio culturale"
             },
             "authenticity": {
                 "title": "Autenticità",
-                "description": "Garantiamo l'autenticità e la provenienza di ogni pezzo"
+                "description": "Ogni intervento viene effettuato con cura e attenzione per salvaguardare l'autenticità del pezzo tramite la selezione delle tecniche di recupero"
             },
             "experience": {
                 "title": "Esperienza",
-                "description": "Oltre 20 anni di esperienza nel settore dell'antiquariato"
+                "description": "Oltre 20 anni di esperienza e soddisfazioni nel settore dell'antiquariato e del restauro"
             }
         },
         "workshop": {

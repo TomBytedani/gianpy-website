@@ -94,9 +94,9 @@
         }
     },
     "shop": {
-        "title": "The Collection",
-        "pageTitle": "Shop",
-        "subtitle": "Each piece of furniture tells a story of elegance and artisan mastery.",
+        "title": " ",
+        "pageTitle": "Our Collection",
+        "subtitle": "Each piece tells a story of elegance and artisan mastery.",
         "searchPlaceholder": "Search",
         "filters": {
             "title": "Filters",
@@ -264,8 +264,8 @@
     },
     "about": {
         "hero": {
-            "label": "Our Story",
-            "title": "Who We Are",
+            "label": " ",
+            "title": "Our Story",
             "subtitle": "Passion, experience and authenticity at the service of beauty for over twenty years."
         },
         "story": {
@@ -279,16 +279,16 @@
         "values": {
             "title": "Our Values",
             "passion": {
-                "title": "Passion",
-                "description": "Every piece is selected with love and dedication for the art of antiquing"
+                "title": "Competence & Passion",
+                "description": "Each restoration is guided by expertise and a passion for enhancing cultural heritage"
             },
             "authenticity": {
                 "title": "Authenticity",
-                "description": "We guarantee the authenticity and provenance of each piece"
+                "description": "Each intervention is carried out with care and attention to safeguard the authenticity of the piece through the selection of recovery techniques."
             },
             "experience": {
                 "title": "Experience",
-                "description": "Over 20 years of experience in the antiques sector"
+                "description": "Over 20 years of experience and satisfaction in the antiques and restoration sector"
             }
         },
         "workshop": {
