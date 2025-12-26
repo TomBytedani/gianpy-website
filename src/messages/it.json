@@ -100,6 +100,7 @@
         "searchPlaceholder": "Cerca",
         "filters": {
             "title": "Filtri",
+            "search": "Cerca",
             "category": "Categoria",
             "allCategories": "Tutte le Categorie",
             "price": "Prezzo (€)",
@@ -293,7 +294,15 @@
         },
         "workshop": {
             "title": "I miei Collaboratori",
-            "description": "Antichità Barbaglia collabora con una fitta rete di mastri artigiani in grado di gestire ogni sfida che il tempo ha impresso sulle opere che ci affidate."
+            "description": "Antichità Barbaglia collabora con una fitta rete di mastri artigiani in grado di gestire ogni sfida che il tempo ha impresso sulle opere che ci affidate.",
+            "services": {
+                "conservativeRestoration": "Restauro conservativo e filologico",
+                "gilding": "Doratura e argentatura a foglia",
+                "traditionalPolishing": "Lucidatura tradizionale a gommalacca",
+                "intarsia": "Intarsio e marqueterie",
+                "upholstery": "Tappezzeria e imbottitura storica",
+                "consulting": "Consulenza e perizie"
+            }
         },
         "stats": {
             "experience": "Anni di Esperienza",

@@ -100,7 +100,7 @@ function FilterSidebar({
         <div className="space-y-6">
             {/* Search */}
             <div>
-                <label className="block text-sm font-medium text-[var(--foreground)] mb-2">{tShop('filters.category')}</label>
+                <label className="block text-sm font-medium text-[var(--foreground)] mb-2">{tShop('filters.search')}</label>
                 <Input
                     placeholder={tShop('searchPlaceholder')}
                     value={searchQuery}
@@ -119,7 +119,7 @@ function FilterSidebar({
                             value="all"
                             checked={selectedCategory === 'all'}
                             onChange={(e) => setSelectedCategory(e.target.value)}
-                            className="w-4 h-4 text-[var(--primary)] border-[var(--border)] focus:ring-[var(--primary)]"
+                            className="w-4 h-4 text-[var(--primary)] border-[var(--border)] focus:ring-[var(--primary)] accent-[var(--primary)]"
                         />
                         <span className="text-sm text-[var(--muted)] group-hover:text-[var(--foreground)] transition-colors">
                             {tShop('filters.allCategories')}
@@ -142,7 +142,7 @@ function FilterSidebar({
                                     value={category.name}
                                     checked={selectedCategory === category.name}
                                     onChange={(e) => setSelectedCategory(e.target.value)}
-                                    className="w-4 h-4 text-[var(--primary)] border-[var(--border)] focus:ring-[var(--primary)]"
+                                    className="w-4 h-4 text-[var(--primary)] border-[var(--border)] focus:ring-[var(--primary)] accent-[var(--primary)]"
                                 />
                                 <span className="text-sm text-[var(--muted)] group-hover:text-[var(--foreground)] transition-colors">
                                     {getCategoryDisplayName(category)}
@@ -164,7 +164,7 @@ function FilterSidebar({
                             value="all"
                             checked={selectedStatus === 'all'}
                             onChange={(e) => setSelectedStatus(e.target.value)}
-                            className="w-4 h-4 text-[var(--primary)] border-[var(--border)] focus:ring-[var(--primary)]"
+                            className="w-4 h-4 text-[var(--primary)] border-[var(--border)] focus:ring-[var(--primary)] accent-[var(--primary)]"
                         />
                         <span className="text-sm text-[var(--muted)] group-hover:text-[var(--foreground)] transition-colors">
                             {tShop('filters.allStatuses')}
@@ -181,7 +181,7 @@ function FilterSidebar({
                                 value={status}
                                 checked={selectedStatus === status}
                                 onChange={(e) => setSelectedStatus(e.target.value)}
-                                className="w-4 h-4 text-[var(--primary)] border-[var(--border)] focus:ring-[var(--primary)]"
+                                className="w-4 h-4 text-[var(--primary)] border-[var(--border)] focus:ring-[var(--primary)] accent-[var(--primary)]"
                             />
                             <span className="text-sm text-[var(--muted)] group-hover:text-[var(--foreground)] transition-colors">
                                 {tShop(`statusOptions.${status}`)}

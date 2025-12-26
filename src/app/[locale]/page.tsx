@@ -193,7 +193,7 @@ export default function Home() {
 
           <div className="grid gap-8 md:grid-cols-3">
             {/* Restauro Card */}
-            <Link href="/services#restauro" className="group block">
+            <Link href="/services#restauro" className="group block h-full">
               <Card className="h-full text-center hover:border-[var(--primary)] transition-all duration-300 hover:shadow-lg" padding="lg">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--primary)]/10 flex items-center justify-center group-hover:bg-[var(--primary)]/20 transition-colors">
                   <svg className="w-8 h-8 text-[var(--primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -208,7 +208,7 @@ export default function Home() {
             </Link>
 
             {/* Manifattura Card */}
-            <Link href="/services#manifattura" className="group block">
+            <Link href="/services#manifattura" className="group block h-full">
               <Card className="h-full text-center hover:border-[var(--primary)] transition-all duration-300 hover:shadow-lg" padding="lg">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--primary)]/10 flex items-center justify-center group-hover:bg-[var(--primary)]/20 transition-colors">
                   <svg className="w-8 h-8 text-[var(--primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -223,7 +223,7 @@ export default function Home() {
             </Link>
 
             {/* Compra-Vendita Card */}
-            <Link href="/services#compravendita" className="group block">
+            <Link href="/services#compravendita" className="group block h-full">
               <Card className="h-full text-center hover:border-[var(--primary)] transition-all duration-300 hover:shadow-lg" padding="lg">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--primary)]/10 flex items-center justify-center group-hover:bg-[var(--primary)]/20 transition-colors">
                   <svg className="w-8 h-8 text-[var(--primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

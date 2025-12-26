@@ -1,11 +1,40 @@
 'use client';
 
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Card, Button, Input, Textarea, Select } from '@/components/ui';
 import { useTranslations, useLocale } from 'next-intl';
 import { useSiteSettings } from '@/hooks/useSiteSettings';
+
+// Dynamic import to avoid SSR issues with Leaflet
+const InteractiveMap = dynamic(
+    () => import('@/components/ui/InteractiveMap'),
+    {
+        ssr: false,
+        loading: () => (
+            <div className="aspect-[21/9] bg-gradient-to-br from-[#d4c5a9] to-[#a89670] rounded-lg flex items-center justify-center animate-pulse">
+                <div className="text-center text-[var(--background)]/50">
+                    <svg
+                        className="w-12 h-12 mx-auto mb-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1}
+                            d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+                        />
+                    </svg>
+                    <span className="text-sm">Loading map...</span>
+                </div>
+            </div>
+        )
+    }
+);
 
 export default function ContactPage() {
     const t = useTranslations('contact');
@@ -381,28 +410,18 @@ export default function ContactPage() {
                 </div>
             </section>
 
-            {/* Map Section (Placeholder) */}
+            {/* Interactive Map Section */}
             <section className="pb-16">
                 <div className="container-elegant">
-                    <div className="aspect-[21/9] bg-gradient-to-br from-[#d4c5a9] to-[#a89670] rounded-lg flex items-center justify-center">
-                        <div className="text-center text-[var(--background)]/50">
-                            <svg
-                                className="w-16 h-16 mx-auto mb-4"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={1}
-                                    d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-                                />
-                            </svg>
-                            <p className="text-sm">Interactive map</p>
-                            <p className="text-xs">Via Roma 123, Firenze</p>
-                        </div>
-                    </div>
+                    <InteractiveMap
+                        address={settings?.address || 'Milano, 20134'}
+                        city={settings?.city || 'MI'}
+                        country={settings?.country || 'Italia'}
+                        markerLabel={locale === 'en' ? 'Barbaglia Antiques' : 'Antichità Barbaglia'}
+                        lat={45.4642}
+                        lng={9.1900}
+                        zoom={15}
+                    />
                 </div>
             </section>
 

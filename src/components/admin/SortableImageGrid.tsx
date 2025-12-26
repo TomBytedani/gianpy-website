@@ -217,7 +217,7 @@ export default function SortableImageGrid({
             {/* Reorder hint */}
             {images.length > 1 && !disabled && (
                 <p className="text-xs text-[var(--muted)] mt-3 text-center">
-                    💡 Drag images to reorder. The first image is used as the product thumbnail.
+                    💡 Drag images to reorder. Click the star to set the primary image (used as product thumbnail).
                 </p>
             )}
         </DndContext>

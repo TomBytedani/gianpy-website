@@ -82,11 +82,11 @@
                 "title": "Restoration",
                 "description": "Professional restoration of wooden and painted artifacts using traditional techniques."
             },
-            "manufacturing": {
+            "manifattura": {
                 "title": "Manufacturing",
                 "description": "We create display units and soundproof walls for offices and commercial businesses."
             },
-            "buying and selling": {
+            "compravendita": {
                 "title": "Buy & Sell",
                 "description": "Assistance and management of the purchase and sale of antiques."
             },
@@ -100,6 +100,7 @@
         "searchPlaceholder": "Search",
         "filters": {
             "title": "Filters",
+            "search": "Search",
             "category": "Category",
             "allCategories": "All Categories",
             "price": "Price (€)",
@@ -293,7 +294,15 @@
         },
         "workshop": {
             "title": "Partners",
-            "description": "Antichità Barbaglia collaborates with a dense network of master craftsmen capable of handling every challenge that time has left on the works you entrust to us."
+            "description": "Antichità Barbaglia collaborates with a dense network of master craftsmen capable of handling every challenge that time has left on the works you entrust to us.",
+            "services": {
+                "conservativeRestoration": "Conservative and philological restoration",
+                "gilding": "Gold and silver leaf gilding",
+                "traditionalPolishing": "Traditional shellac polishing",
+                "intarsia": "Inlay and marquetry",
+                "upholstery": "Upholstery and historical padding",
+                "consulting": "Consulting and appraisals"
+            }
         },
         "stats": {
             "experience": "Years of Experience",

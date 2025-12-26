@@ -114,6 +114,16 @@ export default function ProductDetailPage() {
         }
     }, [slug]);
 
+    // Set initial selected image to the primary image when product loads
+    useEffect(() => {
+        if (product?.images && product.images.length > 0) {
+            const primaryIndex = product.images.findIndex(img => img.isPrimary);
+            if (primaryIndex !== -1) {
+                setSelectedImage(primaryIndex);
+            }
+        }
+    }, [product?.images]);
+
     // Check if product is in wishlist when page loads
     useEffect(() => {
         async function checkWishlistStatus() {
@@ -409,15 +419,15 @@ export default function ProductDetailPage() {
                                 )}
                             </div>
 
-                            {/* Thumbnails */}
+                            {/* Thumbnails - horizontal scroll on mobile, grid on larger screens */}
                             {productImages.length > 1 && (
-                                <div className="grid grid-cols-4 gap-3">
+                                <div className="flex sm:grid sm:grid-cols-4 gap-3 overflow-x-auto pb-2 sm:pb-0 sm:overflow-visible scrollbar-hide">
                                     {productImages.map((image, index) => (
                                         <button
                                             key={image.id}
                                             type="button"
                                             onClick={() => setSelectedImage(index)}
-                                            className={`aspect-square rounded-md overflow-hidden border-2 transition-colors ${selectedImage === index
+                                            className={`aspect-square rounded-md overflow-hidden border-2 transition-colors flex-shrink-0 w-20 sm:w-auto ${selectedImage === index
                                                 ? 'border-[var(--primary)]'
                                                 : 'border-transparent hover:border-[var(--border)]'
                                                 }`}
@@ -428,7 +438,7 @@ export default function ProductDetailPage() {
                                                     alt={image.alt || getLocalizedTitle()}
                                                     fill
                                                     className={`object-cover ${product.status === 'SOLD' ? 'grayscale-[30%]' : ''}`}
-                                                    sizes="(max-width: 768px) 25vw, 120px"
+                                                    sizes="(max-width: 768px) 80px, 120px"
                                                 />
                                             </div>
                                         </button>

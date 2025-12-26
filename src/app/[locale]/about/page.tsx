@@ -84,7 +84,6 @@ export default function AboutPage() {
             <section className="py-20 bg-[var(--background-alt)]">
                 <div className="container-elegant">
                     <div className="text-center mb-12">
-                        <span className="font-display text-2xl text-[var(--primary)] block mb-2">{t('values.title')}</span>
                         <h2 className="text-[var(--foreground)]">{t('values.title')}</h2>
                     </div>
 
@@ -133,8 +132,7 @@ export default function AboutPage() {
                 <div className="container-elegant">
                     <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
                         <div>
-                            <span className="font-display text-2xl text-[var(--primary)]">{t('workshop.title')}</span>
-                            <h2 className="mt-2 text-[var(--foreground)]">{t('workshop.title')}</h2>
+                            <h2 className="text-[var(--foreground)]">{t('workshop.title')}</h2>
 
                             <p className="mt-6 text-[var(--muted)] leading-relaxed">
                                 {t('workshop.description')}
