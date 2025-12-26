@@ -315,17 +315,17 @@
             "compravendita": "Compra-Vendita"
         },
         "restauro": {
-            "title": " ",
+            "title": "Restauro",
             "description": "Ogni intervento rispetta la storia e l'originalità del pezzo, utilizzando materiali di qualità e metodi tradizionali del restauro italiano. I nostri lavori includono: porte e portoni in legno, mobili, divani e poltrone, opere pittoriche, affreschi, cassettoni e travi in legno.",
             "prima": "Prima",
             "dopo": "Dopo"
         },
         "manifattura": {
-            "title": " ",
+            "title": "Manifattura",
             "description": "Realizziamo espositori personalizzati e pareti divisorie insonorizzate per studi, uffici e negozi con materiali performanti e rispettosi dell'ambiente."
         },
         "compravendita": {
-            "title": " ",
+            "title": "Compra-Vendita",
             "description": "Forniamo assistenza nella compra-vendita di manufatti artistici e arredo di pregio. La combinazione con interventi di restauro permette di raggiungere il vostro standard qualitativo e valorizzare al meglio il prodotto."
         },
         "cta": {

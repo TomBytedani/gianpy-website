@@ -315,17 +315,17 @@
             "compravendita": "Buy & Sell"
         },
         "restauro": {
-            "title": " ",
+            "title": "Restoration",
             "description": "Each intervention respects the history and originality of the piece, using quality materials and traditional Italian restoration methods. Our work includes: wooden doors and gates, furniture, sofas and armchairs, paintings, frescoes, coffered ceilings, and wooden beams.",
             "prima": "Before",
             "dopo": "After"
         },
         "manifattura": {
-            "title": " ",
+            "title": "Manufacturing",
             "description": "We create personalised display units and soundproof walls for studios, offices, and shops using efficient, environmentally friendly materials."
         },
         "compravendita": {
-            "title": " ",
+            "title": "Buy & Sell",
             "description": "We provide assistance in the purchase and sale of artistic artifacts and fine furnishings. Combining these services with restoration services allows us to achieve your quality standards and maximize the value of your piece."
         },
         "cta": {

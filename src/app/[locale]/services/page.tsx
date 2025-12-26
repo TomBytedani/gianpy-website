@@ -65,7 +65,7 @@ export default function ServicesPage() {
                         >
                             <div className="w-14 h-14 mb-4 rounded-full bg-[var(--primary)]/10 flex items-center justify-center group-hover:bg-[var(--primary)]/20 transition-colors">
                                 <svg className="w-7 h-7 text-[var(--primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
                                 </svg>
                             </div>
                             <h3 className="font-display text-xl text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">{t('quickNav.restauro')}</h3>
@@ -118,14 +118,13 @@ export default function ServicesPage() {
                             <div className="flex items-center gap-4 mb-6">
                                 <div className="w-12 h-12 rounded-full bg-[var(--primary)]/10 flex items-center justify-center">
                                     <svg className="w-6 h-6 text-[var(--primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
                                     </svg>
                                 </div>
                                 <div>
                                     <span className="font-display text-2xl text-[var(--primary)]">{t('restauro.title')}</span>
                                 </div>
                             </div>
-                            <h2 className="text-[var(--foreground)] mb-6">{t('restauro.title')}</h2>
                             <p className="text-[var(--muted)] leading-relaxed text-lg">
                                 {t('restauro.description')}
                             </p>
@@ -137,24 +136,24 @@ export default function ServicesPage() {
                                 <div className="absolute top-3 left-3 bg-[var(--background)]/90 backdrop-blur-sm px-3 py-1 rounded-full border border-[var(--border)] z-10">
                                     <span className="text-sm font-medium text-[var(--foreground)]">{t('restauro.prima')}</span>
                                 </div>
-                                <div className="aspect-[3/4] bg-gradient-to-br from-[#c9b896] to-[#a89670] rounded-xl overflow-hidden flex items-center justify-center">
-                                    <svg className="w-16 h-16 text-[var(--background)]/30" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth="1" />
-                                        <circle cx="8.5" cy="8.5" r="1.5" strokeWidth="1" />
-                                        <path d="M21 15l-5-5L5 21" strokeWidth="1" />
-                                    </svg>
+                                <div className="aspect-[3/4] bg-gradient-to-br from-[#c9b896] to-[#a89670] rounded-xl overflow-hidden">
+                                    <img
+                                        src={`${R2_PUBLIC_URL}/porta-prima.jpeg`}
+                                        alt={t('restauro.prima')}
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
                             </div>
                             <div className="relative">
                                 <div className="absolute top-3 left-3 bg-[var(--primary)] px-3 py-1 rounded-full z-10">
                                     <span className="text-sm font-medium text-white">{t('restauro.dopo')}</span>
                                 </div>
-                                <div className="aspect-[3/4] bg-gradient-to-br from-[#d4c5a9] to-[#b8a67d] rounded-xl overflow-hidden flex items-center justify-center">
-                                    <svg className="w-16 h-16 text-[var(--background)]/30" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth="1" />
-                                        <circle cx="8.5" cy="8.5" r="1.5" strokeWidth="1" />
-                                        <path d="M21 15l-5-5L5 21" strokeWidth="1" />
-                                    </svg>
+                                <div className="aspect-[3/4] bg-gradient-to-br from-[#d4c5a9] to-[#b8a67d] rounded-xl overflow-hidden">
+                                    <img
+                                        src={`${R2_PUBLIC_URL}/porta-dopo.jpeg`}
+                                        alt={t('restauro.dopo')}
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -189,7 +188,6 @@ export default function ServicesPage() {
                                     <span className="font-display text-2xl text-[var(--primary)]">{t('manifattura.title')}</span>
                                 </div>
                             </div>
-                            <h2 className="text-[var(--foreground)] mb-6">{t('manifattura.title')}</h2>
                             <p className="text-[var(--muted)] leading-relaxed text-lg">
                                 {t('manifattura.description')}
                             </p>
@@ -214,7 +212,6 @@ export default function ServicesPage() {
                                     <span className="font-display text-2xl text-[var(--primary)]">{t('compravendita.title')}</span>
                                 </div>
                             </div>
-                            <h2 className="text-[var(--foreground)] mb-6">{t('compravendita.title')}</h2>
                             <p className="text-[var(--muted)] leading-relaxed text-lg">
                                 {t('compravendita.description')}
                             </p>
