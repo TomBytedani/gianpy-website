@@ -27,6 +27,8 @@
   /* warm gray */
   --border: #e8e4de;
   /* soft beige */
+  --surface: #ffffff;
+  /* white surface for cards, sidebars, modals */
 
   /* Typography Fonts */
   --font-display: 'Playfair Display', Georgia, serif;
@@ -61,6 +63,7 @@
   --color-accent-alt: var(--accent-alt);
   --color-muted: var(--muted);
   --color-border: var(--border);
+  --color-surface: var(--surface);
 
   /* Typography */
   --font-display: var(--font-display);
