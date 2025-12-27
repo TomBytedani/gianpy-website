@@ -8,6 +8,8 @@ import { OrderConfirmationEmail } from './OrderConfirmationEmail';
 import { WishlistSoldEmail } from './WishlistSoldEmail';
 import { BackInStockEmail } from './BackInStockEmail';
 import { ContactFormReceiptEmail } from './ContactFormReceiptEmail';
+import { OrderShippedEmail } from './OrderShippedEmail';
+import { AdminNewOrderEmail } from './AdminNewOrderEmail';
 import * as React from 'react';
 
 /**
@@ -212,5 +214,132 @@ ${message}
 ---
 Rispondi direttamente a questa email per contattare il cliente.
         `.trim(),
+    });
+}
+
+/**
+ * Send order shipped notification to customer
+ */
+export async function sendOrderShippedEmail({
+    to,
+    orderNumber,
+    customerName,
+    items,
+    total,
+    shippingAddress,
+    trackingNumber,
+    trackingUrl,
+    carrierName,
+    shippedAt,
+    locale = 'it',
+}: {
+    to: string;
+    orderNumber: string;
+    customerName: string;
+    items: Array<{
+        id: string;
+        productTitle: string;
+        productSlug: string;
+        price: number | string;
+        quantity: number;
+        imageUrl?: string;
+    }>;
+    total: number | string;
+    shippingAddress?: {
+        name?: string;
+        address?: string;
+        city?: string;
+        postal?: string;
+        country?: string;
+    };
+    trackingNumber?: string;
+    trackingUrl?: string;
+    carrierName?: string;
+    shippedAt: Date;
+    locale?: 'it' | 'en';
+}) {
+    const subject = locale === 'it'
+        ? `Il tuo ordine ${orderNumber} è stato spedito! 🚚 - Antichità Barbaglia`
+        : `Your order ${orderNumber} has been shipped! 🚚 - Antichità Barbaglia`;
+
+    return sendEmail({
+        to,
+        subject,
+        react: React.createElement(OrderShippedEmail, {
+            orderNumber,
+            customerName,
+            items,
+            total,
+            shippingAddress,
+            trackingNumber,
+            trackingUrl,
+            carrierName,
+            shippedAt,
+            locale,
+        }),
+    });
+}
+
+/**
+ * Send admin notification for new order
+ */
+export async function sendAdminNewOrderEmail({
+    adminEmail,
+    orderNumber,
+    customerName,
+    customerEmail,
+    customerPhone,
+    items,
+    subtotal,
+    shippingCost,
+    total,
+    shippingAddress,
+    orderDate,
+    isGuest,
+}: {
+    adminEmail: string;
+    orderNumber: string;
+    customerName: string;
+    customerEmail: string;
+    customerPhone?: string;
+    items: Array<{
+        id: string;
+        productTitle: string;
+        productSlug: string;
+        price: number | string;
+        quantity: number;
+        imageUrl?: string;
+    }>;
+    subtotal: number | string;
+    shippingCost: number | string;
+    total: number | string;
+    shippingAddress?: {
+        name?: string;
+        address?: string;
+        city?: string;
+        postal?: string;
+        country?: string;
+    };
+    orderDate: Date;
+    isGuest: boolean;
+}) {
+    const subject = `🎉 Nuovo Ordine #${orderNumber} - €${Number(total).toLocaleString('it-IT', { minimumFractionDigits: 2 })}`;
+
+    return sendEmail({
+        to: adminEmail,
+        subject,
+        react: React.createElement(AdminNewOrderEmail, {
+            orderNumber,
+            customerName,
+            customerEmail,
+            customerPhone,
+            items,
+            subtotal,
+            shippingCost,
+            total,
+            shippingAddress,
+            orderDate,
+            isGuest,
+        }),
     });
 }

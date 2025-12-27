@@ -18,6 +18,7 @@ type ProductListItemProps = {
         } | null;
         images: {
             url: string;
+            isPrimary: boolean;
         }[];
     };
 };
@@ -34,6 +35,9 @@ export default function ProductListItem({ product }: ProductListItemProps) {
     const locale = useLocale();
     const [isDeleting, setIsDeleting] = useState(false);
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+
+    // Find the primary image, fallback to the first image if none marked as primary
+    const primaryImage = product.images.find(img => img.isPrimary) || product.images[0];
 
     const handleDelete = async () => {
         if (isDeleting) return;
@@ -67,9 +71,9 @@ export default function ProductListItem({ product }: ProductListItemProps) {
                 <div className="flex items-start gap-3">
                     {/* Product Image */}
                     <div className="w-16 h-16 rounded-lg bg-[var(--background)] overflow-hidden flex-shrink-0">
-                        {product.images[0] ? (
+                        {primaryImage ? (
                             <img
-                                src={product.images[0].url}
+                                src={primaryImage.url}
                                 alt={product.title}
                                 className="w-full h-full object-cover"
                             />
@@ -145,9 +149,9 @@ export default function ProductListItem({ product }: ProductListItemProps) {
                 <td className="px-6 py-4">
                     <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-lg bg-[var(--background)] overflow-hidden flex-shrink-0">
-                            {product.images[0] ? (
+                            {primaryImage ? (
                                 <img
-                                    src={product.images[0].url}
+                                    src={primaryImage.url}
                                     alt={product.title}
                                     className="w-full h-full object-cover"
                                 />

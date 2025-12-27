@@ -605,5 +605,28 @@
             "view": "Visualizza",
             "back": "Indietro"
         }
+    },
+    "orderTracking": {
+        "label": "Traccia il tuo Ordine",
+        "title": "Stato dell'Ordine",
+        "description": "Inserisci il numero d'ordine e l'email utilizzata per l'acquisto per visualizzare lo stato del tuo ordine.",
+        "orderNumber": "Numero Ordine",
+        "orderNumberPlaceholder": "es. AB-M1X2Y3Z4-ABCD",
+        "email": "Email",
+        "emailPlaceholder": "L'email usata per l'ordine",
+        "trackOrder": "Traccia Ordine",
+        "searching": "Ricerca in corso...",
+        "notFound": "Ordine non trovato. Verifica il numero d'ordine e l'email.",
+        "orderDate": "Data Ordine",
+        "timeline": "Stato Spedizione",
+        "items": "Articoli",
+        "quantity": "Quantità",
+        "subtotal": "Subtotale",
+        "shipping": "Spedizione",
+        "tax": "IVA",
+        "total": "Totale",
+        "shippingAddress": "Indirizzo di Spedizione",
+        "needHelp": "Hai bisogno di assistenza con il tuo ordine?",
+        "contactUs": "Contattaci"
     }
 }

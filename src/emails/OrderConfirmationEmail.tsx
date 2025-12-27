@@ -64,6 +64,7 @@ const content = {
         nextStepsText: 'Ti contatteremo presto per organizzare la spedizione del tuo pezzo. Dato che ogni articolo è unico e di valore, prendiamo particolare cura nell\'imballaggio e nella consegna.',
         questions: 'Hai domande?',
         questionsText: 'Non esitare a contattarci. Siamo qui per aiutarti.',
+        trackOrder: 'Traccia Ordine',
     },
     en: {
         preview: (orderNumber: string) => `Order Confirmation ${orderNumber} - Antichità Barbaglia`,
@@ -84,6 +85,7 @@ const content = {
         nextStepsText: 'We will contact you shortly to arrange the delivery of your piece. Since each item is unique and valuable, we take special care in packaging and delivery.',
         questions: 'Have questions?',
         questionsText: 'Feel free to reach out to us. We\'re here to help.',
+        trackOrder: 'Track Order',
     },
 };
 
@@ -290,14 +292,21 @@ export const OrderConfirmationEmail: React.FC<OrderConfirmationEmailProps> = ({
             <Hr style={emailStyles.hr} />
 
             {/* CTA Button */}
-            <Section style={{ textAlign: 'center', marginTop: '32px', marginBottom: '32px' }}>
+            <Section style={{ textAlign: 'center', marginTop: '32px', marginBottom: '16px' }}>
                 <Button
-                    href={`${BASE_URL}/account/orders`}
+                    href={`${BASE_URL}/order-tracking`}
                     style={emailStyles.button}
                 >
-                    {t.viewOrder}
+                    {t.trackOrder}
                 </Button>
             </Section>
+
+            <Text style={{ ...emailStyles.paragraph, textAlign: 'center' as const, fontSize: '12px', color: emailStyles.colors.textMuted }}>
+                {locale === 'it'
+                    ? `Usa il numero ordine ${orderNumber} e la tua email per tracciare l'ordine`
+                    : `Use order number ${orderNumber} and your email to track the order`
+                }
+            </Text>
 
             <Hr style={emailStyles.hr} />
 

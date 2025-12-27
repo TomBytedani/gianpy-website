@@ -7,6 +7,7 @@ import {
     closestCenter,
     KeyboardSensor,
     PointerSensor,
+    TouchSensor,
     useSensor,
     useSensors,
     type DragEndEvent,
@@ -161,6 +162,12 @@ export default function SortableImageGrid({
         useSensor(PointerSensor, {
             activationConstraint: {
                 distance: 8, // Require 8px movement before drag starts
+            },
+        }),
+        useSensor(TouchSensor, {
+            activationConstraint: {
+                delay: 250, // 250ms delay to distinguish between drag and scroll
+                tolerance: 5, // 5px tolerance during the delay
             },
         }),
         useSensor(KeyboardSensor, {

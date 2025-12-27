@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -20,14 +20,21 @@ export default function OrderConfirmationPage() {
     const t = useTranslations();
     const params = useParams();
     const sessionId = params.sessionId as string;
-    const { clearCart } = useCart();
+    const { clearCart, isLoading: isCartLoading } = useCart();
     const [orderDetails, setOrderDetails] = useState<OrderDetails | null>(null);
     const [loading, setLoading] = useState(true);
 
-    // Clear cart on successful order
+    // Track if we've already cleared the cart to prevent duplicate clears
+    const hasCleared = useRef(false);
+
+    // Clear cart on successful order - wait for cart to finish loading first
     useEffect(() => {
-        // Clear the cart after successful order
-        clearCart();
+        // Only clear cart once the cart has finished loading from localStorage
+        // This prevents the race condition where clearCart runs before the cart is loaded
+        if (!isCartLoading && !hasCleared.current) {
+            hasCleared.current = true;
+            clearCart();
+        }
 
         // In a real implementation, you would fetch order details from your backend
         // For now, we'll show a generic success message
@@ -35,7 +42,7 @@ export default function OrderConfirmationPage() {
         setOrderDetails({
             orderNumber: sessionId?.slice(-8).toUpperCase(),
         });
-    }, [sessionId, clearCart]);
+    }, [sessionId, clearCart, isCartLoading]);
 
     if (loading) {
         return (

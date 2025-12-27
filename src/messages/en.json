@@ -605,5 +605,28 @@
             "view": "View",
             "back": "Back"
         }
+    },
+    "orderTracking": {
+        "label": "Track your Order",
+        "title": "Order Status",
+        "description": "Enter your order number and the email used for the purchase to view the status of your order.",
+        "orderNumber": "Order Number",
+        "orderNumberPlaceholder": "e.g. AB-M1X2Y3Z4-ABCD",
+        "email": "Email",
+        "emailPlaceholder": "The email used for the order",
+        "trackOrder": "Track Order",
+        "searching": "Searching...",
+        "notFound": "Order not found. Please verify the order number and email.",
+        "orderDate": "Order Date",
+        "timeline": "Shipping Status",
+        "items": "Items",
+        "quantity": "Quantity",
+        "subtotal": "Subtotal",
+        "shipping": "Shipping",
+        "tax": "VAT",
+        "total": "Total",
+        "shippingAddress": "Shipping Address",
+        "needHelp": "Need help with your order?",
+        "contactUs": "Contact Us"
     }
 }

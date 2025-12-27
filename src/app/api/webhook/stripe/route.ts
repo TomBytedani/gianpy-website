@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { constructWebhookEvent, getCheckoutSession } from '@/lib/stripe';
 import { prisma } from '@/lib/prisma';
-import { sendOrderConfirmationEmail, sendWishlistSoldEmail } from '@/emails';
+import { sendOrderConfirmationEmail, sendWishlistSoldEmail, sendAdminNewOrderEmail } from '@/emails';
 
 // Order number generator - creates a unique order number
 function generateOrderNumber(): string {
@@ -240,6 +240,14 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
 
     // Send wishlist sold notifications
     await notifyWishlistUsersProductSold(productIds);
+
+    // Send admin notification email
+    await notifyAdminNewOrder({
+        order,
+        customerDetails,
+        shippingDetails,
+        userId,
+    });
 }
 
 /**
@@ -357,5 +365,105 @@ async function handlePaymentIntentFailed(paymentIntent: Stripe.PaymentIntent) {
                 soldAt: null,
             },
         });
+    }
+}
+
+/**
+ * Notify admin about a new order
+ */
+async function notifyAdminNewOrder({
+    order,
+    customerDetails,
+    shippingDetails,
+    userId,
+}: {
+    order: {
+        id: string;
+        orderNumber: string;
+        subtotal: unknown;
+        shippingCost: unknown;
+        total: unknown;
+        createdAt: Date;
+    };
+    customerDetails: {
+        email?: string | null;
+        name?: string | null;
+        phone?: string | null;
+    } | null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    shippingDetails: any;
+    userId: string | undefined;
+}) {
+    try {
+        // Get admin email from site settings
+        const siteSettings = await prisma.siteSettings.findUnique({
+            where: { id: 'default' },
+        });
+
+        const adminEmail = siteSettings?.contactFormNotificationEmail || process.env.ADMIN_EMAIL;
+
+        if (!adminEmail) {
+            console.log('No admin email configured, skipping admin notification');
+            return;
+        }
+
+        // Fetch order with items for email
+        const orderWithItems = await prisma.order.findUnique({
+            where: { id: order.id },
+            include: {
+                items: {
+                    include: {
+                        product: {
+                            include: {
+                                images: {
+                                    where: { isPrimary: true },
+                                    take: 1,
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        });
+
+        if (!orderWithItems) {
+            console.error('Order not found for admin notification:', order.id);
+            return;
+        }
+
+        const isGuest = !userId || userId === 'guest';
+
+        await sendAdminNewOrderEmail({
+            adminEmail,
+            orderNumber: order.orderNumber,
+            customerName: shippingDetails?.name || customerDetails?.name || 'Cliente',
+            customerEmail: customerDetails?.email || 'N/A',
+            customerPhone: customerDetails?.phone || shippingDetails?.phone || undefined,
+            items: orderWithItems.items.map(item => ({
+                id: item.id,
+                productTitle: item.productTitle,
+                productSlug: item.productSlug,
+                price: Number(item.price),
+                quantity: item.quantity,
+                imageUrl: item.product.images[0]?.url,
+            })),
+            subtotal: Number(order.subtotal),
+            shippingCost: Number(order.shippingCost),
+            total: Number(order.total),
+            shippingAddress: shippingDetails?.address ? {
+                name: shippingDetails.name,
+                address: shippingDetails.address.line1,
+                city: shippingDetails.address.city,
+                postal: shippingDetails.address.postal_code,
+                country: shippingDetails.address.country,
+            } : undefined,
+            orderDate: order.createdAt,
+            isGuest,
+        });
+
+        console.log(`Admin notification sent to: ${adminEmail} for order: ${order.orderNumber}`);
+    } catch (error) {
+        console.error('Failed to send admin notification:', error);
+        // Don't fail the webhook if email fails
     }
 }

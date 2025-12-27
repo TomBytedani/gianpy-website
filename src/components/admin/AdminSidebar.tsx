@@ -3,9 +3,16 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLocale } from 'next-intl';
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
-const menuItems = [
+type MenuItem = {
+    label: string;
+    href: string;
+    icon: React.ReactNode;
+    badge?: number;
+};
+
+const baseMenuItems: MenuItem[] = [
     {
         label: 'Pannello di Controllo',
         href: '/admin',
@@ -62,12 +69,35 @@ type AdminSidebarProps = {
 export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarProps) {
     const pathname = usePathname();
     const locale = useLocale();
+    const [unprocessedOrderCount, setUnprocessedOrderCount] = useState(0);
+
+    // Fetch unprocessed order count
+    const fetchOrderCount = useCallback(async () => {
+        try {
+            const response = await fetch('/api/orders?status=PAID&limit=1');
+            if (response.ok) {
+                const data = await response.json();
+                setUnprocessedOrderCount(data.total || 0);
+            }
+        } catch (error) {
+            console.error('Failed to fetch order count:', error);
+        }
+    }, []);
+
+    // Fetch on mount and every 30 seconds
+    useEffect(() => {
+        fetchOrderCount();
+        const interval = setInterval(fetchOrderCount, 30000);
+        return () => clearInterval(interval);
+    }, [fetchOrderCount]);
 
     // Close sidebar when route changes on mobile
     useEffect(() => {
         if (isOpen && onClose) {
             onClose();
         }
+        // Also refresh order count on navigation
+        fetchOrderCount();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pathname]);
 
@@ -78,6 +108,12 @@ export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarPr
         }
         return pathname?.startsWith(localizedHref) || false;
     };
+
+    // Build menu items with badge
+    const menuItems = baseMenuItems.map(item => ({
+        ...item,
+        badge: item.href === '/admin/orders' ? unprocessedOrderCount : undefined,
+    }));
 
     return (
         <>
@@ -112,13 +148,23 @@ export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarPr
                         <Link
                             key={item.href}
                             href={`/${locale}${item.href}`}
-                            className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${isActive(item.href)
+                            className={`flex items-center justify-between gap-3 px-4 py-3 rounded-lg transition-all ${isActive(item.href)
                                 ? 'bg-[var(--primary)] text-white'
                                 : 'text-[var(--foreground)] hover:bg-[var(--background)]'
                                 }`}
                         >
-                            {item.icon}
-                            <span className="font-body text-sm">{item.label}</span>
+                            <div className="flex items-center gap-3">
+                                {item.icon}
+                                <span className="font-body text-sm">{item.label}</span>
+                            </div>
+                            {item.badge !== undefined && item.badge > 0 && (
+                                <span className={`inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 text-xs font-bold rounded-full ${isActive(item.href)
+                                        ? 'bg-white text-[var(--primary)]'
+                                        : 'bg-orange-500 text-white'
+                                    }`}>
+                                    {item.badge > 99 ? '99+' : item.badge}
+                                </span>
+                            )}
                         </Link>
                     ))}
                 </nav>

@@ -80,7 +80,10 @@ export async function createCheckoutSession(
                 currency: STRIPE_CONFIG.currency,
                 product_data: {
                     name: item.productTitle,
-                    images: item.imageUrl ? [`${baseUrl}${item.imageUrl}`] : undefined,
+                    // Handle both relative paths and full URLs (R2 images are already full URLs)
+                    images: item.imageUrl
+                        ? [item.imageUrl.startsWith('http') ? item.imageUrl : `${baseUrl}${item.imageUrl}`]
+                        : undefined,
                     metadata: {
                         productId: item.productId,
                         productSlug: item.productSlug,
