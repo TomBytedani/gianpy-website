@@ -307,12 +307,6 @@
                 "upholstery": "Upholstery and historical padding",
                 "consulting": "Consulting and appraisals"
             }
-        },
-        "stats": {
-            "experience": "Years of Experience",
-            "pieces": "Selected Pieces",
-            "satisfaction": "Customer Satisfaction",
-            "shipping": "Secure Shipping"
         }
     },
     "services": {

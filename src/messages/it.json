@@ -307,12 +307,6 @@
                 "upholstery": "Tappezzeria e imbottitura storica",
                 "consulting": "Consulenza e perizie"
             }
-        },
-        "stats": {
-            "experience": "Anni di Esperienza",
-            "pieces": "Pezzi Selezionati",
-            "satisfaction": "Soddisfazione Clienti",
-            "shipping": "Spedizione Sicura"
         }
     },
     "services": {

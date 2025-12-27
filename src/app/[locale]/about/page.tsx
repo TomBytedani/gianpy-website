@@ -184,30 +184,6 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* Stats Bar */}
-            <section className="py-12 bg-[var(--primary)] relative z-[5]" style={{ isolation: 'isolate' }}>
-                <div className="container-elegant">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-[var(--background)]">
-                        <div>
-                            <span className="text-4xl font-bold">30+</span>
-                            <p className="mt-1 text-sm opacity-80">{t('stats.experience')}</p>
-                        </div>
-                        <div>
-                            <span className="text-4xl font-bold">500+</span>
-                            <p className="mt-1 text-sm opacity-80">{t('stats.pieces')}</p>
-                        </div>
-                        <div>
-                            <span className="text-4xl font-bold">200+</span>
-                            <p className="mt-1 text-sm opacity-80">{t('stats.satisfaction')}</p>
-                        </div>
-                        <div>
-                            <span className="text-4xl font-bold">15</span>
-                            <p className="mt-1 text-sm opacity-80">{t('stats.shipping')}</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             {/* Footer */}
             <Footer />
         </div>
