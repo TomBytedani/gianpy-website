@@ -256,7 +256,11 @@
             "email": "Email",
             "hours": "Orari di Apertura",
             "whatsappAvailable": "WhatsApp disponibile",
-            "responseTime": "Risposta entro 48 ore"
+            "responseTime": "Risposta entro 48 ore",
+            "openInGoogleMaps": "Apri in Google Maps"
+        },
+        "map": {
+            "openInGoogleMaps": "Visualizza su Google Maps"
         },
         "visit": {
             "title": "Vieni a Trovarci",

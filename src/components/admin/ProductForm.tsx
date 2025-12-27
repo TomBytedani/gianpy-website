@@ -721,10 +721,9 @@ export default function ProductForm({ categories, initialData }: ProductFormProp
                 </div>
             </div>
 
-            {/* Actions */}
             <div className="flex items-center justify-between">
                 <Link
-                    href={`/${locale}/admin/products`}
+                    href={`/${locale}/admin`}
                     className="px-6 py-2 border border-[var(--border)] text-[var(--foreground)] rounded-lg hover:bg-[var(--background)] transition-colors"
                 >
                     Cancel

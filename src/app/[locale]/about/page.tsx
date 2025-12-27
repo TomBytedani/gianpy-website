@@ -140,12 +140,12 @@ export default function AboutPage() {
 
                             <ul className="mt-6 space-y-3">
                                 {[
-                                    'Restauro conservativo e filologico',
-                                    'Doratura e argentatura a foglia',
-                                    'Lucidatura tradizionale a gommalacca',
-                                    'Intarsio e marqueterie',
-                                    'Tappezzer and imbottitura storica',
-                                    'Consulenza e perizie',
+                                    t('workshop.services.conservativeRestoration'),
+                                    t('workshop.services.gilding'),
+                                    t('workshop.services.traditionalPolishing'),
+                                    t('workshop.services.intarsia'),
+                                    t('workshop.services.upholstery'),
+                                    t('workshop.services.consulting'),
                                 ].map((service, index) => (
                                     <li key={index} className="flex items-center gap-3 text-[var(--muted)]">
                                         <svg className="w-5 h-5 text-[var(--primary)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

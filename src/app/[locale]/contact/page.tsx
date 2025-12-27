@@ -413,6 +413,24 @@ export default function ContactPage() {
             {/* Interactive Map Section */}
             <section className="pb-16">
                 <div className="container-elegant">
+                    {/* Google Maps Link */}
+                    <div className="flex items-center justify-between mb-4">
+                        <h3 className="font-display text-xl text-[var(--foreground)]">
+                            {tVisit('title')}
+                        </h3>
+                        <a
+                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(getFullAddress() || `${settings?.address || ''}, ${settings?.city || ''}, ${settings?.country || 'Italia'}`)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--primary)] text-white rounded-lg hover:opacity-90 transition-opacity text-sm"
+                        >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            {tInfo('openInGoogleMaps')}
+                        </a>
+                    </div>
                     <InteractiveMap
                         address={settings?.address || 'Milano, 20134'}
                         city={settings?.city || 'MI'}

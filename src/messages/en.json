@@ -256,7 +256,11 @@
             "email": "Email",
             "hours": "Opening Hours",
             "whatsappAvailable": "WhatsApp available",
-            "responseTime": "Response within 48 hours"
+            "responseTime": "Response within 48 hours",
+            "openInGoogleMaps": "Open in Google Maps"
+        },
+        "map": {
+            "openInGoogleMaps": "View on Google Maps"
         },
         "visit": {
             "title": "Come Visit Us",

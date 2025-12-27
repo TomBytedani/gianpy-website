@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLocale } from 'next-intl';
+import { useEffect } from 'react';
 
 const menuItems = [
     {
@@ -53,9 +54,22 @@ const menuItems = [
     },
 ];
 
-export default function AdminSidebar() {
+type AdminSidebarProps = {
+    isOpen?: boolean;
+    onClose?: () => void;
+};
+
+export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarProps) {
     const pathname = usePathname();
     const locale = useLocale();
+
+    // Close sidebar when route changes on mobile
+    useEffect(() => {
+        if (isOpen && onClose) {
+            onClose();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pathname]);
 
     const isActive = (href: string) => {
         const localizedHref = `/${locale}${href}`;
@@ -68,11 +82,32 @@ export default function AdminSidebar() {
     return (
         <>
             {/* Mobile Sidebar Backdrop */}
-            <div className="lg:hidden fixed inset-0 bg-black/50 z-40 hidden" id="sidebar-backdrop" />
+            {isOpen && (
+                <div
+                    className="lg:hidden fixed inset-0 bg-black/50 z-40 transition-opacity duration-200"
+                    onClick={onClose}
+                    aria-hidden="true"
+                />
+            )}
 
             {/* Sidebar */}
-            <aside className="fixed left-0 top-16 bottom-0 w-64 bg-[var(--surface)] border-r border-[var(--border)] z-40 transform -translate-x-full lg:translate-x-0 transition-transform duration-200 overflow-y-auto">
-                <nav className="p-4 space-y-1">
+            <aside
+                className={`fixed left-0 top-16 bottom-0 w-64 bg-[var(--surface)] border-r border-[var(--border)] z-40 transform transition-transform duration-200 ease-in-out overflow-y-auto
+                    ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}
+            >
+                {/* Close button for mobile */}
+                <button
+                    type="button"
+                    onClick={onClose}
+                    className="lg:hidden absolute top-4 right-4 p-2 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+                    aria-label="Close menu"
+                >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <nav className="p-4 space-y-1 pt-12 lg:pt-4">
                     {menuItems.map((item) => (
                         <Link
                             key={item.href}
