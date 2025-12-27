@@ -419,15 +419,15 @@ export default function ProductDetailPage() {
                                 )}
                             </div>
 
-                            {/* Thumbnails - horizontal scroll on mobile, grid on larger screens */}
+                            {/* Thumbnails - 2x2 grid on mobile, 4 columns on larger screens */}
                             {productImages.length > 1 && (
-                                <div className="flex sm:grid sm:grid-cols-4 gap-3 overflow-x-auto pb-2 sm:pb-0 sm:overflow-visible scrollbar-hide">
+                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                                     {productImages.map((image, index) => (
                                         <button
                                             key={image.id}
                                             type="button"
                                             onClick={() => setSelectedImage(index)}
-                                            className={`aspect-square rounded-md overflow-hidden border-2 transition-colors flex-shrink-0 w-20 sm:w-auto ${selectedImage === index
+                                            className={`aspect-square rounded-md overflow-hidden border-2 transition-colors ${selectedImage === index
                                                 ? 'border-[var(--primary)]'
                                                 : 'border-transparent hover:border-[var(--border)]'
                                                 }`}
