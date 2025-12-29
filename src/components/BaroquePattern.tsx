@@ -108,10 +108,11 @@ export function BaroquePattern({
             )}
 
             {/* Bottom Left Flourish (rotated) */}
+            {/* Note: Using 2px inset to prevent sub-pixel rendering artifacts at section boundaries */}
             {showBottomLeft && (
                 <FlourishSVG
                     style={{
-                        bottom: '0px',
+                        bottom: '2px',
                         left: '0px',
                         transform: 'rotate(180deg)',
                     }}
@@ -119,10 +120,11 @@ export function BaroquePattern({
             )}
 
             {/* Bottom Right Flourish (rotated and mirrored) */}
+            {/* Note: Using 2px inset to prevent sub-pixel rendering artifacts at section boundaries */}
             {showBottomRight && (
                 <FlourishSVG
                     style={{
-                        bottom: '0px',
+                        bottom: '2px',
                         right: '0px',
                         transform: 'scale(-1, 1) rotate(180deg)',
                     }}
