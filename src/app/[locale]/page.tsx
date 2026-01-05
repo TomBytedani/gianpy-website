@@ -316,8 +316,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section - explicit bg ensures no bleeding from baroque patterns above */}
-      <section className="py-20 bg-[var(--background)] relative z-[2]">
+      {/* About Section - explicit bg and isolation ensures no bleeding from baroque patterns above */}
+      <section className="py-20 bg-[var(--background)] relative z-[2]" style={{ isolation: 'isolate' }}>
         <div className="container-elegant">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>

@@ -4,6 +4,33 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { useSiteSettings } from '@/hooks/useSiteSettings';
 
+/**
+ * Sanitizes a WhatsApp URL to ensure it's in the correct format.
+ * This is a safety net for any legacy data that might not be properly formatted.
+ */
+function sanitizeWhatsAppUrl(url: string | null): string | null {
+    if (!url || !url.trim()) return null;
+
+    let cleaned = url.trim();
+
+    // If it's already a wa.me URL, extract the number part
+    if (cleaned.includes('wa.me/')) {
+        const match = cleaned.match(/wa\.me\/(.+)/);
+        if (match) {
+            cleaned = match[1];
+        }
+    }
+
+    // Remove all spaces, dashes, parentheses, and plus signs
+    cleaned = cleaned.replace(/[\s\-\(\)\+]/g, '');
+
+    // If empty after cleaning, return null
+    if (!cleaned) return null;
+
+    // Return the properly formatted URL
+    return `https://wa.me/${cleaned}`;
+}
+
 export function Footer() {
     const t = useTranslations('common');
     const locale = useLocale();
@@ -13,9 +40,10 @@ export function Footer() {
     // Get opening hours for current locale
     const openingHours = getOpeningHours(locale);
 
-
+    // Sanitize WhatsApp URL to handle any legacy data with spaces or plus signs
+    const sanitizedWhatsAppUrl = sanitizeWhatsAppUrl(settings?.whatsappUrl ?? null);
     return (
-        <footer className="bg-[var(--foreground)] text-[var(--background)] py-16 relative z-10">
+        <footer className="bg-[var(--foreground)] text-[var(--background)] py-16 relative z-10" style={{ isolation: 'isolate' }}>
             <div className="container-elegant">
                 <div className="grid gap-8 md:grid-cols-4">
                     {/* Brand Column */}
@@ -59,9 +87,9 @@ export function Footer() {
                                     </svg>
                                 </a>
                             )}
-                            {settings?.whatsappUrl && (
+                            {sanitizedWhatsAppUrl && (
                                 <a
-                                    href={settings.whatsappUrl}
+                                    href={sanitizedWhatsAppUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-10 h-10 rounded-full border border-[var(--background)]/30 flex items-center justify-center hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"

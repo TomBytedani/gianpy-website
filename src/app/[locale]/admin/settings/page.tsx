@@ -3,6 +3,37 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Card, Button } from '@/components/ui';
 
+/**
+ * Sanitizes a WhatsApp URL to ensure it's in the correct format.
+ * Handles various input formats:
+ * - Full URL with spaces: "https://wa.me/39 328 406 3084" -> "https://wa.me/393284063084"
+ * - URL with plus sign: "https://wa.me/+393284063084" -> "https://wa.me/393284063084"
+ * - Just a phone number: "+39 328 406 3084" -> "https://wa.me/393284063084"
+ * - Phone number without prefix: "393284063084" -> "https://wa.me/393284063084"
+ */
+function sanitizeWhatsAppUrl(input: string): string {
+    if (!input || !input.trim()) return '';
+
+    let cleaned = input.trim();
+
+    // If it's already a wa.me URL, extract the number part
+    if (cleaned.includes('wa.me/')) {
+        const match = cleaned.match(/wa\.me\/(.+)/);
+        if (match) {
+            cleaned = match[1];
+        }
+    }
+
+    // Remove all spaces, dashes, parentheses, and plus signs
+    cleaned = cleaned.replace(/[\s\-\(\)\+]/g, '');
+
+    // If empty after cleaning, return empty string
+    if (!cleaned) return '';
+
+    // Return the properly formatted URL
+    return `https://wa.me/${cleaned}`;
+}
+
 interface SiteSettings {
     // Business Info
     businessName: string;
@@ -150,7 +181,7 @@ export default function AdminSettingsPage() {
                     country: settings.country,
                     facebookUrl: settings.facebookUrl,
                     instagramUrl: settings.instagramUrl,
-                    whatsappUrl: settings.whatsappUrl,
+                    whatsappUrl: sanitizeWhatsAppUrl(settings.whatsappUrl),
                     freeShippingThreshold: settings.freeShippingThreshold,
                     domesticShippingCost: settings.domesticShippingCost,
                     internationalShippingCost: settings.internationalShippingCost,

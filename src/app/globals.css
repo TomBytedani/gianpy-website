@@ -430,6 +430,8 @@ input[type="checkbox"]:checked {
   overflow: hidden;
   isolation: isolate;
   z-index: 1;
+  contain: strict;
+  clip-path: inset(0);
 }
 
 /* Subtle baroque background pattern using CSS gradient */
