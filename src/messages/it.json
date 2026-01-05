@@ -386,12 +386,19 @@
             "wishlistPreview": "La Tua Lista Desideri",
             "viewWishlist": "Vedi Lista Desideri",
             "emptyWishlist": "La tua lista desideri è vuota",
-            "quickActions": "Azioni Rapide"
+            "quickActions": "Azioni Rapide",
+            "actions": {
+                "shop": "Collezione",
+                "contactUs": "Contattaci",
+                "settings": "Impostazioni",
+                "cart": "Carrello"
+            }
         },
         "orders": {
             "title": "Storico Ordini",
             "subtitle": "Visualizza e traccia i tuoi ordini",
             "noOrders": "Non hai ancora effettuato ordini",
+            "emptyMessage": "Esplora la nostra collezione di mobili antichi restaurati con cura artigianale.",
             "startShopping": "Inizia lo Shopping",
             "orderNumber": "Ordine",
             "orderDate": "Data",

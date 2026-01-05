@@ -121,7 +121,7 @@ export default async function OrderHistoryPage() {
                         {t('orders.noOrders')}
                     </h2>
                     <p className="text-muted font-body mb-6 max-w-md mx-auto">
-                        {t('cart.emptyMessage')}
+                        {t('orders.emptyMessage')}
                     </p>
                     <Link href="/shop">
                         <Button variant="primary" size="lg">

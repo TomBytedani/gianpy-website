@@ -41,6 +41,7 @@ export default function WishlistPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [removingId, setRemovingId] = useState<string | null>(null);
     const t = useTranslations('account');
+    const tCommon = useTranslations('common');
     const { addItem, isInCart } = useCart();
 
     useEffect(() => {
@@ -119,7 +120,7 @@ export default function WishlistPage() {
                     {t('wishlist.title')}
                 </h1>
                 <p className="text-muted mt-2 font-body">
-                    {t('wishlist.subtitle')} • {wishlistItems.length} {wishlistItems.length === 1 ? t('account.orders.items', { count: 1 }).split(' ')[1] : t('account.orders.items', { count: wishlistItems.length }).split(' ')[1]}
+                    {t('wishlist.subtitle')} • {wishlistItems.length} {wishlistItems.length === 1 ? t('orders.items', { count: 1 }).split(' ')[1] : t('orders.items', { count: wishlistItems.length }).split(' ')[1]}
                 </p>
             </div>
 
@@ -203,7 +204,7 @@ export default function WishlistPage() {
                                         {!isSold && (
                                             <div className="absolute top-3 left-3">
                                                 <span className={`px-2 py-1 text-xs font-medium rounded ${statusColor.bg} ${statusColor.text}`}>
-                                                    {t(`common.status.${item.product.status.toLowerCase().replace('_', '')}`)}
+                                                    {tCommon(`status.${item.product.status.toLowerCase().replace('_', '')}`)}
                                                 </span>
                                             </div>
                                         )}
@@ -256,7 +257,7 @@ export default function WishlistPage() {
                                                         : 'bg-primary/10 text-primary hover:bg-primary hover:text-white'
                                                     }
                                                 `}
-                                                title={inCart ? t('common.buttons.goToCart') : t('wishlist.addToCart')}
+                                                title={inCart ? tCommon('buttons.goToCart') : t('wishlist.addToCart')}
                                             >
                                                 {inCart ? (
                                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

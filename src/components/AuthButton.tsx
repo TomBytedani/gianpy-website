@@ -54,7 +54,7 @@ export function AuthButton() {
             <button
                 type="button"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="flex items-center gap-2 p-1 rounded-full hover:bg-[var(--background-alt)] transition-colors"
+                className="flex items-center gap-2 p-1 rounded-full hover:bg-[var(--background-alt)] transition-colors cursor-pointer"
                 aria-label="Account menu"
             >
                 {showImage ? (

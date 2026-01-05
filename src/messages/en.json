@@ -386,12 +386,19 @@
             "wishlistPreview": "Your Wishlist",
             "viewWishlist": "View Wishlist",
             "emptyWishlist": "Your wishlist is empty",
-            "quickActions": "Quick Actions"
+            "quickActions": "Quick Actions",
+            "actions": {
+                "shop": "Shop",
+                "contactUs": "Contact Us",
+                "settings": "Settings",
+                "cart": "Cart"
+            }
         },
         "orders": {
             "title": "Order History",
             "subtitle": "View and track your orders",
             "noOrders": "You haven't placed any orders yet",
+            "emptyMessage": "Explore our collection of antique furniture carefully restored by skilled artisans.",
             "startShopping": "Start Shopping",
             "orderNumber": "Order",
             "orderDate": "Date",
