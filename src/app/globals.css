@@ -430,7 +430,9 @@ input[type="checkbox"]:checked {
   overflow: hidden;
   isolation: isolate;
   z-index: 1;
-  contain: strict;
+  /* Note: Use 'layout paint' instead of 'strict' - strict includes size containment
+     which prevents the section from sizing based on its content, causing hidden elements */
+  contain: layout paint;
   clip-path: inset(0);
 }
 
