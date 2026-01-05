@@ -8,8 +8,9 @@ async function getStats() {
         soldProducts,
         reservedProducts,
         totalOrders,
-        pendingOrders,
         paidOrders,
+        shippedOrders,
+        deliveredOrders,
         recentOrders,
     ] = await Promise.all([
         prisma.product.count(),
@@ -17,8 +18,9 @@ async function getStats() {
         prisma.product.count({ where: { status: 'SOLD' } }),
         prisma.product.count({ where: { status: 'RESERVED' } }),
         prisma.order.count(),
-        prisma.order.count({ where: { status: 'PENDING' } }),
         prisma.order.count({ where: { status: 'PAID' } }),
+        prisma.order.count({ where: { status: 'SHIPPED' } }),
+        prisma.order.count({ where: { status: 'DELIVERED' } }),
         prisma.order.findMany({
             take: 5,
             orderBy: { createdAt: 'desc' },
@@ -42,8 +44,9 @@ async function getStats() {
         soldProducts,
         reservedProducts,
         totalOrders,
-        pendingOrders,
         paidOrders,
+        shippedOrders,
+        deliveredOrders,
         recentOrders,
         totalRevenue: Number(totalRevenue),
     };
@@ -136,17 +139,24 @@ export default async function AdminDashboardPage() {
                         </div>
                         <div className="flex items-center justify-between">
                             <span className="flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-yellow-500"></span>
-                                <span className="text-[var(--muted)]">In Attesa</span>
-                            </span>
-                            <span className="font-body text-yellow-600">{stats.pendingOrders}</span>
-                        </div>
-                        <div className="flex items-center justify-between">
-                            <span className="flex items-center gap-2">
                                 <span className="w-2 h-2 rounded-full bg-green-500"></span>
                                 <span className="text-[var(--muted)]">Pagati</span>
                             </span>
                             <span className="font-body text-green-600">{stats.paidOrders}</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                            <span className="flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                                <span className="text-[var(--muted)]">Spediti</span>
+                            </span>
+                            <span className="font-body text-blue-600">{stats.shippedOrders}</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                            <span className="flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+                                <span className="text-[var(--muted)]">Consegnati</span>
+                            </span>
+                            <span className="font-body text-purple-600">{stats.deliveredOrders}</span>
                         </div>
                     </div>
                 </div>
