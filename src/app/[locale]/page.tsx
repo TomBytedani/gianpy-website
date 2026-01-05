@@ -9,6 +9,7 @@ import { ProductCard } from '@/components/ProductCard';
 import { Link } from '@/i18n/routing';
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
+import siteConfig from '@/messages/config.json';
 
 // R2 public URL for static assets
 const R2_PUBLIC_URL = 'https://pub-c08ae0de86f94e598029df0900cc46b3.r2.dev';
@@ -338,13 +339,13 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-4">
               <Card className="bg-[var(--background-alt)]" padding="lg">
                 <div className="text-center">
-                  <span className="text-4xl font-bold text-[var(--primary)]">30+</span>
+                  <span className="text-4xl font-bold text-[var(--primary)]">{siteConfig.statistics.yearsOfExperience}</span>
                   <p className="mt-2 text-sm text-[var(--muted)]">{tHome('about.experience')}</p>
                 </div>
               </Card>
               <Card className="bg-[var(--background-alt)]" padding="lg">
                 <div className="text-center">
-                  <span className="text-4xl font-bold text-[var(--primary)]">500+</span>
+                  <span className="text-4xl font-bold text-[var(--primary)]">{siteConfig.statistics.restorationsCompleted}</span>
                   <p className="mt-2 text-sm text-[var(--muted)]">{tHome('about.restored')}</p>
                 </div>
               </Card>
