@@ -47,7 +47,8 @@
             "hoursWeekdays": "Lun - Ven: 9:00 - 18:00",
             "hoursSaturday": "Sabato: Chiuso",
             "hoursSunday": "Domenica: Chiuso",
-            "securePaymentsWith": "Pagamenti sicuri con"
+            "securePaymentsWith": "Pagamenti sicuri con",
+            "vatNumber": "P.IVA"
         }
     },
     "home": {

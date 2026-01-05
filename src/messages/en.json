@@ -47,7 +47,8 @@
             "hoursWeekdays": "Mon - Fri: 9:00 - 18:00",
             "hoursSaturday": "Saturday: Closed",
             "hoursSunday": "Sunday: Closed",
-            "securePaymentsWith": "Secure payments with"
+            "securePaymentsWith": "Secure payments with",
+            "vatNumber": "VAT"
         }
     },
     "home": {

@@ -219,9 +219,15 @@ export function Footer() {
 
                 {/* Bottom Bar */}
                 <div className="mt-12 pt-8 border-t border-[var(--background)]/20 flex flex-col md:flex-row items-center justify-between gap-4">
-                    <p className="text-sm text-[var(--background)]/50">
-                        {t('footer.copyright', { year })}
-                    </p>
+                    <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+                        <p className="text-sm text-[var(--background)]/50">
+                            {t('footer.copyright', { year })}
+                        </p>
+                        <span className="hidden md:inline text-[var(--background)]/30">|</span>
+                        <p className="text-sm text-[var(--background)]/50">
+                            {t('footer.vatNumber')}: 09599770964
+                        </p>
+                    </div>
                     <div className="flex items-center gap-4 text-sm text-[var(--background)]/50">
                         <span>{t('footer.securePaymentsWith')}</span>
                         <div className="flex gap-2">
