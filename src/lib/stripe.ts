@@ -65,7 +65,10 @@ export async function createCheckoutSession(
     userId?: string,
     customerEmail?: string,
 ): Promise<Stripe.Checkout.Session> {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    // Use NEXT_PUBLIC_BASE_URL if set, otherwise auto-detect Vercel environment
+    // VERCEL_URL is automatically set by Vercel for all deployments
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+        || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
 
     const session = await getStripeServer().checkout.sessions.create({
         mode: STRIPE_CONFIG.mode,

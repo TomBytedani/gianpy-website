@@ -22,7 +22,9 @@ export const EMAIL_FROM_NAME = "Antichità Barbaglia";
 export const EMAIL_FROM_FULL = `${EMAIL_FROM_NAME} <${EMAIL_FROM}>`;
 
 // Base URL for links in emails
-export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+// Use NEXT_PUBLIC_BASE_URL if set, otherwise auto-detect Vercel environment
+export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+    || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
 
 /**
  * Send an email using Resend
